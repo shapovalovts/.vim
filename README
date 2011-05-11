@@ -1,0 +1,15 @@
+Installing this vimrc manually
+------------------------------
+
+Although a vimrc is a very personal thing, you may use mine if you like it. To do so, please do the following:
+
+1. Clone this repo:
+git clone git://github.com/geneuro/.vim.git
+
+or download the plain source only:
+wget -qO - https://github.com/geneuro/.vim/tarball/master | tar -xzvf -
+
+2. In ~/.vimrc add the following line:
+source /path/to/.vim/vimrc
+
+That's all.
