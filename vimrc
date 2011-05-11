@@ -1,56 +1,49 @@
-" Общие настройки
-set ts=4              " у меня табуляция 4 символа
+set ts=4            
 set autoindent
 set lbr
 set showcmd
-set nocompatible      " обойдёмся без стандартного vi
+set nocompatible
 set backspace=indent,eol,start
 set history=50
 set nobackup
-set ruler 			  " показывать курсор все время
+set ruler 			     " show cursor
 set hidden
 set nowrap     
 set number
-set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftwidth=4         " number of spaces to use for autoindenting
 set softtabstop=4
-set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-set showmatch     " set show matching parenthesis
-set ignorecase    " ignore case when searching
-set smartcase     " ignore case if search pattern is all lowercase,
-                  "    case-sensitive otherwise
-set smarttab      " insert tabs on the start of a line according to
-                  "    shiftwidth, not tabstop
-set expandtab     " spaces instead tabs
+set shiftround           " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch            " set show matching parenthesis
+set ignorecase           " ignore case when searching
+set smartcase            " ignore case if search pattern is all lowercase,
+                         " case-sensitive otherwise
+set smarttab             " insert tabs on the start of a line according to
+                         " shiftwidth, not tabstop
+set expandtab            " spaces instead tabs
 set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
-set showcmd     "show incomplete cmds down the bottom
-set showmode    "show current mode down the bottom
-set incsearch   "find the next match as we type the search
-set hlsearch    "hilight searches by default
-set ttyfast " More characters will be sent to the screen for redrawing
-set scrolloff=3 " Keep this number of lines below and above cursor
-
-" Подсветка текущей позиции курсора по горизонтали и вертикали
-"set cursorline
+set showcmd              " show incomplete cmds down the bottom
+set showmode             " show current mode down the bottom
+set incsearch            " find the next match as we type the search
+set hlsearch             " hilight searches by default
+set ttyfast              " More characters will be sent to the screen for redrawing
+set scrolloff=3          " Keep this number of lines below and above cursor
 
 " remember some stuff after quiting vim:
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
 
-" Показывать табы всегда
-set showtabline=2
-
-"c indent style
+" c indent style
 set cindent
 set modeline
 syntax on
 
 set sessionoptions=curdir,buffers,tabpages
 
-" Поддержка мыши
+" Mouse support
 "set mouse=a
 "set mousemodel=popup
 
@@ -64,7 +57,7 @@ function ModeChange()
 endfunction
 au BufWritePost * call ModeChange()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Плагины
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
 " Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
 call pathogen#helptags()
@@ -104,10 +97,10 @@ set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
 
-"recalculate the trailing whitespace warning when idle, and after saving
+" Recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
-"return the syntax highlight group under the cursor ''
+" Return the syntax highlight group under the cursor ''
 function! StatuslineCurrentHighlight()
     let name = synIDattr(synID(line('.'),col('.'),1),'name')
     if name == ''
@@ -117,17 +110,17 @@ function! StatuslineCurrentHighlight()
     endif
 endfunction
 
-" configure tags - add additional tags here or comment out not-used ones
+" Configure tags - add additional tags here or comment out not-used ones
 set tags+=~/.vim/tags/cpp
 
-" OmniCppComplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
 let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_MayCompleteDot = 1      " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1    " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1    " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 " automatically open and close the popup menu / preview window
@@ -136,8 +129,9 @@ set completeopt=menuone,menu,longest,preview
 
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
-""""""""""""""""""""""""""""""""""""""""" Установка цветовой схемы 
+""""""""""""""""""""""""""""""""""""""""" Colors
 set t_Co=256
 colo taras256
 
+""""""""""""""""""""""""""""""""""""""""" Include keys map
 source ~/.vim/keys.vim

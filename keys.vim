@@ -20,11 +20,11 @@ nmap <silent> ,/ :nohlsearch<CR>
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
 map <Enter> o<ESC>
 
-" F11: Включить\выключить нумерацию строк,
-" F2: Сохранить текущий буфер
-" F10: Закрыть буфер
-" F4: список буферов
-" Ctrl+o: открыть файл
+" F11: switch over lines numeration
+" F2: save current buffer
+" F10: close current buffer
+" F4: show list of buffers
+" Ctrl+o: open the new file
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
 nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <silent> <F12>  <Esc><Esc>:Tlist<CR>
@@ -40,14 +40,14 @@ nmap <F10> :bd<CR>
 imap <F4> <Esc>:buffers<CR>
 nmap <F4> :buffers<CR>
 
-" 'умный' Home
+" Smart Home
 nmap <Home> ^
 imap <Home> <Esc>I
 
-" Работа со вкладками: 
-" Ctrl+Left: Сделать активным предыдущую вкладку,
-" Ctrl+Right: Сделать активным следующую вкладку,
-" Ctrl+t: Открыть новую вкладку
+" Tabs 
+" Ctrl+Left: next tab
+" Ctrl+Right: prev tab
+" Ctrl+t: open new tab
 map <C-Left> :tabprevious<cr>
 nmap <C-Left> :tabprevious<cr>
 imap <C-Left> <ESC>:tabprevious<cr>i
@@ -57,12 +57,12 @@ imap <C-Right> <ESC>:tabnext<cr>i
 nmap <C-t> :tabnew<cr>:e .<cr>
 imap <C-t> <ESC>:tabnew<cr>:e .<cr>
 
-" F3: переключиться в режим вставки
-" Ctrl+u: поправить текст после вставки
+" F3: switch insert mode
+" Ctrl+u: make inserted text better
 set pastetoggle=<F3>
 inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
-" Ctrl+space: показать окно автодополнения
+" Ctrl+space: show autoindent window
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
 \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
@@ -70,12 +70,12 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
-" F9: make команда
+" F9: execute make command
 map <F9> :make<cr>
 vmap <F9> <esc>:make<cr>i
 imap <F9> <esc>:make<cr>i
 
-" F8: переключение кодировки
+" F8: switch encoding
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -87,19 +87,19 @@ menu Encoding.KOI8-U   :e ++enc=koi8-u<CR>
 menu Encoding.UTF-8    :e ++enc=utf-8<CR>
 map <F8> :emenu Encoding.<TAB>
 
-" build tags of your own project with Ctrl-F12
+" Build tags of your own project with Ctrl-F12
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
 imap <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
 vmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
 
-" change the mapleader from \ to ,
+" Change the mapleader from \ to ,
 let mapleader=","
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""" Автозавершение слов по tab
+""""""""""""""""""""""""""""""""""""""""""""" Autoindentation with tab
 function InsertTabWrapper()
      let col = col('.') - 1
      if !col || getline('.')[col - 1] !~ '\k'
@@ -110,14 +110,14 @@ function InsertTabWrapper()
 endfunction
 imap <tab> <c-r>=InsertTabWrapper()<cr>
 
-" Слова откуда будем завершать
+" Wordsfor autoindentation
 set complete=""
-" Из текущего буфера
+" From current buffer
 set complete+=.
-" Из словаря
+" From dictionary
 set complete+=k
-" Из других открытых буферов
+" From another buffers
 set complete+=b
-" из тегов 
+" From tags
 set complete+=t
 
