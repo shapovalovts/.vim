@@ -71,6 +71,7 @@ if exists("syntax_on")
   hi cppCast guifg=RoyalBlue1 ctermfg=111
   hi cCustomFunc  gui=bold guifg=yellowgreen ctermfg=24
   hi cCustomClass gui=reverse guifg=#001000 ctermfg=7
+  hi cUserLabel gui=bold guifg=RoyalBlue2 ctermfg=111 cterm=bold
 
 " Python
   hi pythonStatement gui=bold guifg=RoyalBlue2 ctermfg=12

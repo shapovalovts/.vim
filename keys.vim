@@ -1,6 +1,16 @@
 " Ctrl+u: fix aoutoindent insertion 
 inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
+
+
 " При редактировании файлов с длинными строками курсор часто «скачет» и
 " передвигается не туда, куда хотелось бы. Сделаем, чтобы поведение курсора
 " было похоже на обычные текстовые редакторы (вроде KWrite)
@@ -8,12 +18,12 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+"nnoremap <Down> gj
+"nnoremap <Up> gk
+"vnoremap <Down> gj
+"vnoremap <Up> gk
+"inoremap <Down> <C-o>gj
+"inoremap <Up> <C-o>gk
 
 nnoremap ; :
 nmap <silent> ,/ :nohlsearch<CR>
@@ -48,12 +58,12 @@ imap <Home> <Esc>I
 " Ctrl+Left: next tab
 " Ctrl+Right: prev tab
 " Ctrl+t: open new tab
-map <C-Left> :tabprevious<cr>
-nmap <C-Left> :tabprevious<cr>
-imap <C-Left> <ESC>:tabprevious<cr>i
-map <C-Right> :tabnext<cr>
-nmap <C-Right> :tabnext<cr>
-imap <C-Right> <ESC>:tabnext<cr>i
+map <C-h> :tabprevious<cr>
+nmap <C-h> :tabprevious<cr>
+imap <C-h> <ESC>:tabprevious<cr>i
+map <C-l> :tabnext<cr>
+nmap <C-l> :tabnext<cr>
+imap <C-l> <ESC>:tabnext<cr>i
 nmap <C-t> :tabnew<cr>:e .<cr>
 imap <C-t> <ESC>:tabnew<cr>:e .<cr>
 
