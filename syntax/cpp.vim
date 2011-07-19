@@ -12,12 +12,12 @@ elseif exists("b:current_syntax")
 endif
 
 " Read the C syntax to start with
-"if version < 600
-"  so <sfile>:p:h/c.vim
-"else
-"  runtime! syntax/c.vim
+if version < 600
+  so <sfile>:p:h/c.vim
+else
+  runtime! syntax/c.vim
 "  unlet b:current_syntax
-"endif
+endif
 
 " C++
 syn keyword cppStatement	new delete this friend using case default enum union 
