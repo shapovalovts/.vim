@@ -5,6 +5,7 @@ set showcmd
 set nocompatible
 set backspace=indent,eol,start
 set history=50
+set showtabline=2
 set nobackup
 set ruler 			     " show cursor
 set hidden
@@ -114,6 +115,8 @@ endfunction
 set tags+=~/.vim/tags/cpp
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
+set nocp
+filetype plugin on
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
@@ -132,6 +135,84 @@ au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 """"""""""""""""""""""""""""""""""""""""" Colors
 set t_Co=256
 colo taras256
+
+""""""""""""""""""""""""""""""""""""""""" Tabs
+function MyTabLine()
+    let tabline = ''
+
+        for i in range(tabpagenr('$'))
+            if i + 1 == tabpagenr()
+                let tabline .= '%#TabLineSel#'
+            else
+                let tabline .= '%#TabLine#'
+            endif
+
+            let tabline .= '%' . (i + 1) . 'T'
+
+            let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
+        endfor
+
+    let tabline .= '%#TabLineFill#%T'
+
+    if tabpagenr('$') > 1
+        let tabline .= '%=%#TabLine#%999XX'
+    endif
+
+    return tabline
+endfunction
+
+function MyTabLabel(n)
+    let label = ''
+    let buflist = tabpagebuflist(a:n)
+
+    let label = substitute(bufname(buflist[tabpagewinnr(a:n) - 1]), '.*/', '', '')
+
+    if label == ''
+        let label = '[No Name]'
+        endif
+
+        let label .= ' (' . a:n . ')'
+
+        for i in range(len(buflist))
+            if getbufvar(buflist[i], "&modified")
+                let label = '[+] ' . label
+                break
+            endif
+        endfor
+
+    return label
+endfunction
+
+function MyGuiTabLabel()
+    return '%{MyTabLabel(' . tabpagenr() . ')}'
+endfunction
+
+set tabline=%!MyTabLine()
+set guitablabel=%!MyGuiTabLabel()
+
+""""""""""""""""""""""""""""""""""""""""" NERD tree
+let g:NERDTreeWinPos = "right"
+
+""""""""""""""""""""""""""""""""""""""""TagList
+let Tlist_Enable_Fold_Column = 0
+let Tlist_Compact_Format = 1
+let Tlist_File_Fold_Auto_Close = 0
+let Tlist_GainFocus_On_ToggleOpen = 1
+
+"""""""""""""""""""""""""""""""""""""""" Restore last session
+function! RestoreSession()
+  if getfsize("./session.vim") >= 0
+    execute 'source ./session.vim'
+  end
+endfunction
+
+autocmd VimEnter * call RestoreSession()
+
+function! SaveSession()
+  execute 'mksession! ./session.vim'
+endfunction
+
+autocmd VimLeave * call SaveSession()
 
 """"""""""""""""""""""""""""""""""""""""" Include keys map
 source ~/.vim/keys.vim
