@@ -132,10 +132,6 @@ set completeopt=menuone,menu,longest,preview
 
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
-""""""""""""""""""""""""""""""""""""""""" Colors
-set t_Co=256
-colo taras256
-
 """"""""""""""""""""""""""""""""""""""""" Tabs
 function MyTabLine()
     let tabline = ''
@@ -193,26 +189,23 @@ set guitablabel=%!MyGuiTabLabel()
 """"""""""""""""""""""""""""""""""""""""" NERD tree
 let g:NERDTreeWinPos = "right"
 
-""""""""""""""""""""""""""""""""""""""""TagList
+"""""""""""""""""""""""""""""""""""""""" TagList
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Compact_Format = 1
 let Tlist_File_Fold_Auto_Close = 0
 let Tlist_GainFocus_On_ToggleOpen = 1
 
 """""""""""""""""""""""""""""""""""""""" Restore last session
-function! RestoreSession()
-  if getfsize("./session.vim") >= 0
-    execute 'source ./session.vim'
-  end
-endfunction
+let g:session_autosave = 1
+let g:session_autoload = 1
+let g:session_default_to_last = 1
+let g:session_directory = ".vim"
 
-autocmd VimEnter * call RestoreSession()
+au VimLeavePre * SaveSession()
 
-function! SaveSession()
-  execute 'mksession! ./session.vim'
-endfunction
-
-autocmd VimLeave * call SaveSession()
+""""""""""""""""""""""""""""""""""""""""" Colors
+set t_Co=256
+colo taras256
 
 """"""""""""""""""""""""""""""""""""""""" Include keys map
 source ~/.vim/keys.vim
