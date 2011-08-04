@@ -37,26 +37,12 @@ set scrolloff=3          " Keep this number of lines below and above cursor
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
 
-" c indent style
+" C indent style
 set cindent
 set modeline
 syntax on
 
 set sessionoptions=curdir,buffers,tabpages
-
-" Mouse support
-"set mouse=a
-"set mousemodel=popup
-
-" Scripts have to be executabled
-function ModeChange()
-    if getline(1) =~ "^#!"
-        if getline(1) =~ "/bin/"
-            silent !chmod a+x <afile>
-        endif
-    endif
-endfunction
-au BufWritePost * call ModeChange()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
 " Use pathogen to easily modify the runtime path to include all
