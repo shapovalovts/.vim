@@ -1,4 +1,4 @@
-set ts=4            
+set ts=2            
 set autoindent
 set lbr
 set showcmd
@@ -11,8 +11,8 @@ set ruler 			     " show cursor
 set hidden
 set nowrap     
 set number
-set shiftwidth=4         " number of spaces to use for autoindenting
-set softtabstop=4
+set shiftwidth=2         " number of spaces to use for autoindenting
+set softtabstop=2
 set shiftround           " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch            " set show matching parenthesis
 set ignorecase           " ignore case when searching
