@@ -49,7 +49,7 @@ if exists("syntax_on")
   hi Special gui=bold guifg=RoyalBlue4 ctermfg=169 cterm=bold
   hi PreProc gui=none guifg=RoyalBlue3 ctermfg=114 cterm=bold
   hi Todo gui=bold guifg=Black guibg=Yellow ctermbg=214
-  hi Type gui=bold guifg=RoyalBlue4 ctermfg=12 cterm=bold
+  hi Type gui=none guifg=RoyalBlue4 ctermfg=12 cterm=none
   hi Underlined gui=underline guifg=Blue cterm=bold
   hi Directory ctermfg=132 cterm=bold
   hi Pmenu ctermfg=250 ctermbg=238
