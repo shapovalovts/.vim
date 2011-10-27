@@ -31,7 +31,7 @@ hi PmenuSbar guibg=Grey50 guifg=fg gui=none ctermbg=214
 hi PmenuSel guibg=Yellow guifg=Black gui=none ctermbg=214 ctermfg=16
 hi PmenuThumb guibg=Grey75 guifg=fg gui=none cterm=reverse
   
-hi IncSearch gui=none guifg=White guibg=Black cterm=reverse
+hi IncSearch gui=none guifg=White guibg=Black cterm=reverse,underline
 hi Search gui=none guifg=Black guibg=Yellow ctermbg=11
   
 hi MoreMsg gui=bold guifg=ForestGreen
@@ -65,7 +65,7 @@ hi cppAccess gui=bold guifg=RoyalBlue4 ctermfg=16 cterm=bold
 hi cppExceptions gui=bold guifg=RoyalBlue4 ctermfg=100 cterm=bold 
 hi cppCast guifg=RoyalBlue1 ctermfg=111
 hi cCustomFunc  gui=bold guifg=yellowgreen ctermfg=24
-hi cCustomClass gui=reverse guifg=#001000 ctermfg=7
+hi cCustomClass gui=reverse guifg=#001000 ctermfg=12 cterm=bold
 hi cUserLabel gui=bold guifg=RoyalBlue2 ctermfg=111 cterm=bold
 
 " Python
