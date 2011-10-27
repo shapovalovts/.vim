@@ -57,6 +57,9 @@ imap <Home> <Esc>I
 " Switch to directory of current file
 command! CD cd %:p:h
 
+" Switch to alternative source file
+map <silent> <C-a> :A<cr>
+
 " Tabs 
 " Ctrl+l: next tab
 " Ctrl+h: prev tab
