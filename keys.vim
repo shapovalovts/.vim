@@ -1,34 +1,39 @@
 " Ctrl+u: fix aoutoindent insertion 
 inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
-noremap  <Up> ""
-noremap! <Up> <Esc>
-noremap  <Down> ""
-noremap! <Down> <Esc>
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
+"noremap  <Up> ""
+"noremap! <Up> <Esc>
+"noremap  <Down> ""
+"noremap! <Down> <Esc>
+"noremap  <Left> ""
+"noremap! <Left> <Esc>
+"noremap  <Right> ""
+"noremap! <Right> <Esc>
 
+" Use * just to highlight the next found pattern - not jump
+nnoremap * *N
+vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
 
-" При редактировании файлов с длинными строками курсор часто «скачет» и
-" передвигается не туда, куда хотелось бы. Сделаем, чтобы поведение курсора
-" было похоже на обычные текстовые редакторы (вроде KWrite)
+" Switch off highlight
+nnoremap <S-F8> :nohlsearch<CR>
+
+" ALT+1: edit current word
+nnoremap <C-w> ciw
+
+" Fix cursor
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-"nnoremap <Down> gj
-"nnoremap <Up> gk
-"vnoremap <Down> gj
-"vnoremap <Up> gk
-"inoremap <Down> <C-o>gj
-"inoremap <Up> <C-o>gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
 
 nnoremap ; :
 nmap <silent> ,/ :nohlsearch<CR>
-map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
-map <Enter> o<ESC>
 
 " F11: switch over lines numeration
 " F2: save current buffer
@@ -72,6 +77,28 @@ nmap <C-l> :tabnext<cr>
 imap <C-l> <ESC>:tabnext<cr>i
 nmap <C-t> :tabnew<cr>:e .<cr>
 imap <C-t> <ESC>:tabnew<cr>:e .<cr>
+
+fu! TabMoveLeft()
+  let current_tab = tabpagenr()
+  if current_tab > 1
+     let current_tab = current_tab - 2
+     execute 'tabmove' current_tab
+  endif
+endf
+fu! TabMoveRight()
+  let current_tab = tabpagenr()
+  execute 'tabmove' current_tab
+endf
+
+" Move tab left
+nmap <silent>th :call TabMoveLeft()<CR>
+imap <silent>th <C-O>:call TabMoveLeft()<CR>
+vmap <silent>th <ESC>:call TabMoveLeft()<CR>
+
+" Move tab right
+nmap <silent>tl :call TabMoveRight()<CR>
+imap <silent>tl <C-O>:call TabMoveRight()<CR>
+vmap <silent>tl <ESC>:call TabMoveRight()<CR>
 
 " F3: switch insert mode
 " Ctrl+u: make inserted text better
