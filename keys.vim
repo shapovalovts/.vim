@@ -1,13 +1,6 @@
 " Ctrl+u: fix aoutoindent insertion 
 inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
-"noremap  <Up> ""
-"noremap! <Up> <Esc>
-"noremap  <Down> ""
-"noremap! <Down> <Esc>
-"noremap  <Left> ""
-"noremap! <Left> <Esc>
-"noremap  <Right> ""
 "noremap! <Right> <Esc>
 
 " Use * just to highlight the next found pattern - not jump
@@ -33,27 +26,24 @@ inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
 nnoremap ; :
-nmap <silent> ,/ :nohlsearch<CR>
 
-" F11: switch over lines numeration
-" F2: save current buffer
-" F10: close current buffer
-" F4: show list of buffers
-" Ctrl+o: open the new file
+" F11:    switch over lines numeration
+" F2:     save current buffer
+" F10:    close current buffer
+" F4:     show list of buffers
+" Ctrl+o: open new file
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
 nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i
 imap <F2> <esc>:w<cr>i
 imap <C-Space> :<C-x> <C-o><cr>
-map <silent> <C-o>        :Explore<CR>
-imap <silent> <C-o>   <Esc>:Explore<CR>
+map  <silent> <C-o>       :NERDTree<CR>
+imap <silent> <C-o> <Esc>:NERDTree<CR>
 imap <F10> <Esc>:bd<CR>a
 nmap <F10> :bd<CR>
 imap <F4> <Esc>:buffers<CR>
 nmap <F4> :buffers<CR>
-
-"map <F6> :vimgrep /fixme\\|todo/j *.[c,cpp,h,hpp,py]<CR>:cw<CR>
 
 " Smart Home
 nmap <Home> ^
@@ -65,7 +55,7 @@ command! CD cd %:p:h
 " Switch to alternative source file
 map <silent> <C-a> :A<cr>
 
-" Tabs 
+"""""""""""""""""""""""""""" Tabs 
 " Ctrl+l: next tab
 " Ctrl+h: prev tab
 " Ctrl+t: open new tab
@@ -131,13 +121,13 @@ imap <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR
 vmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
 
 " Change the mapleader from \ to ,
-"let mapleader=","
+let mapleader=","
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""" Autoindentation with tab
+" Autoindentation with tab
 function InsertTabWrapper()
      let col = col('.') - 1
      if !col || getline('.')[col - 1] !~ '\k'
@@ -167,25 +157,8 @@ else
     map <C-b> :make %:r<CR>:cw<CR>
 endif
 
-" Move tabs
-function MoveTabLeft()
-    let current_tab = tabpagenr()
-   if current_tab > 1
-       let current_tab = current_tab - 2
-       execute 'tabmove' current_tab
-    endif
-endfunction
-
-function MoveTabRight()
-    let current_tab = tabpagenr()
-    execute 'tabmove' current_tab
-endfunction
-
-map <Leader>tl :call MoveTabLeft()<CR>
-map <Leader>tr :call MoveTabRight()<CR>
-
 " Buffer naviation
-map <M-Left> :bprevious<CR>
+map <M-Left>  :bprevious<CR>
 map <M-Right> :bnext<CR>
 
 " Keys to opn tools-windows
