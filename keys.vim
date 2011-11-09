@@ -11,7 +11,7 @@ vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
 nnoremap <S-F8> :nohlsearch<CR>
 
 " ALT+1: edit current word
-nnoremap <C-w> ciw
+nmap <C-W> ciw
 
 " Fix cursor
 nnoremap j gj
@@ -82,12 +82,10 @@ endf
 
 " Move tab left
 nmap <silent>th :call TabMoveLeft()<CR>
-imap <silent>th <C-O>:call TabMoveLeft()<CR>
 vmap <silent>th <ESC>:call TabMoveLeft()<CR>
 
 " Move tab right
 nmap <silent>tl :call TabMoveRight()<CR>
-imap <silent>tl <C-O>:call TabMoveRight()<CR>
 vmap <silent>tl <ESC>:call TabMoveRight()<CR>
 
 " F3: switch insert mode
