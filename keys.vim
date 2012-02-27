@@ -10,9 +10,6 @@ vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
 " Switch off highlight
 nnoremap <S-F8> :nohlsearch<CR>
 
-" ALT+1: edit current word
-nmap <C-W> ciw
-
 " Fix cursor
 nnoremap j gj
 nnoremap k gk
