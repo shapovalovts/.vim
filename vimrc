@@ -195,3 +195,6 @@ colo taras256
 
 """"""""""""""""""""""""""""""""""""""""" Include keys map
 source ~/.vim/keys.vim
+
+
+

@@ -24,6 +24,13 @@ inoremap <Up> <C-o>gk
 
 nnoremap ; :
 
+" Select last edit (e.g. paste)
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Reselect visual block after indent/outdent 
+vnoremap < <gv
+vnoremap > >gv
+
 " F11:    switch over lines numeration
 " F2:     save current buffer
 " F10:    close current buffer
@@ -35,7 +42,7 @@ nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i
 imap <F2> <esc>:w<cr>i
 imap <C-Space> :<C-x> <C-o><cr>
-map  <silent> <C-o>       :NERDTree<CR>
+map  <silent> <C-o>      :NERDTree<CR>
 imap <silent> <C-o> <Esc>:NERDTree<CR>
 imap <F10> <Esc>:bd<CR>a
 nmap <F10> :bd<CR>
@@ -46,8 +53,8 @@ nmap <F4> :buffers<CR>
 nmap <Home> ^
 imap <Home> <Esc>I
 
-" Switch to directory of current file
-command! CD cd %:p:h
+" Cd into the dir that the file is in (v7.3)
+set autochdir
 
 " Switch to alternative source file
 map <silent> <C-a> :A<cr>
