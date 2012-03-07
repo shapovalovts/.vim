@@ -24,6 +24,10 @@ inoremap <Up> <C-o>gk
 
 nnoremap ; :
 
+" Search for the word under the cursor in the current directory 
+set switchbuf+=newtab
+nmap <C-g> :execute " grep -srnw --binary-files=without-match " . shellescape("<cWORD>") . " . " <cr>:copen<cr><C-w>w <F10>
+
 " Select last edit (e.g. paste)
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
