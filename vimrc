@@ -33,6 +33,9 @@ set hlsearch             " hilight searches by default
 set ttyfast              " More characters will be sent to the screen for redrawing
 set scrolloff=3          " Keep this number of lines below and above cursor
 
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+
 " remember some stuff after quiting vim:
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
@@ -164,6 +167,7 @@ set guitablabel=%!MyGuiTabLabel()
 """""""" ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
+
 """"""""""""""""""""""""""""""""""""""""" NERD tree
 let g:NERDTreeWinPos = "right" 
 let g:NERDTreeMinimalUI = 1
