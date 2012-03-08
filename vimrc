@@ -100,8 +100,13 @@ function! StatuslineCurrentHighlight()
     endif
 endfunction
 
-" Configure tags - add additional tags here or comment out not-used ones
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" tags
+set tags=./.vim/tags
 set tags+=~/.vim/tags/cpp
+let g:easytags_dynamic_files = 1
+let g:easytags_file = './.vim/tags'
+let g:easytags_always_enabled = 0
+let g:easytags_include_members = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 set nocp
