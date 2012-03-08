@@ -120,49 +120,38 @@ au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
 """"""""""""""""""""""""""""""""""""""""" Tabs
 function MyTabLine()
-    let tabline = ''
-
-        for i in range(tabpagenr('$'))
-            if i + 1 == tabpagenr()
-                let tabline .= '%#TabLineSel#'
-            else
-                let tabline .= '%#TabLine#'
-            endif
-
-            let tabline .= '%' . (i + 1) . 'T'
-
-            let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
-        endfor
-
-    let tabline .= '%#TabLineFill#%T'
-
-    if tabpagenr('$') > 1
-        let tabline .= '%=%#TabLine#%999XX'
+  let tabline = ''
+  for i in range(tabpagenr('$'))
+    if i + 1 == tabpagenr()
+      let tabline .= '%#TabLineSel#'
+    else
+      let tabline .= '%#TabLine#'
     endif
-
-    return tabline
+    let tabline .= '%' . (i + 1) . 'T'
+    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
+  endfor
+  let tabline .= '%#TabLineFill#%T'
+  if tabpagenr('$') > 1
+    let tabline .= '%=%#TabLine#%999XX'
+  endif
+  return tabline
 endfunction
 
 function MyTabLabel(n)
-    let label = ''
-    let buflist = tabpagebuflist(a:n)
-
-    let label = substitute(bufname(buflist[tabpagewinnr(a:n) - 1]), '.*/', '', '')
-
-    if label == ''
-        let label = '[No Name]'
-        endif
-
-        let label .= ' (' . a:n . ')'
-
-        for i in range(len(buflist))
-            if getbufvar(buflist[i], "&modified")
-                let label = '[+] ' . label
-                break
-            endif
-        endfor
-
-    return label
+  let label = ''
+  let buflist = tabpagebuflist(a:n)
+  let label = substitute(bufname(buflist[tabpagewinnr(a:n) - 1]), '.*/', '', '')
+  if label == ''
+      let label = '[No Name]'
+  endif
+"  let label .= ' (' . a:n . ')'
+  for i in range(len(buflist))
+    if getbufvar(buflist[i], "&modified")
+      let label = '[+] ' . label
+      break
+    endif
+  endfor
+  return label
 endfunction
 
 function MyGuiTabLabel()
@@ -172,8 +161,13 @@ endfunction
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
 
+"""""""" ShowMarks
+let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let g:showmarks_enable = 1
 """"""""""""""""""""""""""""""""""""""""" NERD tree
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "right" 
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
 
 """""""""""""""""""""""""""""""""""""""" TagList
 let Tlist_Enable_Fold_Column = 0
