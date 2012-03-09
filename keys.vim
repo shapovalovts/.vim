@@ -19,8 +19,6 @@ nnoremap <Down> gj
 nnoremap <Up> gk
 vnoremap <Down> gj
 vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
 
 nnoremap ; :
 
@@ -168,6 +166,6 @@ map <M-Left>  :bprevious<CR>
 map <M-Right> :bnext<CR>
 
 " Keys to opn tools-windows
-nmap <silent> <F12>      :Tlist<CR> <esc>:NERDTreeToggle<CR>
-vmap <silent> <F12> <esc>:Tlist<CR> <esc>:NERDTreeToggle<CR> 
-imap <silent> <F12> <esc>:Tlist<CR> <esc>:NERDTreeToggle<CR> 
+nmap <silent> <F12>      :Tlist<CR>
+vmap <silent> <F12> <esc>:Tlist<CR>
+imap <silent> <F12> <esc>:Tlist<CR>
