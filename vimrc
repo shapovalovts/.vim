@@ -55,8 +55,8 @@ call pathogen#runtime_append_all_bundles()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
 "filename
-set statusline=%<%F
-"set statusline+=\ \ \|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
+set statusline=%<%F\ \ 
+"set statusline+=\|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
 
 "displar a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
