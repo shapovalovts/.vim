@@ -8,7 +8,7 @@ set history=50
 set showtabline=2
 set nobackup
 set ruler 			     " show cursor
-set hidden
+set nohidden
 set nowrap     
 set number
 set shiftwidth=2         " number of spaces to use for autoindenting
@@ -54,12 +54,12 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
-"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l/%L:%c
-set statusline=%f       "tail of the filename
+"filename
+set statusline=%<%F%h\ \ \|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
 
-"display a warning if fileformat isnt unix
+"displar a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%{&ff!='unix'?'\['.&ff.']':''}
 set statusline+=%*
 
 "display a warning if file encoding isnt utf-8
@@ -67,10 +67,12 @@ set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
 
+set statusline+=%1*
 set statusline+=%h      "help file flag
-set statusline+=%y      "filetype
+"set statusline+=%y      "filetype
 set statusline+=%r      "read only flag
 set statusline+=%m      "modified flag
+set statusline+=%w
 
 set statusline+=%#warningmsg#
 set statusline+=%*
@@ -81,24 +83,13 @@ set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
 
 set statusline+=%=      "left/right separator
-set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+set statusline+=line:\ %l/%L   "cursor line/total lines
+set statusline+=\ \ \|\ col:\ %c     "cursor column
+set statusline+=\ \|\ %P    "percent through file
 set laststatus=2
 
 " Recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-
-" Return the syntax highlight group under the cursor ''
-function! StatuslineCurrentHighlight()
-    let name = synIDattr(synID(line('.'),col('.'),1),'name')
-    if name == ''
-        return ''
-    else
-        return '[' . name . ']'
-    endif
-endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" tags
 set tags=./.vim/tags
@@ -152,10 +143,9 @@ function MyTabLabel(n)
   if label == ''
       let label = '[No Name]'
   endif
-"  let label .= ' (' . a:n . ')'
   for i in range(len(buflist))
     if getbufvar(buflist[i], "&modified")
-      let label = '[+] ' . label
+      let label = '▶ ' . label
       break
     endif
   endfor
@@ -176,22 +166,18 @@ let g:showmarks_enable = 1
 """"""""""""""""""""""""""""""""""""""""" NERD tree
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.vim']
-let g:NERDTreeChDirMode=0
+let g:NERDTreeChDirMode=1
 let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeShowHidden=0
+let g:NERDTreeShowHidden=1
 let g:NERDTreeKeepTreeInNewTab=1
 
 """""""""""""""""""""""""""""""""""""""" TagList
 let Tlist_Auto_Open = 1
-let Tlist_Enable_Fold_Column = 1
 let Tlist_Compact_Format = 1
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_GainFocus_On_ToggleOpen = 0
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Update = 1
 let Tlist_Exit_OnlyWindow = 1
-let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Highlight_Tag_On_BufEnter = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 42
@@ -200,7 +186,32 @@ let Tlist_Display_Tag_Scope = 0
 let Tlist_Compact_Format = 1
 let Tlist_Display_Prototype = 0
 let Tlist_Enable_Fold_Column = 0
-let g:ctags_statusline = 0
+let Tlist_Show_One_File = 1
+"exe bufwinnr('__TAG') . 'wincmd w' | setlocal statusline='testing' | wincmd p 
+
+if has("autocmd")
+  au FileType qf
+    \ if &buftype == "quickfix" |
+    \     setlocal statusline=%2*%-3.3n%0* |
+    \     setlocal statusline+=\ \[Compiler\ Messages\] |
+    \     setlocal statusline+=%=%2*\ %<%P |
+    \ endif
+
+  fun! <SID>FixMiniBufExplorerTitle()
+    if "-MiniBufExplorer-" == bufname("%")
+      setlocal statusline=%2*%-3.3n\ %0*\[MiniBufExplorer\]
+    elseif "__Tag_List__" == bufname("%")
+      setlocal statusline=%0*
+      setlocal statusline+=\[TagList\]
+      setlocal statusline+=%=\ %<%P
+    endif
+  endfun
+
+  au BufWinEnter *
+    \ let oldwinnr=winnr() |
+    \ windo call <SID>FixMiniBufExplorerTitle() |
+    \ exec oldwinnr . " wincmd w"
+endif
 
 """""""""""""""""""""""""""""""""""""""" Restore last session
 let g:session_autosave = 1
