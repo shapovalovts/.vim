@@ -55,7 +55,8 @@ call pathogen#runtime_append_all_bundles()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
 "filename
-set statusline=%<%F%h\ \ \|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
+set statusline=%<%F
+"set statusline+=\ \ \|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
 
 "displar a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
@@ -187,7 +188,6 @@ let Tlist_Compact_Format = 1
 let Tlist_Display_Prototype = 0
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Show_One_File = 1
-"exe bufwinnr('__TAG') . 'wincmd w' | setlocal statusline='testing' | wincmd p 
 
 if has("autocmd")
   au FileType qf

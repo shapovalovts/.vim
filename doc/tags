@@ -173,6 +173,7 @@ csupport-c++-ex	csupport.txt	/*csupport-c++-ex*
 csupport-c++-method-impl	csupport.txt	/*csupport-c++-method-impl*
 csupport-c++-normal-mode	csupport.txt	/*csupport-c++-normal-mode*
 csupport-c++-visual-mode	csupport.txt	/*csupport-c++-visual-mode*
+csupport-choose-makefile	csupport.txt	/*csupport-choose-makefile*
 csupport-code-to-comm	csupport.txt	/*csupport-code-to-comm*
 csupport-comm	csupport.txt	/*csupport-comm*
 csupport-comm-aligned	csupport.txt	/*csupport-comm-aligned*
@@ -189,7 +190,7 @@ csupport-ctags-make	csupport.txt	/*csupport-ctags-make*
 csupport-ctags-templates	csupport.txt	/*csupport-ctags-templates*
 csupport-custom	csupport.txt	/*csupport-custom*
 csupport-custom-glob-vars	csupport.txt	/*csupport-custom-glob-vars*
-csupport-custom-root-menu	csupport.txt	/*csupport-custom-root-menu*
+csupport-custom-root	csupport.txt	/*csupport-custom-root*
 csupport-dictionary	csupport.txt	/*csupport-dictionary*
 csupport-folding	csupport.txt	/*csupport-folding*
 csupport-help	csupport.txt	/*csupport-help*
