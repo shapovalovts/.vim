@@ -55,7 +55,7 @@ call pathogen#runtime_append_all_bundles()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
 "filename
-set statusline=%<%F\ \ 
+set statusline+=\ \ %<%F\ \ 
 "set statusline+=\|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
 
 "displar a warning if fileformat isnt unix
@@ -120,7 +120,11 @@ au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
 """"""""""""""""""""""""""""""""""""""""" Tabs
 function MyTabLine()
-  let tabline = ''
+  let tabline = '%#TabLine#'
+  let lastline = line("$")
+  for n in range(strlen(lastline) + 1)
+    let tabline .= ' '
+  endfor
   for i in range(tabpagenr('$'))
     if i + 1 == tabpagenr()
       let tabline .= '%#TabLineSel#'
@@ -128,7 +132,10 @@ function MyTabLine()
       let tabline .= '%#TabLine#'
     endif
     let tabline .= '%' . (i + 1) . 'T'
-    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
+    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} '
+    if i + 1 != tabpagenr() && i+2 != tabpagenr()
+      let tabline .= '|'
+    endif
   endfor
   let tabline .= '%#TabLineFill#%T'
   if tabpagenr('$') > 1
@@ -188,6 +195,7 @@ let Tlist_Compact_Format = 1
 let Tlist_Display_Prototype = 0
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Show_One_File = 1
+let Tlist_Close_On_Select = 0
 
 if has("autocmd")
   au FileType qf
@@ -202,8 +210,9 @@ if has("autocmd")
       setlocal statusline=%2*%-3.3n\ %0*\[MiniBufExplorer\]
     elseif "__Tag_List__" == bufname("%")
       setlocal statusline=%0*
-      setlocal statusline+=\[TagList\]
+      setlocal statusline+=TagList
       setlocal statusline+=%=\ %<%P
+      setlocal cursorline!
     endif
   endfun
 

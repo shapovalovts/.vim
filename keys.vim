@@ -65,12 +65,12 @@ map <silent> <C-a> :A<cr>
 " Ctrl+l: next tab
 " Ctrl+h: prev tab
 " Ctrl+t: open new tab
-map <C-h> :tabprevious<cr>
-nmap <C-h> :tabprevious<cr>
-imap <C-h> <ESC>:tabprevious<cr>i
-map <C-l> :tabnext<cr>
-nmap <C-l> :tabnext<cr>
-imap <C-l> <ESC>:tabnext<cr>i
+map <C-h> :tabprevious<cr>:TlistOpen<cr><C-w>w
+nmap <C-h> :tabprevious<cr>:TlistOpen<cr><C-w>w
+imap <C-h> <ESC>:tabprevious<cr>:TlistOpen<cr><C-w>w i
+map <C-l> :tabnext<cr>:TlistOpen<cr><C-w>w
+nmap <C-l> :tabnext<cr>:TlistOpen<cr><C-w>w
+imap <C-l> <ESC>:tabnext<cr>:TlistOpen<cr><C-w>w i
 nmap <C-t> :tabnew<cr>:e .<cr>
 imap <C-t> <ESC>:tabnew<cr>:e .<cr>
 
@@ -82,7 +82,7 @@ fu! TabMoveLeft()
   endif
 endf
 fu! TabMoveRight()
-  let current_tab = tabpagenr()
+let current_tab = tabpagenr()
   execute 'tabmove' current_tab
 endf
 

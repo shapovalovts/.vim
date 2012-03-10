@@ -12,8 +12,9 @@ let g:colors_name = 'taras256'
 
 hi Normal gui=none guifg=Black guibg=White ctermfg=0 ctermbg=255
   
+hi CursorLine cterm=none ctermbg=8 ctermfg=15 guibg=darkred guifg=white
 hi Cursor guifg=White guibg=Black ctermfg=231 ctermbg=16 
-hi LineNr gui=bold guifg=#828c95 guibg=#bbbbbb ctermfg=244 ctermbg=7
+hi LineNr gui=bold guifg=#828c95 guibg=#bbbbbb ctermfg=7 ctermbg=8
 hi NonText gui=bold guifg=DarkGray guibg=#bbbbbb ctermfg=7 ctermbg=7
 hi SpecialKey guifg=#d0b0b0 guibg=#f0f0f0 gui=none
 hi Title term=bold ctermfg=5 guifg=RoyalBlue4
@@ -23,13 +24,17 @@ hi Ignore ctermfg=bg guifg=bg
 hi FoldColumn guifg=Black guibg=#979797 ctermbg=7 ctermfg=4
 hi Folded guifg=Black guibg=#bbbbbb  ctermbg=7 ctermfg=244
 
-hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=147 ctermbg=234
-hi StatusLineNC guifg=#829db9 guibg=Black ctermfg=8 ctermbg=188
+hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=8 ctermbg=188
+hi StatusLineNC guifg=#829db9 guibg=Black ctermfg=8 ctermbg=8
 au InsertEnter * hi StatusLine guifg=#00bbff guibg=#dd0dff ctermfg=9 ctermbg=234
-au InsertLeave * hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=147 ctermbg=234
+au InsertLeave * hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=8 ctermbg=188
 hi User1 gui=NONE guifg=#ff0000 cterm=bold ctermfg=15 ctermbg=9
 
-hi VertSplit gui=bold guifg=#9ca6af guibg=Black cterm=bold ctermfg=231 ctermbg=8
+hi TabLineSel guifg=#000bff guibg=#ddddff ctermfg=16 ctermbg=15 cterm=bold
+hi TabLine    guifg=#000bff guibg=#ddddff ctermfg=7 ctermbg=8 cterm=none
+hi TabLineFill guifg=#000bff guibg=#ddddff ctermfg=15 ctermbg=8 cterm=none
+
+hi VertSplit gui=bold guifg=#9ca6af guibg=Black cterm=bold ctermfg=8 ctermbg=8
 hi Wildmenu guifg=Black guibg=White ctermfg=0 ctermbg=11
 hi Pmenu guibg=Grey65 guifg=Black gui=none ctermfg=250 ctermbg=238
 hi PmenuSbar guibg=Grey50 guifg=fg gui=none ctermbg=214
