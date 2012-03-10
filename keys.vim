@@ -37,6 +37,7 @@ vnoremap > >gv
 " F2:     save current buffer
 " F10:    close current buffer
 " F4:     show list of buffers
+" F5:     open shell
 " Ctrl+o: open new file
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
 nmap <silent> <F11> :set<Space>nu!<CR>
