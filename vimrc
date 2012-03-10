@@ -103,10 +103,10 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" tags
 set tags=./.vim/tags
 set tags+=~/.vim/tags/cpp
-let g:easytags_dynamic_files = 1
+let g:easytags_dynamic_files = 0
 let g:easytags_file = './.vim/tags'
 let g:easytags_always_enabled = 0
-let g:easytags_include_members = 1
+let g:easytags_include_members = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 set nocp
