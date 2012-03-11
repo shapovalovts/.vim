@@ -117,18 +117,33 @@ au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 """"""""""""""""""""""""""""""""""""""""" Tabs
 function MyTabLine()
   let tabline = '%#TabLine#'
-  let lastline = line("$")
-  for n in range(strlen(lastline) + 1)
-    let tabline .= ' '
-  endfor
+  let tabline .= '     '
   for i in range(tabpagenr('$'))
+    let buflist = tabpagebuflist(i + 1)
+    if i + 1 == tabpagenr()
+      let tabline .= '%#TabLineSel#'
+      for b in range(len(buflist))
+        if getbufvar(buflist[b], "&modified")
+          let tabline .= '%#TabLineModifiedSel#'
+          break
+        endif
+      endfor
+    else
+      let tabline .= '%#TabLine#'
+      for b in range(len(buflist))
+        if getbufvar(buflist[b], "&modified")
+          let tabline .= '%#TabLineModified#'
+          break
+        endif
+      endfor
+    endif
+    let tabline .= '%' . (i + 1) . 'T'
+    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} '
     if i + 1 == tabpagenr()
       let tabline .= '%#TabLineSel#'
     else
       let tabline .= '%#TabLine#'
     endif
-    let tabline .= '%' . (i + 1) . 'T'
-    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} '
     if i + 1 != tabpagenr() && i+2 != tabpagenr()
       let tabline .= '|'
     endif
@@ -147,12 +162,6 @@ function MyTabLabel(n)
   if label == ''
       let label = '[No Name]'
   endif
-  for i in range(len(buflist))
-    if getbufvar(buflist[i], "&modified")
-      let label = '▶ ' . label
-      break
-    endif
-  endfor
   return label
 endfunction
 
@@ -166,6 +175,8 @@ set guitablabel=%!MyGuiTabLabel()
 """""""" ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
+let showmarks_ignore_type="hqrm"
+let g:showmarks_textlower=" "
 
 """"""""""""""""""""""""""""""""""""""""" NERD tree
 let g:NERDTreeMinimalUI = 1

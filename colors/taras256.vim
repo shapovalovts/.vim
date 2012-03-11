@@ -26,13 +26,15 @@ hi Folded guifg=Black guibg=#bbbbbb  ctermbg=7 ctermfg=244
 
 hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=8 ctermbg=188
 hi StatusLineNC guifg=#829db9 guibg=Black ctermfg=8 ctermbg=8
-au InsertEnter * hi StatusLine guifg=#00bbff guibg=#dd0dff ctermfg=9 ctermbg=234
+au InsertEnter * hi StatusLine guifg=#00bbff guibg=#dd0dff ctermfg=9 ctermbg=188
 au InsertLeave * hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=8 ctermbg=188
 hi User1 gui=NONE guifg=#ff0000 cterm=bold ctermfg=15 ctermbg=9
 
 hi TabLineSel guifg=#000bff guibg=#ddddff ctermfg=16 ctermbg=15 cterm=bold
 hi TabLine    guifg=#000bff guibg=#ddddff ctermfg=7 ctermbg=8 cterm=none
 hi TabLineFill guifg=#000bff guibg=#ddddff ctermfg=15 ctermbg=8 cterm=none
+hi TabLineModified guifg=#000bff guibg=#ddddff ctermfg=9 ctermbg=8 cterm=none
+hi TabLineModifiedSel guifg=#000bff guibg=#ddddff ctermfg=9 ctermbg=15 cterm=bold
 
 hi VertSplit gui=bold guifg=#9ca6af guibg=Black cterm=bold ctermfg=8 ctermbg=8
 hi Wildmenu guifg=Black guibg=White ctermfg=0 ctermbg=11
