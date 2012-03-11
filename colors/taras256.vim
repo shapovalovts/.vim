@@ -12,10 +12,10 @@ let g:colors_name = 'taras256'
 
 hi Normal gui=none guifg=Black guibg=White ctermfg=0 ctermbg=255
   
-hi CursorLine cterm=none ctermbg=8 ctermfg=15 guibg=darkred guifg=white
+hi CursorLine cterm=none ctermbg=7 ctermfg=0 guibg=darkred guifg=white
 hi Cursor guifg=White guibg=Black ctermfg=231 ctermbg=16 
 hi LineNr gui=bold guifg=#828c95 guibg=#bbbbbb ctermfg=7 ctermbg=8
-hi NonText gui=bold guifg=DarkGray guibg=#bbbbbb ctermfg=7 ctermbg=7
+hi NonText gui=bold guifg=DarkGray guibg=#bbbbbb ctermfg=7 ctermbg=15
 hi SpecialKey guifg=#d0b0b0 guibg=#f0f0f0 gui=none
 hi Title term=bold ctermfg=5 guifg=RoyalBlue4
 hi Visual term=reverse ctermbg=7 guifg=White guibg=#829db9
