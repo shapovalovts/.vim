@@ -62,6 +62,23 @@ set autochdir
 " Switch to alternative source file
 map <silent> <C-a> :A<cr>
 
+" make :W to :w
+cnoreabbrev W w
+cnoreabbrev Wa wa
+
+" make :Q to :q
+cnoreabbrev Q q
+cnoreabbrev Qa qa
+
+" Split braces (put braces in seperate lines, add indentation)
+fun! SplitBracesCR()
+  if strpart(getline('.'), col('.') - 2, 2) == '{}'
+    return "\<CR>\<CR>\<Up>\<Tab>"
+  endif
+  return "\<CR>"
+endfun
+inoremap <CR> <C-R>=SplitBracesCR()<CR>
+
 """""""""""""""""""""""""""" Tabs 
 " Ctrl+l: next tab
 " Ctrl+h: prev tab

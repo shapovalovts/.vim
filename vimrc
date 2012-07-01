@@ -54,6 +54,26 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
+
+function! GitInfo()
+  let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+  if branch != ''
+    return 'git branch: ' . substitute(branch, '\n', '', 'g')
+  endif
+  return ''
+endfun
+
+function! SVNInfo()
+  let rev = system("svn info 2> /dev/null | grep -i revision | awk '{print $2}'")
+  let branch = system("svn info 2> /dev/null | grep URL | awk -F '/' '{print $NF}'")
+  if rev != ''
+    if branch != ''
+      return '\ \ \|\ svn\ b: ' . substitute(branch, '\n', '', 'g') . ' | r: ' . substitute(rev, '\n', '', 'g')
+    endif
+  endif
+  return ''
+endfun
+
 "filename
 set statusline+=\ \ %<%F\ \ 
 "set statusline+=\|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
@@ -84,7 +104,9 @@ set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
 
 set statusline+=%=      "left/right separator
-set statusline+=line:\ %l/%L   "cursor line/total lines
+set statusline+=%{GitInfo()}
+set statusline+=%{SVNInfo()}
+set statusline+=\ \ \|\ line:\ %l/%L   "cursor line/total lines
 set statusline+=\ \ \|\ col:\ %c     "cursor column
 set statusline+=\ \|\ %P    "percent through file
 set laststatus=2
