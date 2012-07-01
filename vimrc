@@ -1,5 +1,6 @@
 set ts=2            
 set autoindent
+set autoread
 set lbr
 set showcmd
 set nocompatible
@@ -194,6 +195,9 @@ endfunction
 
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
+
+" new tab will be opened at the end
+autocmd BufNew * if &showtabline && winnr("$") == 1 | tabmove | endif
 
 """""""" ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
