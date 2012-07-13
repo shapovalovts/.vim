@@ -196,7 +196,7 @@ endfunction
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
 
-"""""""" ShowMarks
+""""""""""""""""""""""""""""""""""""""""" ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
 let showmarks_ignore_type="hqrm"

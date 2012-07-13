@@ -117,6 +117,9 @@ vmap <silent>tl <ESC>:call TabMoveRight()<CR>
 set pastetoggle=<F3>
 inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
+" Easy switch between windows
+nmap <tab><tab> <C-w>w
+
 " Ctrl+space: show autoindent window
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
@@ -148,17 +151,6 @@ let mapleader=","
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
-" Autoindentation with tab
-function InsertTabWrapper()
-     let col = col('.') - 1
-     if !col || getline('.')[col - 1] !~ '\k'
-         return "\<tab>"
-     else
-         return "\<c-p>"
-     endif
-endfunction
-imap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " Wordsfor autoindentation
 set complete=""
