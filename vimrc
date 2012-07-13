@@ -196,9 +196,6 @@ endfunction
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
 
-" new tab will be opened at the end
-autocmd BufNew * if &showtabline && winnr("$") == 1 | tabmove | endif
-
 """""""" ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
