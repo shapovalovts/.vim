@@ -83,14 +83,14 @@ inoremap <CR> <C-R>=SplitBracesCR()<CR>
 " Ctrl+l: next tab
 " Ctrl+h: prev tab
 " Ctrl+t: open new tab
-map <C-h> :tabprevious<cr>:TlistOpen<cr><C-w>w
-nmap <C-h> :tabprevious<cr>:TlistOpen<cr><C-w>w
-imap <C-h> <ESC>:tabprevious<cr>:TlistOpen<cr><C-w>w i
-map <C-l> :tabnext<cr>:TlistOpen<cr><C-w>w
-nmap <C-l> :tabnext<cr>:TlistOpen<cr><C-w>w
-imap <C-l> <ESC>:tabnext<cr>:TlistOpen<cr><C-w>w i
-nmap <C-t> :tabnew<cr>:e .<cr>
-imap <C-t> <ESC>:tabnew<cr>:e .<cr>
+map <silent> <C-h> :tabprevious<cr>:TagbarOpen<cr>
+nmap <silent> <C-h> :tabprevious<cr>:TagbarOpen<cr>
+imap <silent> <C-h> <ESC>:tabprevious<cr>:TagbarOpen<cr>
+map <silent> <C-l> :tabnext<cr>:TagbarOpen<cr>
+nmap <silent> <C-l> :tabnext<cr>:TagbarOpen<cr>
+imap <silent> <C-l> <ESC>:tabnext<cr>:TagbarOpen<cr>
+nmap <silent> <C-t> :tabnew<cr>:e .<cr>
+imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>
 
 fu! TabMoveLeft()
   let current_tab = tabpagenr()
@@ -176,6 +176,6 @@ map <M-Left>  :bprevious<CR>
 map <M-Right> :bnext<CR>
 
 " Keys to opn tools-windows
-nmap <silent> <F12>      :Tlist<CR>
-vmap <silent> <F12> <esc>:Tlist<CR>
-imap <silent> <F12> <esc>:Tlist<CR>
+nmap <silent> <F12>      :TagbarToggle<CR>
+vmap <silent> <F12> <esc>:TagbarToggle<CR>
+imap <silent> <F12> <esc>:TagbarToggle<CR>

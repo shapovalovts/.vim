@@ -210,23 +210,10 @@ let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeKeepTreeInNewTab=1
 
-"""""""""""""""""""""""""""""""""""""""" TagList
-let Tlist_Auto_Open = 1
-let Tlist_Compact_Format = 1
-let Tlist_GainFocus_On_ToggleOpen = 0
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Update = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Highlight_Tag_On_BufEnter = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 42
-let Tlist_Use_SingleClick = 1
-let Tlist_Display_Tag_Scope = 0
-let Tlist_Compact_Format = 1
-let Tlist_Display_Prototype = 0
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Show_One_File = 1
-let Tlist_Close_On_Select = 0
+"""""""""""""""""""""""""""""""""""""""" TagBar
+let g:tagbar_width = 60
+let g:tagbar_compact = 1
+let g:tagbar_iconchars = ['▷', '◢']
 
 if has("autocmd")
   au FileType qf
@@ -239,9 +226,9 @@ if has("autocmd")
   fun! <SID>FixMiniBufExplorerTitle()
     if "-MiniBufExplorer-" == bufname("%")
       setlocal statusline=%2*%-3.3n\ %0*\[MiniBufExplorer\]
-    elseif "__Tag_List__" == bufname("%")
+    elseif "__Tagbar__" == bufname("%")
       setlocal statusline=%0*
-      setlocal statusline+=TagList
+      setlocal statusline+=Tagbar
       setlocal statusline+=%=\ %<%P
       setlocal cursorline!
     endif
@@ -250,7 +237,9 @@ if has("autocmd")
   au BufWinEnter *
     \ let oldwinnr=winnr() |
     \ windo call <SID>FixMiniBufExplorerTitle() |
-    \ exec oldwinnr . " wincmd w"
+    \ exec oldwinnr . " wincmd w" 
+
+  au FileType c,cpp nested :TagbarOpen
 endif
 
 """""""""""""""""""""""""""""""""""""""" Restore last session
