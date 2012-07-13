@@ -257,7 +257,6 @@ colo taras256
 """"""""""""""""""""""""""""""""""""""""" Include keys map
 source ~/.vim/keys.vim
 
-
 " Use local vimrc if available 
 if filereadable(expand("./.vim/vimrc"))
   source ./.vim/vimrc

@@ -83,12 +83,12 @@ inoremap <CR> <C-R>=SplitBracesCR()<CR>
 " Ctrl+l: next tab
 " Ctrl+h: prev tab
 " Ctrl+t: open new tab
-map <silent> <C-h> :tabprevious<cr>:TagbarOpen<cr>
-nmap <silent> <C-h> :tabprevious<cr>:TagbarOpen<cr>
-imap <silent> <C-h> <ESC>:tabprevious<cr>:TagbarOpen<cr>
-map <silent> <C-l> :tabnext<cr>:TagbarOpen<cr>
-nmap <silent> <C-l> :tabnext<cr>:TagbarOpen<cr>
-imap <silent> <C-l> <ESC>:tabnext<cr>:TagbarOpen<cr>
+map <silent> <C-h> :tabprevious<cr>
+nmap <silent> <C-h> :tabprevious<cr>
+imap <silent> <C-h> <ESC>:tabprevious<cr>
+map <silent> <C-l> :tabnext<cr>
+nmap <silent> <C-l> :tabnext<cr>
+imap <silent> <C-l> <ESC>:tabnext<cr>
 nmap <silent> <C-t> :tabnew<cr>:e .<cr>
 imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>
 
