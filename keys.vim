@@ -39,9 +39,10 @@ nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i
 imap <F2> <esc>:w<cr>i
-imap <C-Space> :<C-x> <C-o><cr>
-map  <silent> <C-o>      :CtrlPMixed<CR>
-imap <silent> <C-o> <Esc>:CtrlPMixed<CR>
+"imap <C-Space> :<C-x> <C-o><cr>
+"map  <silent> <C-o>      :CtrlPMixed<CR>
+"imap <silent> <C-o> <Esc>:CtrlPMixed<CR>
+let g:ctrlp_map = '<c-o>'
 imap <F10> <Esc>:bd<CR>a
 nmap <F10> :bd<CR>
 imap <F4> <Esc>:buffers<CR>

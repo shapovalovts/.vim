@@ -40,7 +40,7 @@ set sessionoptions=curdir,buffers,tabpages
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set cindent
 set modeline
-set autochdir                                 " cd into the dir that the file is in
+"set autochdir                                 " NOTE: disabled, otherwise savesassion sometimes doesn't work!
 syntax on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
@@ -212,11 +212,17 @@ set guitablabel=%!MyGuiTabLabel()
 set wildignore+=*/tmp/*,*.o,*.so,*.swp,*.zip
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_reuse_window = 1
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 15
 let g:ctrlp_switch_buffer = 2
 let g:ctrlp_reuse_window = 'NERD_tree'
+let g:ctrlp_tabpage_position = 'ac'
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
 
 """"""""""""""""""""""""""""""""""""""""" ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
