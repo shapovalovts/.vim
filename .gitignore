@@ -1,0 +1,8 @@
+tags
+.vim/*
+tmp/*
+*.swp
+.netrwhist
+.VimballRecord
+last-session.txt
+().vim
