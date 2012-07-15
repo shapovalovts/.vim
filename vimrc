@@ -138,6 +138,19 @@ set completeopt=menuone,menu,longest,preview
 
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
+"""""""""""""""""""""""""""""""""""""""""""""""NeoComplCache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+" Enable heavy omni completion:
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
 """"""""""""""""""""""""""""""""""""""""" Tabs
 function MyTabLine()
   let tabline = '%#TabLine#'
@@ -216,6 +229,8 @@ let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['▷', '◢']
 
 if has("autocmd")
+  au FileType c,cpp nested :TagbarOpen
+
   au FileType qf
     \ if &buftype == "quickfix" |
     \     setlocal statusline=%2*%-3.3n%0* |
@@ -239,7 +254,6 @@ if has("autocmd")
     \ windo call <SID>FixMiniBufExplorerTitle() |
     \ exec oldwinnr . " wincmd w" 
 
-  au FileType c,cpp nested :TagbarOpen
 endif
 
 """""""""""""""""""""""""""""""""""""""" Restore last session
