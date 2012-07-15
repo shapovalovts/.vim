@@ -142,7 +142,7 @@ let mapleader=","
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Wordsfor autoindentation
+" Words for autoindentation
 set complete=""
 " From current buffer
 set complete+=.
@@ -169,3 +169,4 @@ map <M-Right> :bnext<CR>
 nmap <silent> <F12>      :TagbarToggle<CR>
 vmap <silent> <F12> <esc>:TagbarToggle<CR>
 imap <silent> <F12> <esc>:TagbarToggle<CR>
+

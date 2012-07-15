@@ -208,6 +208,16 @@ endfunction
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
 
+""""""""""""""""""""""""""""""""""""""""" CtrlP
+set wildignore+=*/tmp/*,*.o,*.so,*.swp,*.zip
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_reuse_window = 1
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_height = 15
+let g:ctrlp_switch_buffer = 2
+let g:ctrlp_reuse_window = 'NERD_tree'
+
 """"""""""""""""""""""""""""""""""""""""" ShowMarks
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
