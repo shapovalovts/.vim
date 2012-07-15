@@ -45,8 +45,8 @@ nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i
 imap <F2> <esc>:w<cr>i
 imap <C-Space> :<C-x> <C-o><cr>
-map  <silent> <C-o>      :NERDTree<CR>
-imap <silent> <C-o> <Esc>:NERDTree<CR>
+map  <silent> <C-o>      :CtrlPMixed<CR>
+imap <silent> <C-o> <Esc>:CtrlPMixed<CR>
 imap <F10> <Esc>:bd<CR>a
 nmap <F10> :bd<CR>
 imap <F4> <Esc>:buffers<CR>
@@ -89,8 +89,8 @@ imap <silent> <C-h> <ESC>:tabprevious<cr>
 map <silent> <C-l> :tabnext<cr>
 nmap <silent> <C-l> :tabnext<cr>
 imap <silent> <C-l> <ESC>:tabnext<cr>
-nmap <silent> <C-t> :tabnew<cr>:e .<cr>
-imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>
+nmap <silent> <C-t> :tabnew<cr>:e .<cr> :CtrlPMixed<cr>
+imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr> :CtrlPMixed<cr>
 
 fu! TabMoveLeft()
   let current_tab = tabpagenr()
