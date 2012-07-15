@@ -1,4 +1,6 @@
-set ts=2            
+"
+""""""""""""""""""""""""""""""""""""""""" Generic VIM settings
+set ts=2
 set autoindent
 set autoread
 set lbr
@@ -8,22 +10,19 @@ set backspace=indent,eol,start
 set history=50
 set showtabline=2
 set nobackup
-set ruler 			     " show cursor
+set ruler                " show cursor
 set nohidden
-set nowrap     
+set nowrap
 set number
 set shiftwidth=2         " number of spaces to use for autoindenting
 set softtabstop=2
 set shiftround           " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch            " set show matching parenthesis
 set ignorecase           " ignore case when searching
-set smartcase            " ignore case if search pattern is all lowercase,
-                         " case-sensitive otherwise
-set smarttab             " insert tabs on the start of a line according to
-                         " shiftwidth, not tabstop
+set smartcase            " ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smarttab             " insert tabs on the start of a line according to shiftwidth, not tabstop
 set expandtab            " spaces instead tabs
 set undolevels=1000      " use many muchos levels of undo
-set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
@@ -31,22 +30,18 @@ set showcmd              " show incomplete cmds down the bottom
 set showmode             " show current mode down the bottom
 set incsearch            " find the next match as we type the search
 set hlsearch             " hilight searches by default
-set ttyfast              " More characters will be sent to the screen for redrawing
-set scrolloff=3          " Keep this number of lines below and above cursor
-
+set ttyfast              " more characters will be sent to the screen for redrawing
+set scrolloff=3          " keep this number of lines below and above cursor
+set clipboard=unnamed    " all operations work with the OS clipboard
 set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
-
-" remember some stuff after quiting vim:
-" marks, registers, searches, buffer list
-set viminfo='20,<50,s10,h,%
-
-" C indent style
+set listchars=tab:>.,trail:.,extends:#,nbsp:. " highlight problematic whitespace
+set viminfo='20,<50,s10,h,%                   " remember some stuff after quiting vim: marks, registers, searches, buffer list
+set sessionoptions=curdir,buffers,tabpages
+set wildignore=*.swp,*.bak,*.pyc,*.class
 set cindent
 set modeline
+set autochdir                                 " cd into the dir that the file is in
 syntax on
-
-set sessionoptions=curdir,buffers,tabpages
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
 " Use pathogen to easily modify the runtime path to include all
@@ -76,11 +71,9 @@ function! SVNInfo()
   return ''
 endfun
 
-"filename
 set statusline+=\ \ %<%F\ \ 
-"set statusline+=\|\ \ %{strftime(\"%c\",getftime(expand(\"%:p\")))}\ \ \|\ \  
 
-"displar a warning if fileformat isnt unix
+"display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
 set statusline+=%{&ff!='unix'?'\['.&ff.']':''}
 set statusline+=%*

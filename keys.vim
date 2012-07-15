@@ -1,8 +1,3 @@
-" Ctrl+u: fix aoutoindent insertion 
-inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
-
-"noremap! <Right> <Esc>
-
 " Use * just to highlight the next found pattern - not jump
 nnoremap * *N
 vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
@@ -55,9 +50,6 @@ nmap <F4> :buffers<CR>
 " Smart Home
 nmap <Home> ^
 imap <Home> <Esc>I
-
-" Cd into the dir that the file is in (v7.3)
-set autochdir
 
 " Switch to alternative source file
 map <silent> <C-a> :A<cr>
@@ -113,9 +105,7 @@ nmap <silent>tl :call TabMoveRight()<CR>
 vmap <silent>tl <ESC>:call TabMoveRight()<CR>
 
 " F3: switch insert mode
-" Ctrl+u: make inserted text better
 set pastetoggle=<F3>
-inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
 " Easy switch between windows
 nmap <tab><tab> <C-w>w
