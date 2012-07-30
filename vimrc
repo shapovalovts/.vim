@@ -290,7 +290,7 @@ colo taras256
 source ~/.vim/keys.vim
 
 " Use local vimrc if available 
-if filereadable(expand("./.vim/vimrc"))
-  source ./.vim/vimrc
+if filereadable(expand("./.vim/vimrc-custom"))
+  source ./.vim/vimrc-custom
 endif
 
