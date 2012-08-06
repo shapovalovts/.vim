@@ -43,9 +43,17 @@ set modeline
 "set autochdir                                 " NOTE: disabled, otherwise savesassion sometimes doesn't work!
 syntax on
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
+filetype on                    " required on MacOSX only
+filetype plugin off            " required by Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+filetype plugin indent on      " required by Vundle
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
@@ -115,7 +123,7 @@ set tags+=~/.vim/tags/cpp
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 set nocp
-filetype plugin on
+"filetype plugin on
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
