@@ -12,5 +12,7 @@
 
 ## Screenshots
 
-[![Linux](https://github.com/geneuro/.vim/raw/master/screenshots/linus-vim.png)](https://github.com/geneuro/.vim/raw/master/screenshots/linus-vim.png)
+**Linux**
+
+[![Linux](https://github.com/geneuro/.vim/raw/master/screenshots/linux-vim.png)](https://github.com/geneuro/.vim/raw/master/screenshots/linux-vim.png)
 
