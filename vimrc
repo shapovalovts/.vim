@@ -51,6 +51,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-easymotion'
 filetype plugin indent on      " required by Vundle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
