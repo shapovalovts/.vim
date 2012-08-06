@@ -53,6 +53,7 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vcscommand.vim'
+Bundle 'tpope/vim-surround'
 filetype plugin indent on      " required by Vundle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
