@@ -57,10 +57,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 filetype plugin indent on      " required by Vundle
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-"
 """"""""""""""""""""""""""""""""""""""""""""""" Syntastic
 let g:syntastic_auto_jump=1
 let g:syntastic_enable_highlighting = 1
