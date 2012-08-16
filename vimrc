@@ -54,11 +54,34 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vcscommand.vim'
 Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
 filetype plugin indent on      " required by Vundle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Pathogen plugin
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+"
+""""""""""""""""""""""""""""""""""""""""""""""" Syntastic
+let g:syntastic_auto_jump=1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_enable_signs=0
+let g:syntastic_echo_current_error=0
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_balloons = 0
+let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_warnings=0
+let g:syntastic_cpp_no_include_search = 1
+let g:syntastic_c_no_include_search = 1
+let g:syntastic_cpp_check_header = 0
+let g:syntastic_c_check_header = 0
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_c_remove_include_errors = 1
+let g:syntastic_cpp_auto_refresh_includes = 0
+let g:syntastic_c_auto_refresh_includes = 0
+let g:syntastic_stl_format = '%E{ line: %fe | col: %e }'
+let g:syntastic_mode_map = { 'mode': 'passive',
+                           \ 'active_filetypes': ['ruby', 'php'],
+                           \ 'passive_filetypes': ['puppet'] }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
 
@@ -96,7 +119,6 @@ set statusline+=%*
 
 set statusline+=%1*
 set statusline+=%h      "help file flag
-"set statusline+=%y      "filetype
 set statusline+=%r      "read only flag
 set statusline+=%m      "modified flag
 set statusline+=%w
@@ -104,17 +126,20 @@ set statusline+=%w
 set statusline+=%#warningmsg#
 set statusline+=%*
 
-"display a warning if &paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
+set statusline+=\ %#error#
+set statusline+=%{&paste?'paste':''}
 set statusline+=%*
 
-set statusline+=%=      "left/right separator
+set statusline+=\ %#error#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+set statusline+=%=                     "left/right separator
 "set statusline+=%{GitInfo()}
 "set statusline+=%{SVNInfo()}
 set statusline+=\ \ \|\ line:\ %l/%L   "cursor line/total lines
-set statusline+=\ \ \|\ col:\ %c     "cursor column
-set statusline+=\ \|\ %P    "percent through file
+set statusline+=\ \ \|\ col:\ %c       "cursor column
+set statusline+=\ \|\ %P               "percent through file
 set laststatus=2
 
 " Recalculate the trailing whitespace warning when idle, and after saving

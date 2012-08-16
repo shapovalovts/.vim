@@ -28,6 +28,7 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 vnoremap < <gv
 vnoremap > >gv
 
+" F8:     check syntax
 " F11:    switch over lines numeration
 " F2:     save current buffer
 " F10:    close current buffer
@@ -47,6 +48,9 @@ imap <F10> <Esc>:bd<CR>a
 nmap <F10> :bd<CR>
 imap <F4> <Esc>:buffers<CR>
 nmap <F4> :buffers<CR>
+imap <F8> <ESC>:SyntasticCheck<CR>
+vmap <F8> :SyntasticCheck<CR>
+nmap <F8> :SyntasticCheck<CR>
 
 " Smart Home
 nmap <Home> ^
@@ -118,18 +122,6 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
-
-" F8: switch encoding
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-set wildmenu
-set wcm=<Tab>
-menu Encoding.CP1251   :e ++enc=cp1251<CR>
-menu Encoding.CP866    :e ++enc=cp866<CR>
-menu Encoding.KOI8-U   :e ++enc=koi8-u<CR>
-menu Encoding.UTF-8    :e ++enc=utf-8<CR>
-map <F8> :emenu Encoding.<TAB>
 
 " Build tags of your own project with Ctrl-F12
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
