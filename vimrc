@@ -60,6 +60,10 @@ Bundle 'xolox/vim-session'
 Bundle 'kien/ctrlp.vim'
 Bundle 'OmniCppComplete'
 Bundle 'majutsushi/tagbar'
+Bundle 'c.vim'
+Bundle 'a.vim'
+Bundle 'SearchComplete'
+Bundle 'ShowMarks'
 
 filetype plugin indent on      " required by Vundle
 
