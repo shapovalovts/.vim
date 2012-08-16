@@ -55,6 +55,12 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vcscommand.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplcache'
+Bundle 'xolox/vim-session'
+Bundle 'kien/ctrlp.vim'
+Bundle 'OmniCppComplete'
+Bundle 'majutsushi/tagbar'
+
 filetype plugin indent on      " required by Vundle
 
 """"""""""""""""""""""""""""""""""""""""""""""" Syntastic
