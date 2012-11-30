@@ -66,6 +66,7 @@ Bundle 'a.vim'
 Bundle 'SearchComplete'
 Bundle 'ShowMarks'
 Bundle 'nathanaelkane/vim-indent-guides.git'
+Bundle 'jimenezrick/vimerl'
 
 filetype plugin indent on      " required by Vundle
 
