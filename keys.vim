@@ -112,8 +112,10 @@ vmap <silent>th <ESC>:call TabMoveLeft()<CR>
 nmap <silent>tl :call TabMoveRight()<CR>
 vmap <silent>tl <ESC>:call TabMoveRight()<CR>
 
-" F3: switch insert mode
-set pastetoggle=<F3>
+" F3: switch paste mode
+map <F3> :set paste<CR>i
+imap <F3> <ESC>:set paste<CR>i<Right>
+au InsertLeave * set nopaste
 
 " Easy switch between windows
 nmap <tab><tab> <C-w>w
