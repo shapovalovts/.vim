@@ -28,13 +28,16 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 vnoremap < <gv
 vnoremap > >gv
 
-" F8:     check syntax
-" F11:    switch over lines numeration
-" F2:     save current buffer
-" F10:    close current buffer
-" F4:     show list of buffers
-" F5:     open shell
-" Ctrl+o: open new file
+" Ctrl-F5: substitute word under cursor globally
+" F5:      ask for confirmation
+" F8:      check syntax
+" F11:     switch over lines numeration
+" F2:      save current buffer
+" F10:     close current buffer
+" F4:      show list of buffers
+" Ctrl+o:  open new file
+nnoremap <C-F5> :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <F5> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
 nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <F2> :w<cr>
