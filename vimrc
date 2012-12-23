@@ -43,6 +43,9 @@ set modeline
 "set autochdir                                 " NOTE: disabled, otherwise savesassion sometimes doesn't work!
 syntax on
 
+if has('mouse')
+  set mouse=a
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
 filetype on                    " required on MacOSX only
