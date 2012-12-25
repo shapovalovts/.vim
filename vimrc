@@ -162,8 +162,8 @@ set laststatus=2
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 " Highlight line only in insert mode
-autocmd InsertLeave * se nocursorline
-autocmd InsertEnter * se cursorline
+"autocmd InsertLeave * se nocursorline
+"autocmd InsertEnter * se cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" tags
 set tags=./.vim/tags
