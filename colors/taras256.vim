@@ -59,7 +59,7 @@ hi Todo gui=bold guifg=Black guibg=Yellow ctermbg=214
 hi Type gui=none guifg=RoyalBlue4 ctermfg=12 cterm=none
 hi Underlined gui=underline guifg=Blue cterm=bold
 hi Directory ctermfg=132 cterm=bold
-hi Delimiter cterm=bold ctermfg=132
+hi Delimiter ctermfg=8
 hi Function  gui=bold guifg=yellowgreen ctermfg=24
 hi cFunction  gui=bold guifg=yellowgreen ctermfg=24
 hi cIdentifier gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
