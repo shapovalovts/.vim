@@ -28,6 +28,9 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 vnoremap < <gv
 vnoremap > >gv
 
+" Map <Space> to / (search)
+map <space> /
+
 " Ctrl-F5: substitute word under cursor globally
 " F5:      ask for confirmation
 " F8:      check syntax

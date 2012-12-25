@@ -1,6 +1,8 @@
 "
 """"""""""""""""""""""""""""""""""""""""" Generic VIM settings
 set ts=2
+set tm=500
+set t_vb=
 set autoindent
 set autoread
 set lbr
@@ -40,6 +42,8 @@ set sessionoptions=curdir,buffers,tabpages
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set cindent
 set modeline
+set lazyredraw
+set magic
 "set autochdir                                 " NOTE: disabled, otherwise savesassion sometimes doesn't work!
 syntax on
 
@@ -67,6 +71,7 @@ Bundle 'ShowMarks'
 Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'jimenezrick/vimerl'
 Bundle 'adinapoli/vim-markmultiple'
+Bundle 'SearchComplete'
 
 filetype plugin indent on      " required by Vundle
 
