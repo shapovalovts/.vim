@@ -96,26 +96,29 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'passive_filetypes': ['puppet'] }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
-
+let g:gitinfo = ''
 function! GitInfo()
   let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
   if branch != ''
-    return 'b: ' . substitute(branch, '\n', '', 'g')
+    let g:gitinfo = 'git: ' . substitute(branch, '\n', '', 'g')
   endif
-  return ''
 endfun
+au TabEnter * call GitInfo()
+au BufRead * call GitInfo()
 
+let g:svninfo = ''
 function! SVNInfo()
   let rev = system("svn info 2> /dev/null | grep -i revision | awk '{print $2}'")
   let branch = system("svn info | grep URL | awk '{print $2}' | awk  -F '/' '{print $5}'")
   let modified = system("svn stat -q")
   if rev != ''
     if branch != ''
-      return 'b: ' . substitute(branch, '\n', '', 'g') . ' | r: ' . substitute(rev, '\n', '', 'g')
+      let g:svninfo = 'svn: ' . substitute(branch, '\n', '', 'g') . ' | r: ' . substitute(rev, '\n', '', 'g')
     endif
   endif
-  return ''
 endfun
+au TabEnter * call SVNInfo()
+au BufRead * call SVNInfo()
 
 set statusline+=\ \ %<%F\ \ 
 
@@ -147,8 +150,8 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 set statusline+=%=                     "left/right separator
-"set statusline+=%{GitInfo()}
-"set statusline+=%{SVNInfo()}
+set statusline+=%{g:svninfo}
+set statusline+=%{g:gitinfo}
 set statusline+=\ \ \|\ line:\ %l/%L   "cursor line/total lines
 set statusline+=\ \ \|\ col:\ %c       "cursor column
 set statusline+=\ \|\ %P               "percent through file
