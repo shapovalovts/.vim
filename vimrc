@@ -72,6 +72,7 @@ Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'jimenezrick/vimerl'
 Bundle 'adinapoli/vim-markmultiple'
 Bundle 'SearchComplete'
+Bundle 'msanders/snipmate.vim'
 
 filetype plugin indent on      " required by Vundle
 
@@ -80,7 +81,7 @@ let g:syntastic_auto_jump=1
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_enable_signs=0
 let g:syntastic_echo_current_error=0
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=0
 let g:syntastic_enable_balloons = 0
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=0

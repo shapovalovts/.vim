@@ -1,0 +1,11 @@
+
+snippet forb
+	for (std::vector<shared_ptr<${1:Node}> >::const_iterator ${2:it} = ${3:nodes}.begin(); $2 != $3.end(); $2++}) {
+		${4:/* code */}
+	}
+
+snippet ptr
+	boost::shared_ptr<${1:Node}> ${2:node} = ${3:/* something /*}
+
+snippet vec
+	std::vector<boost::shared_ptr<${1:Node}> > ${2:node} = ${3:/* something /*}
