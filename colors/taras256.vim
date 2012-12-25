@@ -59,9 +59,12 @@ hi Todo gui=bold guifg=Black guibg=Yellow ctermbg=214
 hi Type gui=none guifg=RoyalBlue4 ctermfg=12 cterm=none
 hi Underlined gui=underline guifg=Blue cterm=bold
 hi Directory ctermfg=132 cterm=bold
-hi Pmenu ctermfg=250 ctermbg=238
-hi PmenuSel ctermbg=214 ctermfg=16
-  
+hi Delimiter cterm=bold ctermfg=132
+hi Function  gui=bold guifg=yellowgreen ctermfg=24
+hi cFunction  gui=bold guifg=yellowgreen ctermfg=24
+hi cIdentifier gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
+hi cDefine gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
+
 hi Boolean gui=bold guifg=ForestGreen  ctermfg=12
 hi Constant gui=none guifg=ForestGreen 
 hi Number guifg=ForestGreen ctermfg=138
@@ -113,8 +116,8 @@ hi pythonExClass guifg=RoyalBlue1 ctermfg=110 cterm=bold
 
 hi Label gui=bold,underline guifg=ForestGreen ctermfg=15
 hi Statement gui=bold guifg=#bb88bb ctermfg=17 cterm=bold
+
 hi htmlStatement ctermfg=132
-  
 hi htmlBold gui=bold
 hi htmlItalic gui=italic
 hi htmlUnderline gui=underline
@@ -123,7 +126,6 @@ hi htmlBoldUnderline gui=bold,underline
 hi htmlBoldUnderlineItalic gui=bold,underline,italic
 hi htmlUnderlineItalic gui=underline,italic
   
-hi djangoStatement guibg=#ddffaa ctermbg=150 ctermfg=22
 hi docSpecial guifg=RoyalBlue1
 hi docTrans guibg=White guifg=White
 hi docCode guifg=#00aa00
