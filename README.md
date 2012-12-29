@@ -40,5 +40,5 @@
 20. SearchComplete
 21. snipmate.vim
 22. sudo.vim
-
+23. YankRing.vim
 

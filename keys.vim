@@ -31,14 +31,14 @@ vnoremap > >gv
 " Map <Space> to / (search)
 map <space> /
 
-" Ctrl-F5: substitute word under cursor globally
-" F5:      ask for confirmation
-" F8:      check syntax
-" F11:     switch over lines numeration
-" F2:      save current buffer
-" F10:     close current buffer
+" F2:      save current buffer (Ctrl-F5: substitute word under cursor globally)
+" F3:      switch paste mode
 " F4:      show list of buffers
-" Ctrl+o:  open new file
+" F5:      ask for confirmation
+" F7:      show yanks window
+" F8:      check syntax
+" F10:     close current buffer
+" F11:     switch over lines numeration
 nnoremap <C-F5> :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <F5> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
@@ -46,17 +46,23 @@ nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i
 imap <F2> <esc>:w<cr>i
-"imap <C-Space> :<C-x> <C-o><cr>
-"map  <silent> <C-o>      :CtrlPMixed<CR>
-"imap <silent> <C-o> <Esc>:CtrlPMixed<CR>
-let g:ctrlp_map = '<c-o>'
+map <F3> :set paste<CR>i
+imap <F3> <ESC>:set paste<CR>i<Right>
 imap <F10> <Esc>:bd<CR>a
 nmap <F10> :bd<CR>
 imap <F4> <Esc>:buffers<CR>
 nmap <F4> :buffers<CR>
+nmap <F7> :YRShow<CR>
+imap <F7> :YRShow<CR>
+vmap <F7> :YRShow<CR>
 imap <F8> <ESC>:SyntasticCheck<CR>
 vmap <F8> :SyntasticCheck<CR>
 nmap <F8> :SyntasticCheck<CR>
+
+au InsertLeave * set nopaste
+
+" Ctrl+o:  open file
+let g:ctrlp_map = '<c-o>'
 
 " Smart Home
 nmap <Home> ^
@@ -93,7 +99,7 @@ map <silent> <C-l> :tabnext<cr>
 nmap <silent> <C-l> :tabnext<cr>
 imap <silent> <C-l> <ESC>:tabnext<cr>
 nmap <silent> <C-t> :tabnew<cr>:e .<cr>:CtrlPMixed<cr>
-imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>:CtrlPMixed<cr>
+imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>:cTRLpmIXed<cr>
 
 fu! TabMoveLeft()
   let current_tab = tabpagenr()
@@ -114,11 +120,6 @@ vmap <silent>th <ESC>:call TabMoveLeft()<CR>
 " Move tab right
 nmap <silent>tl :call TabMoveRight()<CR>
 vmap <silent>tl <ESC>:call TabMoveRight()<CR>
-
-" F3: switch paste mode
-map <F3> :set paste<CR>i
-imap <F3> <ESC>:set paste<CR>i<Right>
-au InsertLeave * set nopaste
 
 " Easy switch between windows
 nmap <tab><tab> <C-w>w
