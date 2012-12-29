@@ -1,5 +1,30 @@
 # Installation of my vimrc
 
+## Using plugins
+
+1.  vundle
+2.  nerdtree
+3.  vim-easymotion
+4.  vcscommand.vim
+5.  vim-surround
+6.  syntastic
+7.  neocomplcache
+8.  vim-session
+9.  ctrlp.vim
+10. OmniCppComplete
+11. tagbar
+12. cpp.vim
+13. c.vim
+14. a.vim
+15. SearchComplete
+16. ShowMarks
+17. vim-indent-guides.git
+18. vimerl
+19. vim-markmultiple
+20. SearchComplete
+21. snipmate.vim
+22. sudo.vim
+
 ## Installation
 
 1. `cd ~`
