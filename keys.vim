@@ -61,6 +61,11 @@ nmap <F8> :SyntasticCheck<CR>
 
 au InsertLeave * set nopaste
 
+" Move up and down easier
+let g:C_Ctrl_j = 'off'
+nmap <C-j> <C-d>
+nmap <C-k> <C-u>
+
 " Ctrl+o:  open file
 let g:ctrlp_map = '<c-o>'
 
