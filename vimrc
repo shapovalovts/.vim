@@ -73,6 +73,7 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'adinapoli/vim-markmultiple'
 Bundle 'SearchComplete'
 Bundle 'msanders/snipmate.vim'
+Bundle 'sudo.vim'
 
 filetype plugin indent on      " required by Vundle
 
