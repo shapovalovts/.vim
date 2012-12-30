@@ -43,4 +43,5 @@
 23. YankRing.vim
 24. IndexedSearch
 25. vim-repeat
+26. vim-indent-guides
 
