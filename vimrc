@@ -75,9 +75,14 @@ Bundle 'SearchComplete'
 Bundle 'msanders/snipmate.vim'
 Bundle 'sudo.vim'
 Bundle 'YankRing.vim'
-
+Bundle 'vim-scripts/IndexedSearch'
 
 filetype plugin indent on      " required by Vundle
+
+""""""""""""""""""""""""""""""""""""""""""""""" IndexedSearch
+let g:indexed_search_colors=1
+let g:indexed_search_shortmess=1
+let g:search_index_maxhit=100
 
 """"""""""""""""""""""""""""""""""""""""""""""" Syntastic
 let g:syntastic_auto_jump=1
