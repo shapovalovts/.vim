@@ -76,6 +76,7 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'sudo.vim'
 Bundle 'YankRing.vim'
 Bundle 'vim-scripts/IndexedSearch'
+Bundle 'tpope/vim-repeat'
 
 filetype plugin indent on      " required by Vundle
 
