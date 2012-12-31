@@ -41,7 +41,5 @@
 21. snipmate.vim
 22. sudo.vim
 23. YankRing.vim
-24. IndexedSearch
-25. vim-repeat
-26. vim-indent-guides
+24. vim-repeat
 

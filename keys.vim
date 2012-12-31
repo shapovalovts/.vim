@@ -1,9 +1,6 @@
 " Use * just to highlight the next found pattern - not jump
-nnoremap * *N
-vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
-
-" Switch off highlight
-nnoremap <S-F8> :nohlsearch<CR>
+nnoremap * *N:set hlsearch! hlsearch?<CR>
+vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch! hlsearch?"<CR>
 
 " Fix cursor
 nnoremap j gj
@@ -21,9 +18,6 @@ nnoremap ; :
 "set switchbuf+=newtab
 "nmap <C-g> :execute " grep -srnw --binary-files=without-match " . shellescape("<cWORD>") . " . " <cr>:copen<cr><C-w>w <F10>
 
-" Select last edit (e.g. paste)
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-
 " Reselect visual block after indent/outdent 
 vnoremap < <gv
 vnoremap > >gv
@@ -33,31 +27,36 @@ map <space> /
 
 " F2:      save current buffer (Ctrl-F5: substitute word under cursor globally)
 " F3:      switch paste mode
-" F4:      show list of buffers
-" F5:      ask for confirmation
-" F7:      show yanks window
-" F8:      check syntax
-" F10:     close current buffer
+" F4:      -
+" F5:      show yanks window
+" F6:      -
+" F7:      replace (ask for confirmation)
+" F8:      close current buffer
+" F9:      check syntax
+" F10:     toggle  indent guides
 " F11:     switch over lines numeration
-nnoremap <C-F5> :%s/\<<C-r><C-w>\>//g<Left><Left>
-nnoremap <F5> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
-nmap <silent> <F11> :set<Space>nu!<CR>
+" F12:     toggle TagBar
 nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i
 imap <F2> <esc>:w<cr>i
 map <F3> :set paste<CR>i
 imap <F3> <ESC>:set paste<CR>i<Right>
-imap <F10> <Esc>:bd<CR>a
-nmap <F10> :bd<CR>
-imap <F4> <Esc>:buffers<CR>
-nmap <F4> :buffers<CR>
-nmap <F7> :YRShow<CR>
-imap <F7> :YRShow<CR>
-vmap <F7> :YRShow<CR>
-imap <F8> <ESC>:SyntasticCheck<CR>
-vmap <F8> :SyntasticCheck<CR>
-nmap <F8> :SyntasticCheck<CR>
+nmap <F5> :YRShow<CR>
+imap <F5> :YRShow<CR>
+vmap <F5> :YRShow<CR>
+nnoremap <C-F7> :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <F7> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+imap <F8> <Esc>:bd<CR>a
+nmap <F8> :bd<CR>
+imap <F9> <ESC>:SyntasticCheck<CR>
+vmap <F9> :SyntasticCheck<CR>
+nmap <F9> :SyntasticCheck<CR>
+map <F10> :IndentGuidesToggle<CR>
+imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
+nmap <silent> <F11> :set<Space>nu!<CR>
+nmap <silent> <F12>      :TagbarToggle<CR>
+vmap <silent> <F12> <esc>:TagbarToggle<CR>
+imap <silent> <F12> <esc>:TagbarToggle<CR>
 
 au InsertLeave * set nopaste
 
@@ -109,8 +108,8 @@ imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>:cTRLpmIXed<cr>
 fu! TabMoveLeft()
   let current_tab = tabpagenr()
   if current_tab > 1
-     let current_tab = current_tab - 2
-     execute 'tabmove' current_tab
+    let current_tab = current_tab - 2
+    execute 'tabmove' current_tab
   endif
 endf
 fu! TabMoveRight()
@@ -162,18 +161,12 @@ set complete+=t
 
 " Execute make and show the errors
 if filereadable("Makefile")
-    set makeprg=make\ -j4
-    map <C-b> :make<CR>:cw<CR>
+  set makeprg=make\ -j4
+  map <C-b> :make<CR>:cw<CR>
 else
-    map <C-b> :make %:r<CR>:cw<CR>
+  map <C-b> :make %:r<CR>:cw<CR>
 endif
 
-" Buffer naviation
+" Buffer navigation
 map <M-Left>  :bprevious<CR>
 map <M-Right> :bnext<CR>
-
-" Keys to opn tools-windows
-nmap <silent> <F12>      :TagbarToggle<CR>
-vmap <silent> <F12> <esc>:TagbarToggle<CR>
-imap <silent> <F12> <esc>:TagbarToggle<CR>
-

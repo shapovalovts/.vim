@@ -75,26 +75,25 @@ Bundle 'SearchComplete'
 Bundle 'msanders/snipmate.vim'
 Bundle 'sudo.vim'
 Bundle 'YankRing.vim'
-Bundle 'vim-scripts/IndexedSearch'
 Bundle 'tpope/vim-repeat'
-Bundle 'mutewinter/vim-indent-guides'
 
 filetype plugin indent on      " required by Vundle
 
 """"""""""""""""""""""""""""""""""""""""""""""" IndexedSearch
-let g:indexed_search_colors=1
-let g:indexed_search_shortmess=1
-let g:search_index_maxhit=100
+let g:indexed_search_plugin = 0
+let g:indexed_search_colors = 1
+let g:indexed_search_shortmess = 1
+let g:search_index_maxhit = 100
 
 """"""""""""""""""""""""""""""""""""""""""""""" Syntastic
-let g:syntastic_auto_jump=1
+let g:syntastic_auto_jump = 1
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_enable_signs=0
-let g:syntastic_echo_current_error=0
-let g:syntastic_check_on_open=0
+let g:syntastic_enable_signs = 0
+let g:syntastic_echo_current_error = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_enable_balloons = 0
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_warnings=0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_quiet_warnings = 0
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_c_no_include_search = 1
 let g:syntastic_cpp_check_header = 0
@@ -172,10 +171,6 @@ set laststatus=2
 
 " Recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-
-" Highlight line only in insert mode
-"autocmd InsertLeave * se nocursorline
-"autocmd InsertEnter * se cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" tags
 set tags=./.vim/tags
