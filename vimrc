@@ -132,7 +132,24 @@ endfun
 au TabEnter * call SVNInfo()
 au BufRead * call SVNInfo()
 
-set statusline+=\ \ %<%F\ \ 
+function! FileSize()
+ let bytes = getfsize(expand("%:p"))
+ if bytes <= 0
+   return ""
+ endif
+ if bytes < 1024
+   return bytes . " B"
+ else
+   return (bytes / 1024) . " K"
+ endif
+endfunction
+
+set statusline+=\ \ %<%F\ 
+
+set statusline+=%#VisualDelimeterWhite#
+set statusline+=%{getfsize(expand('%:p'))>0?'┃\ ':''}
+set statusline+=%{FileSize()}
+set statusline+=%#VisualDelimeterWhite#\ ┃%*
 
 "display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
@@ -161,12 +178,26 @@ set statusline+=\ %#error#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+
 set statusline+=%=                  "left/right separator ⤦
+set statusline+=%#VisualDelimeterWhite#\ ┃%*\ 
 set statusline+=%{g:svninfo}
 set statusline+=%{g:gitinfo}
-set statusline+=\ │\ line:\ %l/%L   "cursor line/total lines
-set statusline+=\ │\ col:\ %c       "cursor column
-set statusline+=\ │\ %P               "percent through file
+
+set statusline+=%#VisualDelimeterWhite#\ ┃%*
+
+set statusline+=\ line:\ %l/%L   "cursor line/total lines
+
+set statusline+=%#VisualDelimeterWhite#\ ┃%*
+
+set statusline+=\ col:\ %c       "cursor column
+
+set statusline+=%#VisualDelimeterWhite#\ ┃%*
+
+set statusline+=\ %P\             "percent through file
+
+set statusline+=%#VisualDelimeterBlock#┃%*
+
 set laststatus=2
 
 " Recalculate the trailing whitespace warning when idle, and after saving
@@ -249,9 +280,6 @@ function MyTabLine()
     endif
   endfor
   let tabline .= '%#TabLineFill#%T'
-  if tabpagenr('$') > 1
-    let tabline .= '%=%#TabLine#%999XX'
-  endif
   return tabline
 endfunction
 
