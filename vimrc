@@ -145,6 +145,7 @@ function! FileSize()
  endif
 endfunction
 
+set statusline= " clear the statusline for when vimrc is reloaded
 set statusline+=\ \ %<%F\ 
 
 set statusline+=%#VisualDelimeterWhite#
@@ -356,7 +357,7 @@ let g:NERDTreeKeepTreeInNewTab=1
 """""""""""""""""""""""""""""""""""""""" TagBar
 let g:tagbar_width = 60
 let g:tagbar_compact = 1
-let g:tagbar_iconchars = ['▷', '◢']
+let g:tagbar_iconchars = ['➱', '➢']
 
 if has("autocmd")
   au FileType c,cpp nested :TagbarOpen
