@@ -26,6 +26,7 @@ set smarttab             " insert tabs on the start of a line according to shift
 set expandtab            " spaces instead tabs
 set undolevels=1000      " use many muchos levels of undo
 set title                " change the terminal's title
+set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 set visualbell           " don't beep
 set noerrorbells         " don't beep
 set showcmd              " show incomplete cmds down the bottom
