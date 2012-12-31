@@ -49,6 +49,7 @@ hi Search gui=none guifg=Black guibg=Yellow ctermbg=11
 hi MoreMsg gui=bold guifg=ForestGreen
 hi Question gui=bold guifg=ForestGreen
 hi WarningMsg gui=bold guifg=Red
+hi VisualDelimeter guifg=Gray ctermfg=7 ctermbg=8
   
 hi Comment gui=italic guifg=#9999cc ctermfg=248 
 hi Error gui=none guifg=White guibg=Red ctermfg=15 ctermbg=197

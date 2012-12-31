@@ -161,12 +161,12 @@ set statusline+=\ %#error#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-set statusline+=%=                     "left/right separator
+set statusline+=%=                  "left/right separator ⤦
 set statusline+=%{g:svninfo}
 set statusline+=%{g:gitinfo}
-set statusline+=\ \ \|\ line:\ %l/%L   "cursor line/total lines
-set statusline+=\ \ \|\ col:\ %c       "cursor column
-set statusline+=\ \|\ %P               "percent through file
+set statusline+=\ │\ line:\ %l/%L   "cursor line/total lines
+set statusline+=\ │\ col:\ %c       "cursor column
+set statusline+=\ │\ %P               "percent through file
 set laststatus=2
 
 " Recalculate the trailing whitespace warning when idle, and after saving
@@ -244,7 +244,8 @@ function MyTabLine()
       let tabline .= '%#TabLine#'
     endif
     if i + 1 != tabpagenr() && i+2 != tabpagenr()
-      let tabline .= '|'
+      let tabline .= '%#VisualDelimeter#'
+      let tabline .= '│'
     endif
   endfor
   let tabline .= '%#TabLineFill#%T'

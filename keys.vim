@@ -144,10 +144,6 @@ vmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR
 " Change the mapleader from \ to ,
 let mapleader=","
 
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
 " Words for autoindentation
 set complete=""
 " From current buffer
