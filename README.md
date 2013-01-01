@@ -42,5 +42,4 @@
 22. sudo.vim
 23. YankRing.vim
 24. vim-repeat
-25. erlang-indent-file
 
