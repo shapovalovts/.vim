@@ -35,11 +35,12 @@
 15. SearchComplete
 16. ShowMarks
 17. vim-indent-guides.git
-18. vimerl
+18. Vimerl
 19. vim-markmultiple
 20. SearchComplete
 21. snipmate.vim
 22. sudo.vim
 23. YankRing.vim
 24. vim-repeat
+25. erlang-indent-file
 

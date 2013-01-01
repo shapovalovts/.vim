@@ -70,13 +70,14 @@ Bundle 'a.vim'
 Bundle 'SearchComplete'
 Bundle 'ShowMarks'
 Bundle 'nathanaelkane/vim-indent-guides.git'
-Bundle 'jimenezrick/vimerl'
 Bundle 'adinapoli/vim-markmultiple'
 Bundle 'SearchComplete'
 Bundle 'msanders/snipmate.vim'
 Bundle 'sudo.vim'
 Bundle 'YankRing.vim'
 Bundle 'tpope/vim-repeat'
+Bundle 'erlang-indent-file'
+Bundle 'Vimerl'
 
 filetype plugin indent on      " required by Vundle
 
