@@ -127,7 +127,7 @@ function! SVNInfo()
   let modified = system("svn stat -q")
   if rev != ''
     if branch != ''
-      let g:svninfo = 'svn: ' . substitute(branch, '\n', '', 'g') . ' | r: ' . substitute(rev, '\n', '', 'g')
+      let g:svninfo = 'svn: ' . substitute(branch, '\n', '', 'g') . '/' . substitute(rev, '\n', '', 'g')
     endif
   endif
 endfun
