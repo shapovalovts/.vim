@@ -1,6 +1,7 @@
 " Use * just to highlight the next found pattern - not jump
-nnoremap * *N:set hlsearch! hlsearch?<CR>
-vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch! hlsearch?"<CR>
+set nohlsearch
+nnoremap * :set hlsearch? hlsearch!<CR>*N:<CR>
+vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
 
 " Fix cursor
 nnoremap j gj
