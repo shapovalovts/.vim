@@ -32,9 +32,9 @@ map <space> /
 " F5:      show yanks window
 " F6:      -
 " F7:      replace (ask for confirmation)
-" F8:      close current buffer
+" F8:      toggle  indent guides
 " F9:      check syntax
-" F10:     toggle  indent guides
+" F10:     close current buffer
 " F11:     switch over lines numeration
 " F12:     toggle TagBar
 nmap <F2> :w<cr>
@@ -47,12 +47,12 @@ imap <F5> :YRShow<CR>
 vmap <F5> :YRShow<CR>
 nnoremap <C-F7> :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <F7> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-imap <F8> <Esc>:bd<CR>a
-nmap <F8> :bd<CR>
+map <F8> :IndentGuidesToggle<CR>
 imap <F9> <ESC>:SyntasticCheck<CR>
 vmap <F9> :SyntasticCheck<CR>
 nmap <F9> :SyntasticCheck<CR>
-map <F10> :IndentGuidesToggle<CR>
+imap <F10> <Esc>:bd<CR>a
+nmap <F10> :bd<CR>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
 nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <silent> <F12>      :TagbarToggle<CR>

@@ -9,7 +9,7 @@ set lbr
 set showcmd
 set nocompatible
 set backspace=indent,eol,start
-set history=50
+set history=100
 set showtabline=2
 set nobackup
 set ruler                " show cursor
