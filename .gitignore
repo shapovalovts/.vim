@@ -6,3 +6,4 @@ tmp/*
 .VimballRecord
 last-session.txt
 ().vim
+bundle/
