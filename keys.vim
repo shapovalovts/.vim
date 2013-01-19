@@ -1,6 +1,17 @@
 " Use * just to highlight the next found pattern - not jump
 set nohlsearch
-nnoremap * :set hlsearch? hlsearch!<CR>*N:<CR>
+let g:highlighting = 0
+function! Highlighting()
+  if g:highlighting == 1 && @/ =~ '^\\<'.expand('<cword>').'\\>$'
+    let g:highlighting = 0
+    return ":silent nohlsearch\<CR>"
+  endif
+  let @/ = '\<'.expand('<cword>').'\>'
+  let g:highlighting = 1
+  return ":silent set hlsearch\<CR>"
+endfunction
+nnoremap <silent> <expr> <CR> Highlighting()
+nnoremap <silent> <expr> * Highlighting()
 vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
 
 " Fix cursor
