@@ -24,7 +24,10 @@ set ignorecase           " ignore case when searching
 set smartcase            " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smarttab             " insert tabs on the start of a line according to shiftwidth, not tabstop
 set expandtab            " spaces instead tabs
-set undolevels=1000      " use many muchos levels of undo
+set undolevels=256      " use many muchos levels of undo
+set undoreload=10000
+set undodir=./.vim/undodir/
+set undofile
 set title                " change the terminal's title
 set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 set visualbell           " don't beep
