@@ -83,6 +83,12 @@ Bundle 'tpope/vim-repeat'
 
 filetype plugin indent on      " required by Vundle
 
+""""""""""""""""""""""""""""""""""""""""""""""" vimerl
+set runtimepath+=$HOME/.vim/bundle/Vimerl
+autocmd Filetype erlang setlocal omnifunc=erlang_complete#Complete
+let g:erlang_skel_header = {"author": "Taras Shapovalov"}
+let g:erlang_keywordprg = "erl -man"
+
 """"""""""""""""""""""""""""""""""""""""""""""" IndexedSearch
 let g:indexed_search_plugin = 0
 let g:indexed_search_colors = 1
@@ -363,7 +369,7 @@ let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['➱', '➢']
 
 if has("autocmd")
-  au FileType c,cpp nested :TagbarOpen
+  au FileType c,cpp,erlang nested :TagbarOpen
 
   au FileType qf
     \ if &buftype == "quickfix" |
