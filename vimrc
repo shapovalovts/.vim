@@ -80,6 +80,7 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'sudo.vim'
 Bundle 'YankRing.vim'
 Bundle 'tpope/vim-repeat'
+Bundle 'marcinbiegun/vim-escript'
 
 filetype plugin indent on      " required by Vundle
 
