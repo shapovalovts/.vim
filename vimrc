@@ -123,7 +123,7 @@ let g:gitinfo = ''
 function! GitInfo()
   let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
   if branch != ''
-    let g:gitinfo = 'git: ' . substitute(branch, '\n', '', 'g')
+    let g:gitinfo = 'git ↱ ' . substitute(branch, '\n', '', 'g')
   endif
 endfun
 au TabEnter * call GitInfo()
@@ -136,7 +136,7 @@ function! SVNInfo()
   let modified = system("svn stat -q")
   if rev != ''
     if branch != ''
-      let g:svninfo = 'svn: ' . substitute(branch, '\n', '', 'g') . '/' . substitute(rev, '\n', '', 'g')
+      let g:svninfo = 'svn ↱ ' . substitute(branch, '\n', '', 'g') . '/' . substitute(rev, '\n', '', 'g')
     endif
   endif
 endfun
