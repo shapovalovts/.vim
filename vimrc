@@ -259,7 +259,7 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 """"""""""""""""""""""""""""""""""""""""" Tabs
 function MyTabLine()
   let tabline = '%#TabLine#'
-  let tabline .= '     '
+  let tabline .= repeat(' ', &numberwidth)
   for i in range(tabpagenr('$'))
     let buflist = tabpagebuflist(i + 1)
     if i + 1 == tabpagenr()
