@@ -48,7 +48,9 @@ set cindent
 set modeline
 set lazyredraw
 set magic
+set cul
 "set autochdir                                 " NOTE: disabled, otherwise savesassion sometimes doesn't work!
+set mouse=a
 syntax on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
@@ -255,6 +257,15 @@ if !exists('g:neocomplcache_omni_patterns')
 endif
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+""""""""""""""""""""""""""""""""""""""""" Cursor
+
+" Change a cursor shape (Gnome terminal only):
+if has("autocmd")
+  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+endif
 
 """"""""""""""""""""""""""""""""""""""""" Tabs
 function MyTabLine()
