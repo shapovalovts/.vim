@@ -28,6 +28,8 @@ hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=8 ctermbg=188
 hi StatusLineNC guifg=#829db9 guibg=Black ctermfg=8 ctermbg=8
 au InsertEnter * hi StatusLine guifg=#00bbff guibg=#dd0dff ctermfg=9 ctermbg=188
 au InsertLeave * hi StatusLine guifg=#000bff guibg=#ddddff ctermfg=8 ctermbg=188
+au InsertEnter * hi VisualDelimeterWhite guifg=#00bbff guibg=#dd0dff ctermfg=188 ctermbg=9
+au InsertLeave * hi VisualDelimeterWhite guifg=#000bff guibg=#ddddff ctermfg=188 ctermbg=8
 hi User1 gui=NONE guifg=#ff0000 cterm=bold ctermfg=15 ctermbg=9
 
 hi TabLineSel guifg=#000bff guibg=#ddddff ctermfg=16 ctermbg=15 cterm=bold
