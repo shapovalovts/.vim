@@ -24,10 +24,6 @@ set ignorecase           " ignore case when searching
 set smartcase            " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smarttab             " insert tabs on the start of a line according to shiftwidth, not tabstop
 set expandtab            " spaces instead tabs
-set undolevels=256      " use many muchos levels of undo
-set undoreload=10000
-set undodir=./.vim/undodir/
-set undofile
 set title                " change the terminal's title
 set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 set visualbell           " don't beep
@@ -49,8 +45,12 @@ set modeline
 set lazyredraw
 set magic
 set cul
-"set autochdir                                 " NOTE: disabled, otherwise savesassion sometimes doesn't work!
-set mouse=a
+set undolevels=256      " use many muchos levels of undo
+set undoreload=10000
+set undodir=./.vim/undodir/
+set undofile
+"set autochdir " NOTE: disabled, otherwise savesassion sometimes doesn't work!
+"set mouse=a   " NOTE: disabled, otherwise it is imposible to copy text using mouse
 syntax on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
@@ -58,6 +58,7 @@ filetype on                    " required on MacOSX only
 filetype plugin off            " required by Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-easymotion'
@@ -259,12 +260,25 @@ let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 """"""""""""""""""""""""""""""""""""""""" Cursor
+function SetVisibleCursorLine()
+  hi CursorLine cterm=none ctermbg=7
+endfunction
+
+function SetInvisibleCursorLine()
+  hi CursorLine cterm=none ctermbg=15
+endfunction
 
 " Change a cursor shape (Gnome terminal only):
 if has("autocmd")
   au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
   au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  au VimLeave    * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  au BufEnter __Tagbar__ silent call SetVisibleCursorLine()
+  au BufLeave __Tagbar__ silent call SetInvisibleCursorLine()
+  au BufEnter NERD_tree* silent call SetVisibleCursorLine()
+  au BufLeave NERD_tree* silent call SetInvisibleCursorLine()
+  au WinLeave * setlocal nocursorline
+  au WinEnter * setlocal cursorline
 endif
 
 """"""""""""""""""""""""""""""""""""""""" Tabs
@@ -311,13 +325,13 @@ function MyTabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let label = substitute(bufname(buflist[tabpagewinnr(a:n) - 1]), '.*/', '', '')
   if label == ''
-      let label = '[No Name]'
+    let label = '[No Name]'
   endif
   return label
 endfunction
 
 function MyGuiTabLabel()
-    return '%{MyTabLabel(' . tabpagenr() . ')}'
+  return '%{MyTabLabel(' . tabpagenr() . ')}'
 endfunction
 
 set tabline=%!MyTabLine()
@@ -325,7 +339,7 @@ set guitablabel=%!MyGuiTabLabel()
 
 """"""""""""""""""""""""""""""""""""""""" CtrlP
 set wildignore+=*/tmp/*,*.o,*.so,*.swp,*.zip
-let g:ctrlp_working_path_mode = 2
+let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 99
@@ -357,6 +371,10 @@ if has("unix")
 endif
  
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
+"let g:ctrlp_buffer_func = {
+"  \ 'enter': 'SetVisibleCursorLine',
+"  \ 'exit':  'SetInvisibleCursorLine',
+"  \ }
 
 """"""""""""""""""""""""""""""""""""""""" EasyMotion
 let g:EasyMotion_leader_key = ','
@@ -397,7 +415,7 @@ if has("autocmd")
       setlocal statusline=%0*
       setlocal statusline+=Tagbar
       setlocal statusline+=%=\ %<%P
-      setlocal cursorline!
+      setlocal cursorline
     endif
   endfun
 

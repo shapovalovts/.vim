@@ -15,6 +15,7 @@ hi Normal gui=none guifg=Black guibg=White ctermfg=0 ctermbg=255
 hi CursorLine cterm=none
 hi Cursor guifg=White guibg=Black ctermfg=231 ctermbg=16 
 hi CursorLineNr ctermbg=15 ctermfg=8 cterm=none term=bold
+hi CtrlPLinePre ctermbg=7 cterm=none term=bold
 hi LineNr gui=bold guifg=#828c95 guibg=#bbbbbb ctermfg=7 ctermbg=8
 hi NonText gui=bold guifg=DarkGray guibg=#bbbbbb ctermfg=7 ctermbg=15
 hi SpecialKey guifg=#d0b0b0 guibg=#f0f0f0 gui=none

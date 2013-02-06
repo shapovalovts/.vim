@@ -62,8 +62,8 @@ map <F8> :IndentGuidesToggle<CR>
 imap <F9> <ESC>:SyntasticCheck<CR>
 vmap <F9> :SyntasticCheck<CR>
 nmap <F9> :SyntasticCheck<CR>
-imap <F10> <Esc>:bd<CR>a
-nmap <F10> :bd<CR>
+imap <F10> <Esc>:bw<CR>a
+nmap <F10> :bw<CR>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
 nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <silent> <F12>      :TagbarToggle<CR>
