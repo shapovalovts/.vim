@@ -58,39 +58,39 @@ hi VisualDelimeterWhite guifg=Gray ctermfg=15 ctermbg=8
 hi VisualDelimeterBlock guifg=Gray ctermfg=15 ctermbg=15
   
 hi Comment gui=italic guifg=#9999cc ctermfg=248 
-hi Error gui=none guifg=White guibg=Red ctermfg=15 ctermbg=197
-hi Identifier gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
-hi Special gui=bold guifg=RoyalBlue4 ctermfg=169 cterm=bold
 hi PreProc gui=none guifg=RoyalBlue3 ctermfg=114 cterm=bold
-hi Todo gui=bold guifg=Black guibg=Yellow ctermbg=214
-hi Type gui=none guifg=RoyalBlue4 ctermfg=12 cterm=none
-hi Underlined gui=underline guifg=Blue cterm=bold
-hi Directory ctermfg=132 cterm=bold
-hi Delimiter ctermfg=8
-hi Function  gui=bold guifg=yellowgreen ctermfg=24
-hi cFunction  gui=bold guifg=yellowgreen ctermfg=24
-hi cIdentifier gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
-hi cDefine gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
-
-hi Boolean gui=bold guifg=ForestGreen  ctermfg=12
-hi Constant gui=none guifg=ForestGreen 
-hi Number guifg=ForestGreen ctermfg=138
-hi String gui=none guifg=Sienna4 ctermfg=203
-hi helpNote ctermbg=220 ctermfg=16
-  
-" C++:
-hi cppSTL gui=bold guifg=RoyalBlue2 ctermfg=12
-hi cppStatement ctermfg=111 cterm=bold
-hi cppOperator ctermfg=111 cterm=bold
-hi cppType gui=bold guifg=RoyalBlue4 ctermfg=12 cterm=bold
-hi cppAccess gui=bold guifg=RoyalBlue4 ctermfg=16 cterm=bold 
-hi cppExceptions gui=bold guifg=RoyalBlue4 ctermfg=100 cterm=bold 
-hi cppCast guifg=RoyalBlue1 ctermfg=111
-hi cCustomFunc  gui=bold guifg=yellowgreen ctermfg=24
-hi cCustomClass gui=reverse guifg=#001000 ctermfg=12 cterm=bold
-hi cUserLabel gui=bold guifg=RoyalBlue2 ctermfg=111 cterm=bold
-"hi cppSigns gui=bold guifg=RoyalBlue4 ctermfg=22 
-hi cppBraces gui=bold guifg=RoyalBlue4 ctermfg=52 cterm=bold 
+"hi Error gui=none guifg=White guibg=Red ctermfg=15 ctermbg=197
+"hi Identifier gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
+"hi Special gui=bold guifg=RoyalBlue4 ctermfg=169 cterm=bold
+"hi Todo gui=bold guifg=Black guibg=Yellow ctermbg=214
+"hi Type gui=none guifg=RoyalBlue4 ctermfg=12 cterm=none
+"hi Underlined gui=underline guifg=Blue cterm=bold
+"hi Directory ctermfg=132 cterm=bold
+"hi Delimiter ctermfg=8
+"hi Function  gui=bold guifg=yellowgreen ctermfg=24
+"hi cFunction  gui=bold guifg=yellowgreen ctermfg=24
+"hi cIdentifier gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
+"hi cDefine gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
+"
+"hi Boolean gui=bold guifg=ForestGreen  ctermfg=12
+"hi Constant gui=none guifg=ForestGreen 
+"hi Number guifg=ForestGreen ctermfg=138
+"hi String gui=none guifg=Sienna4 ctermfg=203
+"hi helpNote ctermbg=220 ctermfg=16
+"  
+"" C++:
+"hi cppSTL gui=bold guifg=RoyalBlue2 ctermfg=12
+"hi cppStatement ctermfg=111 cterm=bold
+"hi cppOperator ctermfg=111 cterm=bold
+"hi cppType gui=bold guifg=RoyalBlue4 ctermfg=12 cterm=bold
+"hi cppAccess gui=bold guifg=RoyalBlue4 ctermfg=16 cterm=bold 
+"hi cppExceptions gui=bold guifg=RoyalBlue4 ctermfg=100 cterm=bold 
+"hi cppCast guifg=RoyalBlue1 ctermfg=111
+"hi cCustomFunc  gui=bold guifg=yellowgreen ctermfg=24
+"hi cCustomClass gui=reverse guifg=#001000 ctermfg=12 cterm=bold
+"hi cUserLabel gui=bold guifg=RoyalBlue2 ctermfg=111 cterm=bold
+""hi cppSigns gui=bold guifg=RoyalBlue4 ctermfg=22 
+"hi cppBraces gui=bold guifg=RoyalBlue4 ctermfg=52 cterm=bold 
 hi cppNamespace  gui=bold guifg=yellowgreen ctermfg=12 cterm=bold
 
 " Python
@@ -121,8 +121,8 @@ hi pythonBuiltinObj guifg=RoyalBlue1 ctermfg=110 cterm=bold
 hi pythonBuiltinFunc guifg=RoyalBlue1 ctermfg=110 cterm=bold
 hi pythonExClass guifg=RoyalBlue1 ctermfg=110 cterm=bold
 
-hi Label gui=bold,underline guifg=ForestGreen ctermfg=15
-hi Statement gui=bold guifg=#bb88bb ctermfg=17 cterm=bold
+"hi Label gui=bold,underline guifg=ForestGreen ctermfg=15
+"hi Statement gui=bold guifg=#bb88bb ctermfg=17 cterm=bold
 
 hi htmlStatement ctermfg=132
 hi htmlBold gui=bold
