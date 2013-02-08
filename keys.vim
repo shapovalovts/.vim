@@ -80,6 +80,10 @@ nmap <C-k> <C-u>
 " Ctrl+o:  open file
 let g:ctrlp_map = '<c-o>'
 
+" Quick (v)split
+nnoremap <silent> ss :split<CR>
+nnoremap <silent> vv :vsplit<CR>
+
 " Smart Home
 nmap <Home> ^
 imap <Home> <Esc>I
