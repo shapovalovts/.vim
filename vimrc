@@ -44,12 +44,15 @@ set modeline
 set lazyredraw
 set magic
 set cul
-set undolevels=256      " use many muchos levels of undo
-set undoreload=10000
-set undodir=./.vim/undodir/
-set undofile
+if exists("+undofile")
+  set undolevels=256
+  set undoreload=10000
+  set undodir=./.vim/
+  set undofile
+endif
 "set autochdir " NOTE: disabled, otherwise savesassion sometimes doesn't work!
 "set mouse=a   " NOTE: disabled, otherwise it is imposible to copy text using mouse
+
 syntax on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
