@@ -222,6 +222,11 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 set tags=./.vim/tags
 set tags+=~/.vim/tags/cpp
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" swp
+" Save your *.swp files in ./.vim
+set directory=./.vim//
+set directory+=.
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 set nocp
 "filetype plugin on
