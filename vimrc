@@ -11,7 +11,6 @@ set nocompatible
 set backspace=indent,eol,start
 set history=100
 set showtabline=2
-set nobackup
 set ruler                " show cursor
 set nohidden
 set nowrap
@@ -222,10 +221,13 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 set tags=./.vim/tags
 set tags+=~/.vim/tags/cpp
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""" swp
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" swp and backup
 " Save your *.swp files in ./.vim
 set directory=./.vim//
 set directory+=.
+
+set backupdir=./.vim/
+set backup
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 set nocp
