@@ -62,8 +62,8 @@ map <F8> :IndentGuidesToggle<CR>
 imap <F9> <ESC>:SyntasticCheck<CR>
 vmap <F9> :SyntasticCheck<CR>
 nmap <F9> :SyntasticCheck<CR>
-imap <F10> <Esc>:bw<CR>a
-nmap <F10> :bw<CR>
+imap <F10> <Esc>:tabclose<CR>a
+nmap <F10> :tabclose<CR>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
 nmap <silent> <F11> :set<Space>nu!<CR>
 nmap <silent> <F12>      :TagbarToggle<CR>
@@ -76,6 +76,8 @@ au InsertLeave * set nopaste
 let g:C_Ctrl_j = 'off'
 nmap <C-j> <C-d>
 nmap <C-k> <C-u>
+
+cnoremap w!! w !sudo tee % >/dev/null
 
 " Ctrl+o:  open file
 let g:ctrlp_map = '<c-o>'
