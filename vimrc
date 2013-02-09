@@ -221,16 +221,26 @@ set laststatus=2
 " Recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""" tags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" tags, swp and backup
+" Create ./.vim in a buffer directory on write:
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h').'/.vim'
+        echo dir
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+au BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+
 set tags=./.vim/tags
 set tags+=~/.vim/tags/cpp
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""" swp and backup
-" Save your *.swp files in ./.vim
 set directory=./.vim//
 set directory+=.
 
-set backupdir=./.vim/
+set backupdir=./.vim//
 set backup
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
