@@ -164,6 +164,7 @@ set statusline= " clear the statusline for when vimrc is reloaded
 set statusline+=\ \ %<%F\ 
 
 set statusline+=%#VisualDelimeterWhite#
+set statusline+=%*
 set statusline+=%{getfsize(expand('%:p'))>0?'┃\ ':''}
 set statusline+=%{FileSize()}
 set statusline+=%#VisualDelimeterWhite#\ ┃%*
