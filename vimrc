@@ -85,7 +85,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'marcinbiegun/vim-escript'
 
 "The plugin is tyoo buggy and slow for now. Lets hope it will be improved:
-"Bundle 'terryma/vim-multiple-cursors'
+Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on      " required by Vundle
 
@@ -420,7 +420,7 @@ let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['➱', '➢']
 
 if has("autocmd")
-  au FileType c,cpp,erlang nested :TagbarOpen
+  au FileType c,cpp nested :TagbarOpen
 
   au FileType qf
     \ if &buftype == "quickfix" |
