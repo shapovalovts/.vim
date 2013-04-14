@@ -40,7 +40,7 @@ map <space> /
 " F2:      save current buffer (Ctrl-F5: substitute word under cursor globally)
 " F3:      switch paste mode
 " F4:      -
-" F5:      show yanks window
+" F5:      -
 " F6:      -
 " F7:      replace (ask for confirmation)
 " F8:      toggle  indent guides
@@ -48,14 +48,11 @@ map <space> /
 " F10:     close current buffer
 " F11:     switch over lines numeration
 " F12:     toggle TagBar
-nmap <F2> :w<cr>
-vmap <F2> <esc>:w<cr>i
-imap <F2> <esc>:w<cr>i
+nnoremap <F2> :w<cr>
+vnoremap <F2> :w<cr>
+inoremap <F2> <esc>:w<cr>i
 map <F3> :set paste<CR>i
 imap <F3> <ESC>:set paste<CR>i<Right>
-nmap <F5> :YRShow<CR>
-imap <F5> :YRShow<CR>
-vmap <F5> :YRShow<CR>
 nnoremap <C-F7> :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <F7> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 map <F8> :IndentGuidesToggle<CR>

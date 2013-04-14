@@ -79,13 +79,13 @@ Bundle 'SearchComplete'
 Bundle 'ShowMarks'
 Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'jimenezrick/vimerl'
-Bundle 'adinapoli/vim-markmultiple'
-Bundle 'SearchComplete'
 Bundle 'msanders/snipmate.vim'
 Bundle 'sudo.vim'
-Bundle 'YankRing.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'marcinbiegun/vim-escript'
+
+"The plugin is tyoo buggy and slow for now. Lets hope it will be improved:
+"Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on      " required by Vundle
 
