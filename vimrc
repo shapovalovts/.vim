@@ -325,7 +325,7 @@ function MyTabLine()
       endfor
     endif
     let tabline .= '%' . (i + 1) . 'T'
-    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} '
+    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} ' . '%{MyTabNum(' . (i + 1) . ')}'
     if i + 1 == tabpagenr()
       let tabline .= '%#TabLineSel#'
     else
@@ -338,6 +338,77 @@ function MyTabLine()
   endfor
   let tabline .= '%#TabLineFill#%T'
   return tabline
+endfunction
+
+function MyTabNum(n)
+  if a:n == 0
+    return '₀'
+  elseif a:n == 1
+    return '₁'
+  elseif a:n == 2
+    return '₂'
+  elseif a:n == 3
+    return '₃'
+  elseif a:n == 4
+    return '₄'
+  elseif a:n == 5
+    return '₅'
+  elseif a:n == 6
+    return '₆'
+  elseif a:n == 7
+    return '₇'
+  elseif a:n == 8
+    return '₈'
+  elseif a:n == 9
+    return '₉'
+  elseif a:n == 10
+    return '₁₀'
+  elseif a:n == 11
+    return '₁₁'
+  elseif a:n == 12
+    return '₁₂'
+  elseif a:n == 13
+    return '₁₃'
+  elseif a:n == 14
+    return '₁₄'
+  elseif a:n == 15
+    return '₁₅'
+  elseif a:n == 16
+    return '₁₆'
+  elseif a:n == 17
+    return '₁₇'
+  elseif a:n == 18
+    return '₁₈'
+  elseif a:n == 19
+    return '₁₉'
+  elseif a:n == 20
+    return '₂₀'
+  elseif a:n == 21
+    return '₂₁'
+  elseif a:n == 22
+    return '₂₂'
+  elseif a:n == 23
+    return '₂₃'
+  elseif a:n == 24
+    return '₂₄'
+  elseif a:n == 25
+    return '₂₅'
+  elseif a:n == 26
+    return '₂₆'
+  elseif a:n == 27
+    return '₂₇'
+  elseif a:n == 28
+    return '₂₈'
+  elseif a:n == 29
+    return '₂₉'
+  elseif a:n == 30
+    return '₃₀'
+  elseif a:n == 31
+    return '₃₁'
+  elseif a:n == 32
+    return '₃₂'
+  else
+    return ''
 endfunction
 
 function MyTabLabel(n)
