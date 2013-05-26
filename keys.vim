@@ -116,6 +116,10 @@ inoremap <CR> <C-R>=SplitBracesCR()<CR>
 " set noesckeys
 set timeout timeoutlen=1000 ttimeoutlen=100
 
+" make K split lines (opposite of J)
+" " http://www.stanford.edu/~jacobm/vim.html
+nmap K i<cr><esc>k$
+
 """""""""""""""""""""""""""" Tabs 
 " Ctrl+l: next tab
 " Ctrl+h: prev tab
