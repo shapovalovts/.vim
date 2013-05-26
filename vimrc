@@ -83,8 +83,6 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'sudo.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'marcinbiegun/vim-escript'
-
-"The plugin is tyoo buggy and slow for now. Lets hope it will be improved:
 Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on      " required by Vundle
@@ -291,9 +289,9 @@ endfunction
 
 " Change a cursor shape (Gnome terminal only):
 if has("autocmd")
-  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  au VimLeave    * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+  "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  "au VimLeave    * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
   au BufEnter __Tagbar__ silent call SetVisibleCursorLine()
   au BufLeave __Tagbar__ silent call SetInvisibleCursorLine()
   au BufEnter NERD_tree* silent call SetVisibleCursorLine()
