@@ -130,21 +130,18 @@ function! GitInfo()
     let g:gitinfo = 'git ↱ ' . substitute(branch, '\n', '', 'g')
   endif
 endfun
-au TabEnter * call GitInfo()
 au BufRead * call GitInfo()
 
 let g:svninfo = ''
 function! SVNInfo()
   let rev = system("svn info 2> /dev/null | grep -i revision | awk '{print $2}'")
-  let branch = system("svn info | grep URL | awk '{print $2}' | awk  -F '/' '{print $5}'")
-  let modified = system("svn stat -q")
   if rev != ''
+    let branch = system("svn info | grep URL | awk '{print $2}' | awk  -F '/' '{print $5}'")
     if branch != ''
       let g:svninfo = 'svn ↱ ' . substitute(branch, '\n', '', 'g') . '/' . substitute(rev, '\n', '', 'g')
     endif
   endif
 endfun
-au TabEnter * call SVNInfo()
 au BufRead * call SVNInfo()
 
 function! FileSize()
