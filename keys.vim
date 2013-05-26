@@ -118,7 +118,7 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 nmap K i<cr><esc>k$
 
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
-set formatoptions-=or
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 """""""""""""""""""""""""""" Tabs 
 " Ctrl+l: next tab
