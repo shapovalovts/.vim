@@ -112,13 +112,13 @@ endfun
 inoremap <CR> <C-R>=SplitBracesCR()<CR>
 
 " fix slight delay after pressing ESC then O or I
-" http://ksjoberg.com/vim-esckeys.html
-" set noesckeys
 set timeout timeoutlen=1000 ttimeoutlen=100
 
 " make K split lines (opposite of J)
-" " http://www.stanford.edu/~jacobm/vim.html
 nmap K i<cr><esc>k$
+
+" Don't add the comment prefix when I hit enter or o/O on a comment line.
+set formatoptions-=or
 
 """""""""""""""""""""""""""" Tabs 
 " Ctrl+l: next tab
