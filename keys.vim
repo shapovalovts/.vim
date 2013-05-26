@@ -111,6 +111,11 @@ fun! SplitBracesCR()
 endfun
 inoremap <CR> <C-R>=SplitBracesCR()<CR>
 
+" fix slight delay after pressing ESC then O or I
+" http://ksjoberg.com/vim-esckeys.html
+" set noesckeys
+set timeout timeoutlen=1000 ttimeoutlen=100
+
 """""""""""""""""""""""""""" Tabs 
 " Ctrl+l: next tab
 " Ctrl+h: prev tab
