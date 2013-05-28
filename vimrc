@@ -172,6 +172,7 @@ function! s:Get_file_perm()
   endif
 endfunction
 
+let w:file_perm=' '
 augroup Get_file_perm
   autocmd!
   autocmd BufWinEnter,FileChangedShell * let w:file_perm=<sid>Get_file_perm()
