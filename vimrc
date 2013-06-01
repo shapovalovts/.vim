@@ -321,10 +321,11 @@ function MyTabLine()
       endfor
     endif
     let tabline .= '%' . (i + 1) . 'T'
-    let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} ' . '%{MyTabNum(' . (i + 1) . ')}'
     if i + 1 == tabpagenr()
+      let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} '
       let tabline .= '%#TabLineSel#'
     else
+      let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} ' . '%{MyTabNum(' . (i + 1) . ')}'
       let tabline .= '%#TabLine#'
     endif
     if i + 1 != tabpagenr() && i+2 != tabpagenr()
