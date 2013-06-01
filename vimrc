@@ -84,7 +84,6 @@ Bundle 'sudo.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'marcinbiegun/vim-escript'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'RelOps'
 
 filetype plugin indent on      " required by Vundle
 

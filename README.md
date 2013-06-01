@@ -36,10 +36,9 @@
 16. ShowMarks
 17. vim-indent-guides.git
 18. Vimerl
-19. vim-markmultiple
-20. SearchComplete
-21. snipmate.vim
-22. sudo.vim
-23. YankRing.vim
-24. vim-repeat
+19. snipmate.vim
+20. sudo.vim
+21. vim-repeat
+22. vim-escript
+23. vim-multiple-cursors
 
