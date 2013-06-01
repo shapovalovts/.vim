@@ -155,28 +155,6 @@ function! FileSize()
  endif
 endfunction
 
-function! s:Get_file_perm()
-  let a=getfperm(expand('%:p'))
-  if strlen(a)
-    return a
-  else
-    let b=printf("%o", xor(0777,system("umask")))
-    let c=""
-    for d in [0, 1, 2]
-      let c.=and(b[d], 4) ? "r" : "-"
-      let c.=and(b[d], 2) ? "w" : "-"
-      let c.=and(b[d], 1) ? "x" : "-"
-    endfor
-    return c
-  endif
-endfunction
-
-let w:file_perm=' '
-augroup Get_file_perm
-  autocmd!
-  autocmd BufWinEnter,FileChangedShell * let w:file_perm=<sid>Get_file_perm()
-augroup END
-
 set statusline= " clear the statusline for when vimrc is reloaded
 set statusline+=\ \ %<%F\ 
 
@@ -184,8 +162,6 @@ set statusline+=%#VisualDelimeterWhite#
 set statusline+=%*
 set statusline+=%{getfsize(expand('%:p'))>0?'┃\ ':''}
 set statusline+=%{FileSize()}
-set statusline+=%#VisualDelimeterWhite#\ ┃%*
-set statusline+=\ %{w:file_perm}
 set statusline+=%#VisualDelimeterWhite#\ ┃%*
 
 "display a warning if fileformat isnt unix
