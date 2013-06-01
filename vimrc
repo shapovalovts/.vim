@@ -76,7 +76,6 @@ Bundle 'cpp.vim'
 Bundle 'c.vim'
 Bundle 'a.vim'
 Bundle 'SearchComplete'
-Bundle 'ShowMarks'
 Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'jimenezrick/vimerl'
 Bundle 'msanders/snipmate.vim'
@@ -84,6 +83,7 @@ Bundle 'sudo.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'marcinbiegun/vim-escript'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'kshenoy/vim-signature'
 
 filetype plugin indent on      " required by Vundle
 
