@@ -41,4 +41,5 @@
 21. vim-repeat
 22. vim-escript
 23. vim-multiple-cursors
+24. python-syntax
 

@@ -84,6 +84,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'marcinbiegun/vim-escript'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kshenoy/vim-signature'
+Bundle 'hdima/python-syntax'
 
 filetype plugin indent on      " required by Vundle
 
