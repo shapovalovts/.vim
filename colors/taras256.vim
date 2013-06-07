@@ -136,3 +136,8 @@ hi htmlUnderlineItalic gui=underline,italic
 hi docSpecial guifg=RoyalBlue1
 hi docTrans guibg=White guifg=White
 hi docCode guifg=#00aa00
+
+hi MyAdd ctermfg=8
+hi MyDelete ctermfg=8
+hi MyChange ctermfg=8
+

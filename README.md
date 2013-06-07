@@ -42,4 +42,4 @@
 22. vim-escript
 23. vim-multiple-cursors
 24. python-syntax
-
+25. mhinz/vim-signify
