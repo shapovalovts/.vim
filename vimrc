@@ -96,11 +96,11 @@ let g:erlang_skel_header = {"author": "Taras Shapovalov"}
 let g:erlang_keywordprg = "erl -man"
 
 """"""""""""""""""""""""""""""""""""""""""""""" Startify
-let g:startify_enable_special = 1
+let g:startify_enable_special = 0
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_show_sessions = 1
-let g:startify_show_files = 1
-let g:startify_show_files_number = 10
+let g:startify_show_files = 0
+let g:startify_show_files_number = 0
 let g:startify_bookmarks = []
 let g:startify_skiplist = [
                         \ 'COMMIT_EDITMSG',
@@ -108,7 +108,7 @@ let g:startify_skiplist = [
                         \ 'bundle/.*/doc'
                         \ ]
 let g:startify_skiplist_server = [ 'GVIM' ]
-let g:startify_custom_indices = ['1','2','3','4','5','6','7','8','9','q','w','e','r','t','y']
+let g:startify_custom_indices = ['1','2','3','4','5','6','7','8','9']
 let g:startify_enable_special = 0
 
 function! SaveSessionWithName()
