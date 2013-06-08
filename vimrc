@@ -37,7 +37,7 @@ set clipboard=unnamed    " all operations work with the OS clipboard
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:. " highlight problematic whitespace
 set viminfo='20,<50,s10,h,%                   " remember some stuff after quiting vim: marks, registers, searches, buffer list
-set sessionoptions=curdir,buffers,tabpages
+set sessionoptions=tabpages,sesdir,folds,options,globals,help,localoptions,resize,winsize,winpos
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set cindent
 set modeline
@@ -50,7 +50,7 @@ if exists("+undofile")
   set undodir=./.vim/
   set undofile
 endif
-"set autochdir " NOTE: disabled, otherwise savesassion sometimes doesn't work!
+set autochdir
 "set mouse=a   " NOTE: disabled, otherwise it is imposible to copy text using mouse
 
 syntax on
@@ -97,7 +97,7 @@ let g:erlang_keywordprg = "erl -man"
 
 """"""""""""""""""""""""""""""""""""""""""""""" Startify
 let g:startify_enable_special = 1
-let g:startify_session_dir = '.vim/sessions'
+let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_show_sessions = 1
 let g:startify_show_files = 1
 let g:startify_show_files_number = 10
@@ -108,7 +108,7 @@ let g:startify_skiplist = [
                         \ 'bundle/.*/doc'
                         \ ]
 let g:startify_skiplist_server = [ 'GVIM' ]
-let g:startify_custom_indices = []
+let g:startify_custom_indices = ['1','2','3','4','5','6','7','8','9','q','w','e','r','t','y']
 let g:startify_enable_special = 0
 
 function! SaveSessionWithName()
@@ -120,14 +120,6 @@ function! SaveSessionWithName()
 endfunction
 
 autocmd VimLeavePre * call SaveSessionWithName()
-
-"""""""""""""""""""""""""""""""""""""""" Restore last session
-"let g:session_autosave = 1
-"let g:session_autoload = 1
-"let g:session_default_to_last = 1
-"let g:session_directory = ".vim"
-
-"au VimLeavePre * SaveSession()
 
 """"""""""""""""""""""""""""""""""""""""""""""" Signify
 let g:signify_mapping_next_hunk = '<leader>gj'
@@ -166,12 +158,6 @@ let g:signify_line_color_change_delete = 'DiffChange'
 let g:signify_cursorhold_normal = 1
 let g:signify_cursorhold_insert = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""" IndexedSearch
-let g:indexed_search_plugin = 0
-let g:indexed_search_colors = 1
-let g:indexed_search_shortmess = 1
-let g:search_index_maxhit = 100
-
 """"""""""""""""""""""""""""""""""""""""""""""" Syntastic
 let g:syntastic_auto_jump = 1
 let g:syntastic_enable_highlighting = 1
@@ -194,7 +180,7 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['ruby', 'php'],
                            \ 'passive_filetypes': ['puppet'] }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""" Format the statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
 let g:gitinfo = ''
 function! GitInfo()
   let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
@@ -539,12 +525,6 @@ let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command
 
 """"""""""""""""""""""""""""""""""""""""" EasyMotion
 let g:EasyMotion_leader_key = ','
-
-""""""""""""""""""""""""""""""""""""""""" ShowMarks
-let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-let g:showmarks_enable = 1
-let showmarks_ignore_type="hqrm"
-let g:showmarks_textlower=" "
 
 """"""""""""""""""""""""""""""""""""""""" NERD tree
 let g:NERDTreeMinimalUI = 1
