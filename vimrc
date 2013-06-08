@@ -68,7 +68,6 @@ Bundle 'vcscommand.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
-Bundle 'xolox/vim-session'
 Bundle 'kien/ctrlp.vim'
 Bundle 'OmniCppComplete'
 Bundle 'majutsushi/tagbar'
@@ -86,6 +85,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kshenoy/vim-signature'
 Bundle 'hdima/python-syntax'
 Bundle 'mhinz/vim-signify'
+Bundle 'mhinz/vim-startify'
 
 filetype plugin indent on      " required by Vundle
 
@@ -94,6 +94,40 @@ set runtimepath+=$HOME/.vim/bundle/Vimerl
 autocmd Filetype erlang setlocal omnifunc=erlang_complete#Complete
 let g:erlang_skel_header = {"author": "Taras Shapovalov"}
 let g:erlang_keywordprg = "erl -man"
+
+""""""""""""""""""""""""""""""""""""""""""""""" Startify
+let g:startify_enable_special = 1
+let g:startify_session_dir = '.vim/sessions'
+let g:startify_show_sessions = 1
+let g:startify_show_files = 1
+let g:startify_show_files_number = 10
+let g:startify_bookmarks = []
+let g:startify_skiplist = [
+                        \ 'COMMIT_EDITMSG',
+                        \ $VIMRUNTIME .'/doc',
+                        \ 'bundle/.*/doc'
+                        \ ]
+let g:startify_skiplist_server = [ 'GVIM' ]
+let g:startify_custom_indices = []
+let g:startify_enable_special = 0
+
+function! SaveSessionWithName()
+  let sname = "default"
+  if strlen(v:this_session)
+    let sname = fnamemodify(substitute(v:this_session, ".vim$", "x.vim", ""), ":t")
+  endif
+  call startify#session_save(sname)
+endfunction
+
+autocmd VimLeavePre * call SaveSessionWithName()
+
+"""""""""""""""""""""""""""""""""""""""" Restore last session
+"let g:session_autosave = 1
+"let g:session_autoload = 1
+"let g:session_default_to_last = 1
+"let g:session_directory = ".vim"
+
+"au VimLeavePre * SaveSession()
 
 """"""""""""""""""""""""""""""""""""""""""""""" Signify
 let g:signify_mapping_next_hunk = '<leader>gj'
@@ -552,14 +586,6 @@ if has("autocmd")
     \ exec oldwinnr . " wincmd w" 
 
 endif
-
-"""""""""""""""""""""""""""""""""""""""" Restore last session
-let g:session_autosave = 1
-let g:session_autoload = 1
-let g:session_default_to_last = 1
-let g:session_directory = ".vim"
-
-au VimLeavePre * SaveSession()
 
 """"""""""""""""""""""""""""""""""""""""" Colors
 set t_Co=256
