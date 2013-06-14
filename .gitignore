@@ -7,3 +7,4 @@ tmp/*
 last-session.txt
 ().vim
 bundle/
+sessions
