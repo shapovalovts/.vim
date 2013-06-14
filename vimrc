@@ -47,7 +47,7 @@ set cul
 if exists("+undofile")
   set undolevels=256
   set undoreload=10000
-  set undodir=./.vim/
+  set undodir=~/.vim/spool
   set undofile
 endif
 set autochdir
