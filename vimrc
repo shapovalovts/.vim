@@ -135,11 +135,11 @@ let g:signify_update_on_bufenter = 1
 let g:signify_line_highlight = 0
 let g:signify_sign_weight = 'bold'
 
-let g:signify_sign_add               = '✚'
-let g:signify_sign_delete            = 'ー'
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '-'
 let g:signify_sign_change            = '✶'
 let g:signify_sign_change_delete     = '✶'
-let g:signify_sign_delete_first_line = 'ー'
+let g:signify_sign_delete_first_line = '-'
 
 let g:signify_sign_color_ctermfg_add    = 2
 let g:signify_sign_color_ctermfg_delete = 1
@@ -276,25 +276,13 @@ set laststatus=2
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" tags, swp and backup
-" Create ./.vim in a buffer directory on write:
-function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h').'/.vim'
-        echo dir
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-endfunction
-au BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-
 set tags=./.vim/tags
 set tags+=~/.vim/tags/cpp
 
-set directory=./.vim//
+set directory=~/.vim/spool/
 set directory+=.
 
-set backupdir=./.vim//
+set backupdir=~/.vim/spool/
 set backup
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
