@@ -7,20 +7,21 @@
 3. `cd ~/.vim`
 4. `echo "source ~/.vim/vimrc" > ~/.vimrc`
 5. Install [Vundle](https://github.com/gmarik/vundle) with `git clone http://github.com/gmarik/vundle.git bundle/vundle`
-6. Run Vim and type `:BundleInstall` to install the plugins with Vundle.
-7. Enjoy!
+6. Run Vim (ignore warnings) and type `:BundleInstall` to install the plugins with Vundle
+7. Restart vim
+8. Enjoy!
 
 ## Screenshots
 
-**Normal mode**
+**Normal Mode**
 
 [![Normal mode](https://github.com/geneuro/.vim/raw/master/screenshots/vim1.png)](https://github.com/geneuro/.vim/raw/master/screenshots/vim1.png)
 
-**<Ctrl-t> opens CtrlP+NerdTree tab**
+**CtrlP+NerdTree Tab**
 
 [![<Ctrl-t> opens CtrlP+NerdTree tab](https://github.com/geneuro/.vim/raw/master/screenshots/vim2.png)](https://github.com/geneuro/.vim/raw/master/screenshots/vim2.png)
 
-**Insert mode**
+**Insert Mode**
 
 [![Insert mode](https://github.com/geneuro/.vim/raw/master/screenshots/vim3.png)](https://github.com/geneuro/.vim/raw/master/screenshots/vim3.png)
 
