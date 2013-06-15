@@ -14,7 +14,11 @@
 
 **Linux**
 
-[![Linux](https://github.com/geneuro/.vim/raw/master/screenshots/linux-vim.png)](https://github.com/geneuro/.vim/raw/master/screenshots/linux-vim.png)
+[![Normal mode](https://github.com/geneuro/.vim/raw/master/screenshots/vim1.png)](https://github.com/geneuro/.vim/raw/master/screenshots/vim1.png)
+
+[![<Ctrl-t> opens CtrlP+NerdTree tab](https://github.com/geneuro/.vim/raw/master/screenshots/vim2.png)](https://github.com/geneuro/.vim/raw/master/screenshots/vim2.png)
+
+[![Insert mode](https://github.com/geneuro/.vim/raw/master/screenshots/vim3.png)](https://github.com/geneuro/.vim/raw/master/screenshots/vim3.png)
 
 ## Using plugins
 
