@@ -135,10 +135,10 @@ let g:signify_update_on_bufenter = 1
 let g:signify_line_highlight = 0
 let g:signify_sign_weight = 'bold'
 
-let g:signify_sign_add               = '+'
+let g:signify_sign_add               = '⤀'
 let g:signify_sign_delete            = '-'
-let g:signify_sign_change            = '✶'
-let g:signify_sign_change_delete     = '✶'
+let g:signify_sign_change            = '⇄'
+let g:signify_sign_change_delete     = '⇄'
 let g:signify_sign_delete_first_line = '-'
 
 let g:signify_sign_color_ctermfg_add    = 2
