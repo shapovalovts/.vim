@@ -52,3 +52,4 @@
 23. python-syntax
 24. mhinz/vim-signify
 25. mhinz/vim-startify
+26. chrisbra/Recover.vim

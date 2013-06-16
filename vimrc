@@ -86,6 +86,7 @@ Bundle 'kshenoy/vim-signature'
 Bundle 'hdima/python-syntax'
 Bundle 'mhinz/vim-signify'
 Bundle 'mhinz/vim-startify'
+Bundle 'chrisbra/Recover.vim'
 
 filetype plugin indent on      " required by Vundle
 
