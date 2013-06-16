@@ -92,9 +92,17 @@ filetype plugin indent on      " required by Vundle
 
 """"""""""""""""""""""""""""""""""""""""""""""" vimerl
 set runtimepath+=$HOME/.vim/bundle/Vimerl
-autocmd Filetype erlang setlocal omnifunc=erlang_complete#Complete
 let g:erlang_skel_header = {"author": "Taras Shapovalov"}
 let g:erlang_keywordprg = "erl -man"
+
+""""""""""""""""""""""""""""""""""""""""""""""" Erlang file type
+autocmd FileType erlang set shiftwidth=2
+autocmd FileType erlang set ts=2
+autocmd FileType erlang set softtabstop=2
+autocmd FileType erlang set colorcolumn=80
+autocmd Filetype erlang set omnifunc=erlang_complete#Complete
+autocmd FileType erlang hi ColorColumn cterm=none ctermbg=7
+autocmd Filetype erlang execute "set colorcolumn=" . join(range(81,335), ',')
 
 """"""""""""""""""""""""""""""""""""""""""""""" Startify
 let g:startify_enable_special = 0
