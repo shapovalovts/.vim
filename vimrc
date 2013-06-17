@@ -55,6 +55,8 @@ set autochdir
 
 syntax on
 
+autocmd FileType make set noexpandtab
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
 filetype on                    " required on MacOSX only
 filetype plugin off            " required by Vundle
