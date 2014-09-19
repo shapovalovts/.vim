@@ -178,7 +178,6 @@ let g:syntastic_echo_current_error = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_balloons = 0
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_quiet_warnings = 0
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_c_no_include_search = 1
 let g:syntastic_cpp_check_header = 0
@@ -191,6 +190,7 @@ let g:syntastic_stl_format = '%E{ line: %fe | col: %e }'
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['ruby', 'php'],
                            \ 'passive_filetypes': ['puppet'] }
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
 let g:gitinfo = ''
