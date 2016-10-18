@@ -57,6 +57,8 @@ syntax on
 
 autocmd FileType make set noexpandtab
 
+let g:tex_flavor = "latex"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
 filetype on                    " required on MacOSX only
 filetype plugin off            " required by Vundle
@@ -92,6 +94,10 @@ Bundle 'chrisbra/Recover.vim'
 Bundle 'scrooloose/nerdcommenter'
 
 filetype plugin indent on      " required by Vundle
+
+""""""""""""""""""""""""""""""""""""""""""""""" spell
+setlocal spell spelllang=en
+set spell!
 
 """"""""""""""""""""""""""""""""""""""""""""""" vimerl
 set runtimepath+=$HOME/.vim/bundle/Vimerl
@@ -131,7 +137,7 @@ function! SaveSessionWithName()
   call startify#session_save(sname)
 endfunction
 
-autocmd VimLeavePre * call SaveSessionWithName()
+"autocmd VimLeavePre * call SaveSessionWithName()
 
 """"""""""""""""""""""""""""""""""""""""""""""" Signify
 let g:signify_mapping_next_hunk = '<leader>gj'
@@ -140,8 +146,8 @@ let g:signify_mapping_toggle = '<leader>gt'
 let g:signify_mapping_toggle_highlight = '<leader>gh'
 let g:signify_skip_filetype = { 'vim': 1, 'c': 1 }
 let g:signify_skip_filename = { '/home/taras/.vimrc': 1 }
-let g:signify_vcs_list = [ 'git', 'svn' ]
-let g:signify_difftool = 'gnudiff'
+let g:signify_vcs_list = ['git']
+let g:signify_difftool = 'diff'
 let g:signify_sign_overwrite = 1
 let g:signify_update_on_bufenter = 1
 let g:signify_line_highlight = 0
@@ -178,7 +184,7 @@ let g:syntastic_echo_current_error = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_balloons = 0
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_quiet_warnings = 0
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_c_no_include_search = 1
 let g:syntastic_cpp_check_header = 0
