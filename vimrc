@@ -197,6 +197,7 @@ let g:syntastic_stl_format = '%E{ line: %fe | col: %e }'
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['ruby', 'php'],
                            \ 'passive_filetypes': ['puppet'] }
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
 let g:gitinfo = ''
