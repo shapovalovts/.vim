@@ -3,7 +3,7 @@
 ## Installation
 
 1. `cd ~`
-2. `git clone git://github.com/geneuro/.vim.git`
+2. `git clone git://github.com/shapovalovts/.vim.git`
 3. `cd ~/.vim`
 4. `echo "source ~/.vim/vimrc" > ~/.vimrc`
 5. Install [Vundle](https://github.com/gmarik/vundle) with `git clone http://github.com/gmarik/vundle.git bundle/vundle`
