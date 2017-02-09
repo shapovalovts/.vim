@@ -153,10 +153,10 @@ let g:signify_update_on_bufenter = 1
 let g:signify_line_highlight = 0
 let g:signify_sign_weight = 'bold'
 
-let g:signify_sign_add               = '⤀'
+let g:signify_sign_add               = '+'
 let g:signify_sign_delete            = '-'
-let g:signify_sign_change            = '⇄'
-let g:signify_sign_change_delete     = '⇄'
+let g:signify_sign_change            = '%'
+let g:signify_sign_change_delete     = '~'
 let g:signify_sign_delete_first_line = '-'
 
 let g:signify_sign_color_ctermfg_add    = 2
@@ -209,18 +209,6 @@ function! GitInfo()
 endfun
 au BufRead * call GitInfo()
 
-let g:svninfo = ''
-function! SVNInfo()
-  let rev = system("svn info 2> /dev/null | grep -i revision | awk '{print $2}'")
-  if rev != ''
-    let branch = system("svn info | grep URL | awk '{print $2}' | awk  -F '/' '{print $5}'")
-    if branch != ''
-      let g:svninfo = 'svn ↱ ' . substitute(branch, '\n', '', 'g') . '/' . substitute(rev, '\n', '', 'g')
-    endif
-  endif
-endfun
-au BufRead * call SVNInfo()
-
 function! FileSize()
  let bytes = getfsize(expand("%:p"))
  if bytes <= 0
@@ -272,7 +260,6 @@ set statusline+=%*
 
 set statusline+=%=                  "left/right separator ⤦
 set statusline+=%#VisualDelimeterWhite#\ ┃%*\ 
-set statusline+=%{g:svninfo}
 set statusline+=%{g:gitinfo}
 
 set statusline+=%#VisualDelimeterWhite#\ ┃%*
