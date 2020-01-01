@@ -53,3 +53,5 @@
 24. mhinz/vim-signify
 25. mhinz/vim-startify
 26. chrisbra/Recover.vim
+27. scrooloose/nerdcommenter
+28. skywind3000/vim-quickui

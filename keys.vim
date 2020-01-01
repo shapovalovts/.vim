@@ -44,7 +44,7 @@ map <space> /
 " F6:      -
 " F7:      replace (ask for confirmation)
 " F8:      toggle  indent guides
-" F9:      check syntax
+" F9:      menu
 " F10:     close current buffer
 " F11:     switch over lines numeration
 " F12:     toggle TagBar
@@ -56,9 +56,10 @@ imap <F3> <ESC>:set paste<CR>i<Right>
 nnoremap <C-F7> :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <F7> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 map <F8> :IndentGuidesToggle<CR>
-imap <F9> <ESC>:SyntasticCheck<CR>
-vmap <F9> :SyntasticCheck<CR>
-nmap <F9> :SyntasticCheck<CR>
+"imap <F9> <ESC>:SyntasticCheck<CR>
+"vmap <F9> :SyntasticCheck<CR>
+"nmap <F9> :SyntasticCheck<CR>
+noremap <F9> :call quickui#menu#open()<cr>
 imap <F10> <Esc>:tabclose<CR>a
 nmap <F10> :tabclose<CR>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
@@ -194,3 +195,4 @@ endif
 " Buffer navigation
 map <M-Left>  :bprevious<CR>
 map <M-Right> :bnext<CR>
+

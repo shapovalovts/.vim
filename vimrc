@@ -92,12 +92,58 @@ Bundle 'mhinz/vim-signify'
 Bundle 'mhinz/vim-startify'
 Bundle 'chrisbra/Recover.vim'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'skywind3000/vim-quickui'
 
 filetype plugin indent on      " required by Vundle
 
 """"""""""""""""""""""""""""""""""""""""""""""" spell
 setlocal spell spelllang=en
 set spell!
+
+""""""""""""""""""""""""""""""""""""""""""""""" QuickUI
+
+" clear all the menus
+call quickui#menu#reset()
+
+" install a 'File' menu, use [text, command] to represent an item.
+call quickui#menu#install('&File', [
+            \ [ "&New File\tCtrl+n", 'new' ],
+            \ [ "&Open File\tCtrl+n", 'call feedkeys(":edit ")' ],
+            \ [ "&File Tree\tCtrl+t ", 'NERDTreeToggle', 'toggle nerdtree' ],
+            \ [ "&Close", 'close' ],
+            \ [ "--", '' ],
+            \ [ "&Save\tCtrl+s", 'echo 3'],
+            \ [ "Save &As", 'call feedkey(":saveas ")' ],
+            \ [ "Save All", 'wa' ],
+            \ [ "--", '' ],
+            \ [ "E&xit\tAlt+x", 'q' ],
+            \ ])
+
+" script inside %{...} will be evaluated and expanded in the string
+call quickui#menu#install("&Option", [
+			\ ['Check Syntax', 'SyntasticCheck'],
+			\ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
+			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
+			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
+			\ ])
+
+" register HELP menu with weight 1000
+call quickui#menu#install('H&elp', [
+			\ ["&Cheatsheet", 'help index', ''],
+			\ ['T&ips', 'help tips', ''],
+			\ ['--',''],
+			\ ["&Tutorial", 'help tutor', ''],
+			\ ['&Quick Reference', 'help quickref', ''],
+			\ ['&Summary', 'help summary', ''],
+			\ ['--',''],
+			\ ['&Vim Script', 'help eval', ''],
+			\ ['&Function List', 'help function-list', ''],
+			\ ], 10000)
+
+let g:quickui_show_tip = 1
+let g:quickui_border_style = 2
+let g:quickui_color_scheme = 'papercol dark'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""" vimerl
 set runtimepath+=$HOME/.vim/bundle/Vimerl
@@ -108,10 +154,10 @@ let g:erlang_keywordprg = "erl -man"
 autocmd FileType erlang set shiftwidth=2
 autocmd FileType erlang set ts=2
 autocmd FileType erlang set softtabstop=2
-autocmd FileType erlang set colorcolumn=80
+autocmd FileType erlang set colorcolumn=100
 autocmd Filetype erlang set omnifunc=erlang_complete#Complete
 autocmd FileType erlang hi ColorColumn cterm=none ctermbg=7
-autocmd Filetype erlang execute "set colorcolumn=" . join(range(81,335), ',')
+autocmd Filetype erlang execute "set colorcolumn=" . join(range(101,355), ',')
 
 """"""""""""""""""""""""""""""""""""""""""""""" Startify
 let g:startify_enable_special = 0
@@ -195,8 +241,8 @@ let g:syntastic_cpp_auto_refresh_includes = 0
 let g:syntastic_c_auto_refresh_includes = 0
 let g:syntastic_stl_format = '%E{ line: %fe | col: %e }'
 let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['ruby', 'php'],
-                           \ 'passive_filetypes': ['puppet'] }
+                           \ 'active_filetypes': ['cpp', 'py'],
+                           \ 'passive_filetypes': [''] }
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
@@ -534,7 +580,7 @@ let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['➱', '➢']
 
 if has("autocmd")
-  au FileType c,cpp nested :TagbarOpen
+  "au FileType c,cpp nested :TagbarOpen
 
   au FileType qf
     \ if &buftype == "quickfix" |
