@@ -38,7 +38,7 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:. " highlight problematic whitespace
 set viminfo='20,<50,s10,h,%                   " remember some stuff after quiting vim: marks, registers, searches, buffer list
 set sessionoptions=tabpages,sesdir,folds,options,globals,help,localoptions,resize,winsize,winpos
-set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore=*.swp,*.bak,*.pyc,*.class,.git,.DS_Store
 set cindent
 set modeline
 set lazyredraw
@@ -58,6 +58,7 @@ syntax on
 autocmd FileType make set noexpandtab
 
 let g:tex_flavor = "latex"
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
 filetype on                    " required on MacOSX only
@@ -82,7 +83,7 @@ Bundle 'SearchComplete'
 Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'jimenezrick/vimerl'
 Bundle 'msanders/snipmate.vim'
-Bundle 'sudo.vim'
+Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-repeat'
 Bundle 'marcinbiegun/vim-escript'
 Bundle 'terryma/vim-multiple-cursors'
@@ -93,8 +94,26 @@ Bundle 'mhinz/vim-startify'
 Bundle 'chrisbra/Recover.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'skywind3000/vim-quickui'
+Bundle 'ryanoasis/vim-devicons'
+Bundle 'psliwka/vim-smoothie'
+Bundle 'airblade/vim-rooter'
+Bundle 'bkad/CamelCaseMotion'
 
 filetype plugin indent on      " required by Vundle
+
+
+let g:camelcasemotion_key = ','
+
+""""""""""""""""""""""""""""""""""""""""""""""" rooter
+
+" Don't change dirs automatically, using rooter for that
+set noautochdir
+let g:rooter_silent_chdir = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""" vim-devicons
+
+set encoding=UTF-8
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 """"""""""""""""""""""""""""""""""""""""""""""" spell
 setlocal spell spelllang=en
@@ -107,14 +126,17 @@ call quickui#menu#reset()
 
 " install a 'File' menu, use [text, command] to represent an item.
 call quickui#menu#install('&File', [
-            \ [ "&New File\tCtrl+n", 'new' ],
             \ [ "&Open File\tCtrl+n", 'call feedkeys(":edit ")' ],
             \ [ "&File Tree\tCtrl+t ", 'NERDTreeToggle', 'toggle nerdtree' ],
             \ [ "&Close", 'close' ],
             \ [ "--", '' ],
             \ [ "&Save\tCtrl+s", 'echo 3'],
-            \ [ "Save &As", 'call feedkey(":saveas ")' ],
-            \ [ "Save All", 'wa' ],
+            \ [ "Save &As", 'call feedkeys(":saveas ")' ],
+            \ [ "Save All", 'Wall' ],
+            \ [ "Save With Sudo", 'SudoWrite' ],
+            \ [ "--", '' ],
+            \ [ "Chmod", 'call feedkeys(":Chmod ")' ],
+            \ [ "Rename", 'call feedkeys(":Rename ")' ],
             \ [ "--", '' ],
             \ [ "E&xit\tAlt+x", 'q' ],
             \ ])
@@ -199,10 +221,10 @@ let g:signify_update_on_bufenter = 1
 let g:signify_line_highlight = 0
 let g:signify_sign_weight = 'bold'
 
-let g:signify_sign_add               = '+'
+let g:signify_sign_add               = ''
 let g:signify_sign_delete            = '-'
 let g:signify_sign_change            = '%'
-let g:signify_sign_change_delete     = '~'
+let g:signify_sign_change_delete     = '-'
 let g:signify_sign_delete_first_line = '-'
 
 let g:signify_sign_color_ctermfg_add    = 2
@@ -250,7 +272,7 @@ let g:gitinfo = ''
 function! GitInfo()
   let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
   if branch != ''
-    let g:gitinfo = 'git ↱ ' . substitute(branch, '\n', '', 'g')
+    let g:gitinfo = ' ' . substitute(branch, '\n', '', 'g')
   endif
 endfun
 au BufRead * call GitInfo()

@@ -59,7 +59,7 @@ map <F8> :IndentGuidesToggle<CR>
 "imap <F9> <ESC>:SyntasticCheck<CR>
 "vmap <F9> :SyntasticCheck<CR>
 "nmap <F9> :SyntasticCheck<CR>
-noremap <F9> :call quickui#menu#open()<cr>
+noremap <F9> :call quickui#menu#open()<cr><cr>
 imap <F10> <Esc>:tabclose<CR>a
 nmap <F10> :tabclose<CR>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
