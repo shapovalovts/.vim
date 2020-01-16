@@ -8,9 +8,10 @@
 4. `echo "source ~/.vim/vimrc" > ~/.vimrc`
 5. Install [Vundle](https://github.com/gmarik/vundle) with `git clone http://github.com/gmarik/vundle.git bundle/vundle`
 6. Run Vim (ignore warnings) and type `:BundleInstall` to install the plugins with Vundle
-7. Install font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
-8. Restart vim
-9. Enjoy!
+7. Install the font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
+8. Install the finder [fzf](https://github.com/junegunn/fzf) (esnsure fzf binary is in the $PATH)
+9. Restart vim
+10. Enjoy!
 
 ## Screenshots
 
@@ -18,13 +19,9 @@
 
 [![Normal mode](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim1.png)](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim1.png)
 
-**CtrlP+NerdTree Tab**
-
-[![<Ctrl-t> opens CtrlP+NerdTree tab](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim2.png)](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim2.png)
-
 **Insert Mode**
 
-[![Insert mode](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim3.png)](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim3.png)
+[![Insert mode](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim2.png)](https://github.com/shapovalovts/.vim/raw/master/screenshots/vim2.png)
 
 ## Using plugins
 
@@ -35,28 +32,29 @@
 5.  vim-surround
 6.  syntastic
 7.  neocomplcache
-8.  ctrlp.vim
-9.  OmniCppComplete
-10. tagbar
-11. cpp.vim
-12. c.vim
-13. a.vim
-14. SearchComplete
-15. ShowMarks
-16. vim-indent-guides.git
-17. Vimerl
-18. snipmate.vim
-19. vim-eunuch
-20. vim-repeat
-21. vim-escript
-22. vim-multiple-cursors
-23. python-syntax
-24. mhinz/vim-signify
-25. mhinz/vim-startify
-26. chrisbra/Recover.vim
-27. scrooloose/nerdcommenter
-28. skywind3000/vim-quickui
-29. yanoasis/vim-devicons
-30. psliwka/vim-smoothie
-31. airblade/vim-rooter
-32. bkad/CamelCaseMotion
+8.  OmniCppComplete
+9. tagbar
+10. cpp.vim
+11. c.vim
+12. a.vim
+13. SearchComplete
+14. ShowMarks
+15. vim-indent-guides.git
+16. Vimerl
+17. snipmate.vim
+18. vim-eunuch
+19. vim-repeat
+20. vim-escript
+21. vim-multiple-cursors
+22. python-syntax
+23. mhinz/vim-signify
+24. mhinz/vim-startify
+25. chrisbra/Recover.vim
+26. scrooloose/nerdcommenter
+27. skywind3000/vim-quickui
+28. yanoasis/vim-devicons
+29. psliwka/vim-smoothie
+30. airblade/vim-rooter
+31. bkad/CamelCaseMotion
+31. bkad/CamelCaseMotion
+32. junegunn/fzf.vim

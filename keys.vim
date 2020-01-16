@@ -81,9 +81,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 " I can type :help on my own, thanks.
 noremap <F1> <Esc>
 
-" Ctrl+o:  open file
-let g:ctrlp_map = '<c-o>'
-
 " Quick (v)split
 nnoremap <silent> ss :split<CR>
 nnoremap <silent> vv :vsplit<CR>
@@ -131,8 +128,8 @@ imap <silent> <C-h> <ESC>:tabprevious<cr>
 map <silent> <C-l> :tabnext<cr>
 nmap <silent> <C-l> :tabnext<cr>
 imap <silent> <C-l> <ESC>:tabnext<cr>
-nmap <silent> <C-t> :tabnew<cr>:e .<cr>:CtrlPMixed<cr>
-imap <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>:cTRLpmIXed<cr>
+nmap <silent> <C-t> :tabnew<cr>:e .<cr>:Files<cr>
+map <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>:Files<cr>
 
 fu! TabMoveLeft()
   let current_tab = tabpagenr()

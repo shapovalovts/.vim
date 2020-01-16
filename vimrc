@@ -73,7 +73,6 @@ Bundle 'vcscommand.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
-Bundle 'kien/ctrlp.vim'
 Bundle 'OmniCppComplete'
 Bundle 'majutsushi/tagbar'
 Bundle 'cpp.vim'
@@ -98,6 +97,8 @@ Bundle 'ryanoasis/vim-devicons'
 Bundle 'psliwka/vim-smoothie'
 Bundle 'airblade/vim-rooter'
 Bundle 'bkad/CamelCaseMotion'
+Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Bundle 'junegunn/fzf.vim'
 
 filetype plugin indent on      " required by Vundle
 
@@ -545,45 +546,6 @@ endfunction
 
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
-
-""""""""""""""""""""""""""""""""""""""""" CtrlP
-set wildignore+=*/tmp/*,*.o,*.so,*.swp,*.zip
-let g:ctrlp_working_path_mode = 'c'
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_height = 99
-let g:ctrlp_switch_buffer = 2
-let g:ctrlp_reuse_window = 'NERD_tree'
-let g:ctrlp_tabpage_position = 'ac'
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_lazy_update = 1
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
-let ctrlp_filter_greps = "".
-    \ "egrep -iv '\\.(" .
-    \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-    \ ")$' | " .
-    \ "egrep -v '^(\\./)?(" .
-    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
-    \ ")'"
- 
-let my_ctrlp_git_command = "" .
-    \ "cd %s && git ls-files | " .
-    \ ctrlp_filter_greps
- 
-if has("unix")
-    let my_ctrlp_user_command = "" .
-    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
-    \ ctrlp_filter_greps
-endif
- 
-let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
-"let g:ctrlp_buffer_func = {
-"  \ 'enter': 'SetVisibleCursorLine',
-"  \ 'exit':  'SetInvisibleCursorLine',
-"  \ }
 
 """"""""""""""""""""""""""""""""""""""""" EasyMotion
 let g:EasyMotion_leader_key = ','
