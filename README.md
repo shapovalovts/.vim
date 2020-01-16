@@ -1,5 +1,12 @@
 # Installation of my vimrc
 
+## Requirements:
+
+1. vim >= 8.2 (tested in CLI mode only)
+2. Linux
+3. Font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
+4. Finder [fzf](https://github.com/junegunn/fzf) (ensure fzf binary is in the $PATH)
+
 ## Installation
 
 1. `cd ~`
@@ -7,11 +14,9 @@
 3. `cd ~/.vim`
 4. `echo "source ~/.vim/vimrc" > ~/.vimrc`
 5. Install [Vundle](https://github.com/gmarik/vundle) with `git clone http://github.com/gmarik/vundle.git bundle/vundle`
-6. Run Vim (ignore warnings) and type `:BundleInstall` to install the plugins with Vundle
-7. Install the font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
-8. Install the finder [fzf](https://github.com/junegunn/fzf) (esnsure fzf binary is in the $PATH)
-9. Restart vim
-10. Enjoy!
+6. Run Vim (ignore warnings) and type `:BundleInstall` to install the configured plugins with Vundle
+7. Restart vim
+8. Enjoy!
 
 ## Screenshots
 

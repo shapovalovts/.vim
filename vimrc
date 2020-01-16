@@ -408,9 +408,6 @@ endfunction
 
 " Change a cursor shape (Gnome terminal only):
 if has("autocmd")
-  "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-  "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  "au VimLeave    * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
   au BufEnter __Tagbar__ silent call SetVisibleCursorLine()
   au BufLeave __Tagbar__ silent call SetInvisibleCursorLine()
   au BufEnter NERD_tree* silent call SetVisibleCursorLine()

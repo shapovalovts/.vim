@@ -56,9 +56,6 @@ imap <F3> <ESC>:set paste<CR>i<Right>
 nnoremap <C-F7> :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <F7> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 map <F8> :IndentGuidesToggle<CR>
-"imap <F9> <ESC>:SyntasticCheck<CR>
-"vmap <F9> :SyntasticCheck<CR>
-"nmap <F9> :SyntasticCheck<CR>
 noremap <F9> :call quickui#menu#open()<cr><cr>
 imap <F10> <Esc>:tabclose<CR>a
 nmap <F10> :tabclose<CR>
