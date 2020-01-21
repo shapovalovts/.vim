@@ -99,6 +99,8 @@ Bundle 'airblade/vim-rooter'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Bundle 'junegunn/fzf.vim'
+Bundle 'ryvnf/readline.vim'
+Bundle 'liuchengxu/vista.vim'
 
 filetype plugin indent on      " required by Vundle
 
@@ -268,6 +270,38 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'passive_filetypes': [''] }
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" Vista
+
+" How each level is indented and what to prepend.
+" This could make the display more compact or more spacious.
+" e.g., more compact: ["▸ ", ""]
+" Note: this option only works the LSP executives, doesn't work for `:Vista ctags`.
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'ctags'
+
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+let g:vista_fzf_preview = ['right:50%']
+
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
 let g:gitinfo = ''
 function! GitInfo()
@@ -328,6 +362,10 @@ set statusline+=%*
 
 
 set statusline+=%=                  "left/right separator ⤦
+
+set statusline+=%#VisualDelimeterWhite#\ ┃%*\ 
+set statusline+=%{NearestMethodOrFunction()} " current function name
+
 set statusline+=%#VisualDelimeterWhite#\ ┃%*\ 
 set statusline+=%{g:gitinfo}
 
