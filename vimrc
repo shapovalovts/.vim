@@ -101,6 +101,7 @@ Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Bundle 'junegunn/fzf.vim'
 Bundle 'ryvnf/readline.vim'
 Bundle 'liuchengxu/vista.vim'
+Bundle 'nkantar/SPI.vim'
 
 filetype plugin indent on      " required by Vundle
 
@@ -150,6 +151,10 @@ call quickui#menu#install("&Option", [
 			\ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
 			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
 			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
+			\ ])
+
+call quickui#menu#install("&Python", [
+			\ ['Sort headers', 'SPI'],
 			\ ])
 
 " register HELP menu with weight 1000

@@ -38,7 +38,7 @@
 6.  syntastic
 7.  neocomplcache
 8.  OmniCppComplete
-9. tagbar
+9.  tagbar
 10. cpp.vim
 11. c.vim
 12. a.vim
@@ -65,3 +65,4 @@
 32. junegunn/fzf.vim
 33. ryvnf/readline.vim
 34. liuchengxu/vista.vim
+35. nkantar/SPI.vim
