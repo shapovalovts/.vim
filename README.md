@@ -64,5 +64,4 @@
 31. bkad/CamelCaseMotion
 32. junegunn/fzf.vim
 33. ryvnf/readline.vim
-34. liuchengxu/vista.vim
-35. nkantar/SPI.vim
+34. nkantar/SPI.vim
