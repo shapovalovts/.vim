@@ -59,6 +59,10 @@ autocmd FileType make set noexpandtab
 
 let g:tex_flavor = "latex"
 
+augroup filetypedetect
+  " Ignore filetypes for *.module files
+  autocmd! BufNewFile,BufRead *.module  setfiletype ignored
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
 filetype on                    " required on MacOSX only
