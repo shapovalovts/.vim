@@ -79,8 +79,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'OmniCppComplete'
 Bundle 'majutsushi/tagbar'
-Bundle 'cpp.vim'
-Bundle 'c.vim'
 Bundle 'a.vim'
 Bundle 'SearchComplete'
 Bundle 'nathanaelkane/vim-indent-guides.git'
@@ -253,27 +251,27 @@ let g:signify_cursorhold_normal = 1
 let g:signify_cursorhold_insert = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" Syntastic
-let g:syntastic_auto_jump = 1
+let g:syntastic_auto_jump = 0
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_enable_signs = 0
+let g:syntastic_enable_signs = 1
 let g:syntastic_echo_current_error = 0
 let g:syntastic_check_on_open = 0
-let g:syntastic_enable_balloons = 0
+let g:syntastic_enable_balloons = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-let g:syntastic_cpp_no_include_search = 1
-let g:syntastic_c_no_include_search = 1
-let g:syntastic_cpp_check_header = 0
-let g:syntastic_c_check_header = 0
-let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_c_remove_include_errors = 1
-let g:syntastic_cpp_auto_refresh_includes = 0
-let g:syntastic_c_auto_refresh_includes = 0
-let g:syntastic_stl_format = '%E{ line: %fe | col: %e }'
+let g:syntastic_cpp_no_include_search = 0
+let g:syntastic_c_no_include_search = 0
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_c_check_header = 1
+let g:syntastic_cpp_remove_include_errors = 0
+let g:syntastic_c_remove_include_errors = 0
+let g:syntastic_cpp_auto_refresh_includes = 1
+let g:syntastic_c_auto_refresh_includes = 1
+"let g:syntastic_stl_format = '%E{ line: %fe | col: %e }'
 let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['cpp', 'py'],
-                           \ 'passive_filetypes': [''] }
+                           \ 'active_filetypes': ['py'],
+                           \ 'passive_filetypes': ['cpp', 'c'] }
 let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_cpp_config_file = '/home/taras/.syntastic_cpp_config'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
 let g:gitinfo = ''

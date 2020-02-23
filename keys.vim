@@ -56,7 +56,9 @@ imap <F3> <ESC>:set paste<CR>i<Right>
 nnoremap <C-F7> :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <F7> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 map <F8> :IndentGuidesToggle<CR>
-noremap <F9> :call quickui#menu#open()<cr><cr>
+nnoremap <F9> :call quickui#menu#open()<cr><cr>
+map <F9> :call quickui#menu#open()<cr><cr>
+imap <F9> <Esc>:call quickui#menu#open()<cr><cr>
 imap <F10> <Esc>:tabclose<CR>a
 nmap <F10> :tabclose<CR>
 imap <silent> <F11> <Esc>:set<Space>nu!<CR>a
