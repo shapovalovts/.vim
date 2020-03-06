@@ -6,6 +6,7 @@
 2. Linux
 3. Font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
 4. Finder [fzf](https://github.com/junegunn/fzf) (ensure fzf binary is in the $PATH)
+5. ag [silversearcher-ag] (for AnyJump)
 
 ## Installation
 
@@ -63,3 +64,4 @@
 31. junegunn/fzf.vim
 32. ryvnf/readline.vim
 33. nkantar/SPI.vim
+34. pechorin/any-jump.vim

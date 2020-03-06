@@ -103,6 +103,7 @@ Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Bundle 'junegunn/fzf.vim'
 Bundle 'ryvnf/readline.vim'
 Bundle 'nkantar/SPI.vim'
+Bundle 'pechorin/any-jump.vim'
 
 filetype plugin indent on      " required by Vundle
 
@@ -143,35 +144,85 @@ call quickui#menu#install('&File', [
             \ [ "E&xit\tAlt+x", 'q' ],
             \ ])
 
+call quickui#menu#install("&Search", [
+            \ ["&Jump to    <leader>+j",  'AnyJump'],
+            \ ["&Previous   <leader>+ab", 'AnyJumpBack'],
+            \ ["&Last       <leader>+al", 'AnyJumpLastResults'],
+            \ ])
+
 " script inside %{...} will be evaluated and expanded in the string
 call quickui#menu#install("&Option", [
-			\ ['Check Syntax', 'SyntasticCheck'],
-			\ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
-			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
-			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
-			\ ])
+            \ ['Check Syntax', 'SyntasticCheck'],
+            \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
+            \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
+            \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
+            \ ])
+
+call quickui#menu#install("&Plugin", [
+            \ ['&List', 'BundleList'],
+            \ ['&Search', 'BundleSearch'],
+            \ ['&Update', 'BundleUpdate'],
+            \ ['&Install', 'BundleInstall'],
+            \ ['&Clean', 'BundleClean'],
+            \ ])
 
 call quickui#menu#install("&Python", [
-			\ ['Sort headers', 'SPI'],
-			\ ])
+            \ ['Sort headers', 'SPI'],
+            \ ])
+
 
 " register HELP menu with weight 1000
 call quickui#menu#install('H&elp', [
-			\ ["&Cheatsheet", 'help index', ''],
-			\ ['T&ips', 'help tips', ''],
-			\ ['--',''],
-			\ ["&Tutorial", 'help tutor', ''],
-			\ ['&Quick Reference', 'help quickref', ''],
-			\ ['&Summary', 'help summary', ''],
-			\ ['--',''],
-			\ ['&Vim Script', 'help eval', ''],
-			\ ['&Function List', 'help function-list', ''],
-			\ ], 10000)
+            \ ["&Cheatsheet", 'help index', ''],
+            \ ['T&ips', 'help tips', ''],
+            \ ['--',''],
+            \ ["&Tutorial", 'help tutor', ''],
+            \ ['&Quick Reference', 'help quickref', ''],
+            \ ['&Summary', 'help summary', ''],
+            \ ['--',''],
+            \ ['&Vim Script', 'help eval', ''],
+            \ ['&Function List', 'help function-list', ''],
+            \ ], 10000)
 
 let g:quickui_show_tip = 1
 let g:quickui_border_style = 2
 let g:quickui_color_scheme = 'papercol dark'
 
+
+""""""""""""""""""""""""""""""""""""""""""""""" AnyJump
+" Show line numbers in search rusults
+let g:any_jump_list_numbers = 0
+
+" Auto search references
+let g:any_jump_references_enabled = 1
+
+" Auto group results by filename
+let g:any_jump_grouping_enabled = 0
+
+" Amount of preview lines for each search result
+let g:any_jump_preview_lines_count = 5
+
+" Max search results, other results can be opened via [a]
+let g:any_jump_max_search_results = 7
+
+" Prefered search engine: rg or ag
+let g:any_jump_search_prefered_engine = 'rg'
+
+" Search results list styles:
+" - 'filename_first'
+" - 'filename_last'
+let g:any_jump_results_ui_style = 'filename_first'
+
+" Any-jump window size & position options
+let g:any_jump_window_width_ratio  = 0.6
+let g:any_jump_window_height_ratio = 0.6
+let g:any_jump_window_top_offset   = 4
+
+" Disable default any-jump keybindings (default: 0)
+let g:any_jump_disable_default_keybindings = 1
+
+" Remove comments line from search results (default: 1)
+let g:any_jump_remove_comments_from_results = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" vimerl
 set runtimepath+=$HOME/.vim/bundle/Vimerl
