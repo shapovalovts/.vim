@@ -105,12 +105,17 @@ Bundle 'ryvnf/readline.vim'
 Bundle 'nkantar/SPI.vim'
 Bundle 'pechorin/any-jump.vim'
 Bundle 'Yggdroot/hiPairs'
+Bundle 'junegunn/vim-peekaboo'
+Bundle 'markonm/traces.vim'
 
 filetype plugin indent on      " required by Vundle
 
 
 let g:camelcasemotion_key = ','
 
+
+""""""""""""""""""""""""""""""""""""""""""""""" Peehaboo
+let g:peekaboo_compact = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" hiPairs
 let g:hiPairs_hl_matchPair = { 'term'    : 'bold',

@@ -66,3 +66,5 @@
 33. nkantar/SPI.vim
 34. pechorin/any-jump.vim
 35. Yggdroot/hiPairs
+36. junegunn/vim-peekaboo
+37. markonm/traces.vim
