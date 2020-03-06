@@ -104,11 +104,21 @@ Bundle 'junegunn/fzf.vim'
 Bundle 'ryvnf/readline.vim'
 Bundle 'nkantar/SPI.vim'
 Bundle 'pechorin/any-jump.vim'
+Bundle 'Yggdroot/hiPairs'
 
 filetype plugin indent on      " required by Vundle
 
 
 let g:camelcasemotion_key = ','
+
+
+""""""""""""""""""""""""""""""""""""""""""""""" hiPairs
+let g:hiPairs_hl_matchPair = { 'term'    : 'bold',
+              \                'cterm'   : 'bold',
+              \                'ctermfg' : '173',
+              \                'gui'     : 'italic',
+              \                'guifg'   : 'White',
+              \                'guibg'   : 'Red' }
 
 """"""""""""""""""""""""""""""""""""""""""""""" rooter
 set noautochdir " Don't change dirs automatically, using rooter for that
@@ -223,6 +233,8 @@ let g:any_jump_disable_default_keybindings = 1
 
 " Remove comments line from search results (default: 1)
 let g:any_jump_remove_comments_from_results = 1
+
+let g:any_jump_disable_default_keybindings = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" vimerl
 set runtimepath+=$HOME/.vim/bundle/Vimerl

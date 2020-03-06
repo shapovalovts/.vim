@@ -65,3 +65,4 @@
 32. ryvnf/readline.vim
 33. nkantar/SPI.vim
 34. pechorin/any-jump.vim
+35. Yggdroot/hiPairs
