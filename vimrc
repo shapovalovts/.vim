@@ -104,26 +104,18 @@ Bundle 'junegunn/fzf.vim'
 Bundle 'ryvnf/readline.vim'
 Bundle 'nkantar/SPI.vim'
 Bundle 'pechorin/any-jump.vim'
-Bundle 'Yggdroot/hiPairs'
 Bundle 'junegunn/vim-peekaboo'
 Bundle 'markonm/traces.vim'
+Bundle 'ludovicchabant/vim-gutentags'
 
 filetype plugin indent on      " required by Vundle
 
 
+""""""""""""""""""""""""""""""""""""""""""""""" EasyMotion
 let g:camelcasemotion_key = ','
-
 
 """"""""""""""""""""""""""""""""""""""""""""""" Peehaboo
 let g:peekaboo_compact = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""" hiPairs
-let g:hiPairs_hl_matchPair = { 'term'    : 'bold',
-              \                'cterm'   : 'bold',
-              \                'ctermfg' : '173',
-              \                'gui'     : 'italic',
-              \                'guifg'   : 'White',
-              \                'guibg'   : 'Red' }
 
 """"""""""""""""""""""""""""""""""""""""""""""" rooter
 set noautochdir " Don't change dirs automatically, using rooter for that
@@ -144,14 +136,13 @@ call quickui#menu#reset()
 
 " install a 'File' menu, use [text, command] to represent an item.
 call quickui#menu#install('&File', [
-            \ [ "&Open File\tCtrl+n", 'call feedkeys(":edit ")' ],
-            \ [ "&File Tree\tCtrl+t ", 'NERDTreeToggle', 'toggle nerdtree' ],
-            \ [ "&Close", 'close' ],
+            \ [ "&Open file tree     Ctrl+t ", 'NERDTreeToggle', 'toggle nerdtree' ],
+            \ [ "&Close current", 'close' ],
             \ [ "--", '' ],
-            \ [ "&Save\tCtrl+s", 'echo 3'],
-            \ [ "Save &As", 'call feedkeys(":saveas ")' ],
-            \ [ "Save All", 'Wall' ],
-            \ [ "Save With Sudo", 'SudoWrite' ],
+            \ [ "&Save current", ':w'],
+            \ [ "Save &as", 'call feedkeys(":saveas ")' ],
+            \ [ "Save all", 'Wall' ],
+            \ [ "Save with Sudo", 'SudoWrite' ],
             \ [ "--", '' ],
             \ [ "Chmod", 'call feedkeys(":Chmod ")' ],
             \ [ "Rename", 'call feedkeys(":Rename ")' ],
@@ -171,6 +162,7 @@ call quickui#menu#install("&Option", [
             \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
             \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
             \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
+            \ ['Rebuild Project Tags', 'GutentagsUpdate'],
             \ ])
 
 call quickui#menu#install("&Plugin", [
@@ -368,9 +360,9 @@ set statusline+=\ \ %<%F\
 
 set statusline+=%#VisualDelimeterWhite#
 set statusline+=%*
-set statusline+=%{getfsize(expand('%:p'))>0?'┃\ ':''}
-set statusline+=%{FileSize()}
-set statusline+=%#VisualDelimeterWhite#\ ┃%*
+"set statusline+=%{getfsize(expand('%:p'))>0?'┃\ ':''}
+"set statusline+=%{FileSize()}
+"set statusline+=%#VisualDelimeterWhite#\ ┃%*
 
 "display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
@@ -402,7 +394,7 @@ set statusline+=%*
 
 set statusline+=%=                  "left/right separator ⤦
 
-set statusline+=%#VisualDelimeterWhite#\ ┃%*\ 
+"set statusline+=%#VisualDelimeterWhite#\ ┃%*\ 
 set statusline+=%{g:gitinfo}
 
 set statusline+=%#VisualDelimeterWhite#\ ┃%*
@@ -425,8 +417,8 @@ set laststatus=2
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" tags, swp and backup
-set tags=./.vim/tags
-set tags+=~/.vim/tags/cpp
+set tags=./.tags
+set tags+=.~/.vim/tags/
 
 set directory=~/.vim/spool/
 set directory+=.

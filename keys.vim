@@ -162,9 +162,9 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 imap <C-@> <C-Space>
 
 " Build tags of your own project with Ctrl-F12
-map <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
-imap <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
-vmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
+map <C-F12> :call UpdateTags()<CR>
+imap <C-F12> :call UpdateTags()<CR>
+vmap <C-F12> :call UpdateTags()<CR>
 
 " Change the mapleader from \ to ,
 let mapleader=","

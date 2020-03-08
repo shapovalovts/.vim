@@ -65,6 +65,6 @@
 32. ryvnf/readline.vim
 33. nkantar/SPI.vim
 34. pechorin/any-jump.vim
-35. Yggdroot/hiPairs
-36. junegunn/vim-peekaboo
-37. markonm/traces.vim
+35. junegunn/vim-peekaboo
+36. markonm/traces.vim
+37. xolox/vim-easytags
