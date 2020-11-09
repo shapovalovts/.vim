@@ -386,6 +386,8 @@ set statusline+=%*
 "set statusline+=%{FileSize()}
 "set statusline+=%#VisualDelimeterWhite#\ ┃%*
 
+set statusline+=%{gutentags#statusline('[',']')}
+
 "display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
 set statusline+=%{&ff!='unix'?'\['.&ff.']':''}
@@ -447,6 +449,11 @@ set directory+=.
 
 set backupdir=~/.vim/spool/
 set backup
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" GutenTags
+
+let g:gutentags_cache_dir = expand($HOME . '/.cache/tags' )
+let g:gutentags_resolve_symlinks=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 set nocp
