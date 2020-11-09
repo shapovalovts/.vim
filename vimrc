@@ -107,6 +107,7 @@ Bundle 'pechorin/any-jump.vim'
 Bundle 'junegunn/vim-peekaboo'
 Bundle 'markonm/traces.vim'
 Bundle 'ludovicchabant/vim-gutentags'
+Bundle 'rhysd/git-messenger.vim'
 
 filetype plugin indent on      " required by Vundle
 
@@ -177,6 +178,12 @@ call quickui#menu#install("&Python", [
             \ ['Sort headers', 'SPI'],
             \ ])
 
+call quickui#menu#install("&Git", [
+            \ ['&Show history', 'GitMessenger'],
+            \ ['&Forward in history (O)', 'O'],
+            \ ['&Back in history (o)', 'o'],
+            \ ])
+
 
 " register HELP menu with weight 1000
 call quickui#menu#install('H&elp', [
@@ -232,6 +239,21 @@ let g:any_jump_disable_default_keybindings = 1
 let g:any_jump_remove_comments_from_results = 1
 
 let g:any_jump_disable_default_keybindings = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""" GitMessenger
+
+let g:git_messenger_no_default_mappings = v:false
+let g:git_messenger_include_diff = "current"
+let g:git_messenger_into_popup_after_show = v:false
+let g:git_messenger_always_into_popup = v:true
+let g:git_messenger_preview_mods = "botright"
+let g:git_messenger_max_popup_width = 40
+let g:git_messenger_max_popup_height = 20
+
+function! s:setup_git_messenger_popup() abort
+    nmap <buffer><Esc> q
+endfunction
+autocmd FileType gitmessengerpopup call <SID>setup_git_messenger_popup()
 
 """"""""""""""""""""""""""""""""""""""""""""""" vimerl
 set runtimepath+=$HOME/.vim/bundle/Vimerl

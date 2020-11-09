@@ -67,4 +67,5 @@
 34. pechorin/any-jump.vim
 35. junegunn/vim-peekaboo
 36. markonm/traces.vim
-37. xolox/vim-easytags
+37. ludovicchabant/vim-gutentags
+38. rhysd/git-messenger.vim
