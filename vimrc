@@ -264,10 +264,10 @@ let g:erlang_keywordprg = "erl -man"
 autocmd FileType erlang set shiftwidth=2
 autocmd FileType erlang set ts=2
 autocmd FileType erlang set softtabstop=2
-autocmd FileType erlang set colorcolumn=100
+autocmd FileType erlang set colorcolumn=120
 autocmd Filetype erlang set omnifunc=erlang_complete#Complete
 autocmd FileType erlang hi ColorColumn cterm=none ctermbg=7
-autocmd Filetype erlang execute "set colorcolumn=" . join(range(101,355), ',')
+autocmd Filetype erlang execute "set colorcolumn=" . join(range(121,355), ',')
 
 """"""""""""""""""""""""""""""""""""""""""""""" Startify
 let g:startify_enable_special = 0
