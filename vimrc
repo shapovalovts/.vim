@@ -96,7 +96,6 @@ Bundle 'chrisbra/Recover.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'skywind3000/vim-quickui'
 Bundle 'ryanoasis/vim-devicons'
-Bundle 'psliwka/vim-smoothie'
 Bundle 'airblade/vim-rooter'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
