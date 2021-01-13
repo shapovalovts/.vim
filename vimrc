@@ -108,6 +108,8 @@ Bundle 'junegunn/vim-peekaboo'
 Bundle 'markonm/traces.vim'
 Bundle 'ludovicchabant/vim-gutentags'
 Bundle 'rhysd/git-messenger.vim'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'itspriddle/vim-shellcheck'
 
 filetype plugin indent on      " required by Vundle
 
@@ -129,6 +131,10 @@ set guifont=DroidSansMono\ Nerd\ Font\ 11
 """"""""""""""""""""""""""""""""""""""""""""""" spell
 setlocal spell spelllang=en
 set spell!
+
+""""""""""""""""""""""""""""""""""""""""""""""" EditorConfig
+
+au FileType gitcommit let b:EditorConfig_disable = 1  " disable for git commit messages
 
 """"""""""""""""""""""""""""""""""""""""""""""" QuickUI
 

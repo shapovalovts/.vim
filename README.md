@@ -69,3 +69,5 @@
 36. markonm/traces.vim
 37. ludovicchabant/vim-gutentags
 38. rhysd/git-messenger.vim
+39. editorconfig/editorconfig-vim
+40. itspriddle/vim-shellcheck
