@@ -70,3 +70,5 @@
 37. rhysd/git-messenger.vim
 38. editorconfig/editorconfig-vim
 39. itspriddle/vim-shellcheck
+40. tpope/vim-endwise
+41. itspriddle/vim-stripper

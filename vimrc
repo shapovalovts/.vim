@@ -113,6 +113,8 @@ Bundle 'ludovicchabant/vim-gutentags'
 Bundle 'rhysd/git-messenger.vim'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'itspriddle/vim-shellcheck'
+Bundle 'tpope/vim-endwise'
+Bundle 'itspriddle/vim-stripper'
 
 filetype plugin indent on      " required by Vundle
 
@@ -122,6 +124,9 @@ let g:camelcasemotion_key = ','
 
 """"""""""""""""""""""""""""""""""""""""""""""" Peehaboo
 let g:peekaboo_compact = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""" Stripper
+let g:StripperNoStripOnSave = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" rooter
 set noautochdir " Don't change dirs automatically, using rooter for that
@@ -173,6 +178,7 @@ call quickui#menu#install("&Code", [
             \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
             \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
             \ ['Rebuild Project Tags', 'GutentagsUpdate', 'Rebuild tags with GutenTags plugin'],
+            \ ['Remove Trailing Spaces', 'Stripper', 'Remove all trailing spaces (use :3,5Striper to remove in lines 3-5)'],
             \ ])
 
 call quickui#menu#install("&Git", [
@@ -382,7 +388,7 @@ function! FileSize()
 endfunction
 
 set statusline= " clear the statusline for when vimrc is reloaded
-set statusline+=\ \ %<%F\ 
+set statusline+=\ \ %<%F\
 
 set statusline+=%#VisualDelimeterWhite#
 set statusline+=%*
@@ -422,7 +428,7 @@ set statusline+=%*
 
 set statusline+=%=                  "left/right separator ⤦
 
-"set statusline+=%#VisualDelimeterWhite#\ ┃%*\ 
+"set statusline+=%#VisualDelimeterWhite#\ ┃%*\
 set statusline+=%{g:gitinfo}
 
 set statusline+=%#VisualDelimeterWhite#\ ┃%*
@@ -683,7 +689,7 @@ if has("autocmd")
   au BufWinEnter *
     \ let oldwinnr=winnr() |
     \ windo call <SID>FixMiniBufExplorerTitle() |
-    \ exec oldwinnr . " wincmd w" 
+    \ exec oldwinnr . " wincmd w"
 
 endif
 
@@ -734,7 +740,7 @@ command! GvimColorTest call GvimColorTest('gvim-color-test.tmp')
 """"""""""""""""""""""""""""""""""""""""" Include keys map
 source ~/.vim/keys.vim
 
-" Use local vimrc if available 
+" Use local vimrc if available
 if filereadable(expand("./.vim/vimrc-custom"))
   source ./.vim/vimrc-custom
 endif
