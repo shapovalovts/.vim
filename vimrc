@@ -167,13 +167,16 @@ call quickui#menu#install("&Search", [
             \ ])
 
 " script inside %{...} will be evaluated and expanded in the string
-call quickui#menu#install("&Option", [
-            \ ['Check Syntax', 'SyntasticCheck'],
+call quickui#menu#install("&Code", [
+            \ ['Check Syntax', 'SyntasticCheck!'],
+            \ ['Check Shell Script', 'ShellCheck!'],
+            \ ['Sort Python Headers', 'SPI'],
             \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
             \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
             \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
             \ ['Rebuild Project Tags', 'GutentagsUpdate'],
             \ ])
+
 
 call quickui#menu#install("&Plugin", [
             \ ['&List', 'BundleList'],
@@ -181,10 +184,6 @@ call quickui#menu#install("&Plugin", [
             \ ['&Update', 'BundleUpdate'],
             \ ['&Install', 'BundleInstall'],
             \ ['&Clean', 'BundleClean'],
-            \ ])
-
-call quickui#menu#install("&Python", [
-            \ ['Sort headers', 'SPI'],
             \ ])
 
 call quickui#menu#install("&Git", [
