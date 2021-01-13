@@ -64,6 +64,10 @@ augroup filetypedetect
   autocmd! BufNewFile,BufRead *.module  setfiletype ignored
 augroup END
 
+" Fix xterm (see modifyOtherKeys)
+let &t_TI = ""
+let &t_TE = ""
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle
 filetype on                    " required on MacOSX only
 filetype plugin off            " required by Vundle
