@@ -168,7 +168,7 @@ call quickui#menu#install("&Search", [
 
 " script inside %{...} will be evaluated and expanded in the string
 call quickui#menu#install("&Code", [
-            \ ['Check Syntax', 'SyntasticCheck!'],
+            \ ['Check Syntax', 'SyntasticCheck'],
             \ ['Check Shell Script', 'ShellCheck!'],
             \ ['Sort Python Headers', 'SPI'],
             \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
