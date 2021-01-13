@@ -144,39 +144,42 @@ au FileType gitcommit let b:EditorConfig_disable = 1  " disable for git commit m
 " clear all the menus
 call quickui#menu#reset()
 
-" install a 'File' menu, use [text, command] to represent an item.
 call quickui#menu#install('&File', [
-            \ [ "&Open file tree     Ctrl+t ", 'NERDTreeToggle', 'toggle nerdtree' ],
-            \ [ "&Close current", 'close' ],
+            \ [ "&Open file\tCtrl+t", 'NERDTreeToggle', 'Toggle file tree panel'],
+            \ [ "&Close current\tF10", 'close', 'Close current file' ],
             \ [ "--", '' ],
-            \ [ "&Save current", ':w'],
-            \ [ "Save &as", 'call feedkeys(":saveas ")' ],
-            \ [ "Save all", 'Wall' ],
-            \ [ "Save with Sudo", 'SudoWrite' ],
+            \ [ "&Save current\tF2", ':w', 'Save file'],
+            \ [ "Save &as", 'call feedkeys(":saveas ")', 'Save file as'],
+            \ [ "Save all", 'Wall', 'Save all opened files'],
+            \ [ "Save with Sudo", 'SudoWrite', 'Write current file with sudo'],
             \ [ "--", '' ],
-            \ [ "Chmod", 'call feedkeys(":Chmod ")' ],
-            \ [ "Rename", 'call feedkeys(":Rename ")' ],
+            \ [ "Chmod", 'call feedkeys(":Chmod ")', 'Change file permissions'],
+            \ [ "Rename", 'call feedkeys(":Rename ")', 'Rename file'],
             \ [ "--", '' ],
-            \ [ "E&xit\tAlt+x", 'q' ],
+            \ [ "E&xit\tAlt+x", 'q', 'Exit the editor'],
             \ ])
 
 call quickui#menu#install("&Search", [
-            \ ["&Jump to    <leader>+j",  'AnyJump'],
-            \ ["&Previous   <leader>+ab", 'AnyJumpBack'],
-            \ ["&Last       <leader>+al", 'AnyJumpLastResults'],
+            \ ["&Jump to\t<leader>+j ",  'AnyJump'],
+            \ ["&Previous\t<leader>+ab", 'AnyJumpBack'],
+            \ ["&Last\t<leader>+al", 'AnyJumpLastResults'],
             \ ])
 
-" script inside %{...} will be evaluated and expanded in the string
 call quickui#menu#install("&Code", [
-            \ ['Check Syntax', 'SyntasticCheck'],
-            \ ['Check Shell Script', 'ShellCheck!'],
-            \ ['Sort Python Headers', 'SPI'],
+            \ ['Check Syntax', 'SyntasticCheck', 'Check syntax with Syntastic plugin'],
+            \ ['Check Shell Script', 'ShellCheck!', 'Check sheel script syntax with CheckShell plugin'],
+            \ ['Sort Python Headers', 'SPI', 'Sort python headers in selected lines'],
             \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
             \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
             \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
-            \ ['Rebuild Project Tags', 'GutentagsUpdate'],
+            \ ['Rebuild Project Tags', 'GutentagsUpdate', 'Rebuild tags with GutenTags plugin'],
             \ ])
 
+call quickui#menu#install("&Git", [
+            \ ["&Show history", 'GitMessenger'],
+            \ ["&Forward in history\tO", 'O'],
+            \ ["&Back in history\to", 'o'],
+            \ ])
 
 call quickui#menu#install("&Plugin", [
             \ ['&List', 'BundleList'],
@@ -185,13 +188,6 @@ call quickui#menu#install("&Plugin", [
             \ ['&Install', 'BundleInstall'],
             \ ['&Clean', 'BundleClean'],
             \ ])
-
-call quickui#menu#install("&Git", [
-            \ ['&Show history', 'GitMessenger'],
-            \ ['&Forward in history (O)', 'O'],
-            \ ['&Back in history (o)', 'o'],
-            \ ])
-
 
 " register HELP menu with weight 1000
 call quickui#menu#install('H&elp', [
