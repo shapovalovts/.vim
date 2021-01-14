@@ -388,7 +388,7 @@ function! FileSize()
 endfunction
 
 set statusline= " clear the statusline for when vimrc is reloaded
-set statusline+=\ \ %<%F\
+set statusline+=\ \ %<%F
 
 set statusline+=%#VisualDelimeterWhite#
 set statusline+=%*
