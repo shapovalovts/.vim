@@ -100,7 +100,6 @@ Bundle 'chrisbra/Recover.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'skywind3000/vim-quickui'
 Bundle 'ryanoasis/vim-devicons'
-Bundle 'airblade/vim-rooter'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Bundle 'junegunn/fzf.vim'
@@ -127,10 +126,6 @@ let g:peekaboo_compact = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" Stripper
 let g:StripperNoStripOnSave = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""" rooter
-set noautochdir " Don't change dirs automatically, using rooter for that
-let g:rooter_silent_chdir = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" vim-devicons
 set encoding=UTF-8
@@ -164,10 +159,15 @@ call quickui#menu#install('&File', [
             \ [ "E&xit\tAlt+x", 'q', 'Exit the editor'],
             \ ])
 
-call quickui#menu#install("&Search", [
+call quickui#menu#install("&Navigation", [
+            \ ["&Show changes",  ':changes'],
+            \ ["&Previous change\tg;",  'g;'],
+            \ ["&Newer change\tg,",  'g;'],
+            \ ["&Insert in newer position\tgi",  'g;'],
+            \ [ "--", '' ],
             \ ["&Jump to\t<leader>+j ",  'AnyJump'],
-            \ ["&Previous\t<leader>+ab", 'AnyJumpBack'],
-            \ ["&Last\t<leader>+al", 'AnyJumpLastResults'],
+            \ ["J&ump previous\t<leader>+ab", 'AnyJumpBack'],
+            \ ["Jump &last\t<leader>+al", 'AnyJumpLastResults'],
             \ ])
 
 call quickui#menu#install("&Code", [

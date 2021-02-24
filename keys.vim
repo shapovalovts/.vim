@@ -191,4 +191,3 @@ endif
 " Buffer navigation
 map <M-Left>  :bprevious<CR>
 map <M-Right> :bnext<CR>
-
