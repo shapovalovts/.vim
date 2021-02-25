@@ -127,8 +127,8 @@ imap <silent> <C-h> <ESC>:tabprevious<cr>
 map <silent> <C-l> :tabnext<cr>
 nmap <silent> <C-l> :tabnext<cr>
 imap <silent> <C-l> <ESC>:tabnext<cr>
-nmap <silent> <C-t> :tabnew<cr>:e .<cr>:Files<cr>
-map <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>:Files<cr>
+nmap <silent> <C-t> :tabnew<cr>:e .<cr>:FzfProjectFiles<cr>
+map <silent> <C-t> <ESC>:tabnew<cr>:e .<cr>:FzfProjectFiles<cr>
 
 fu! TabMoveLeft()
   let current_tab = tabpagenr()

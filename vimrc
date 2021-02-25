@@ -117,6 +117,24 @@ Bundle 'itspriddle/vim-stripper'
 
 filetype plugin indent on      " required by Vundle
 
+""""""""""""""""""""""""""""""""""""""""""""""" FZF
+
+"" Allow to open search with root in git root
+function! FindTopGitRoot()
+    let l:my_cwd = getcwd()
+    let l:git_top_level = '.'
+    while 1
+        let l:git_top_level_tmp = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+        if l:git_top_level_tmp != ''
+            let l:git_top_level = l:git_top_level_tmp
+            exe "lcd " . l:git_top_level_tmp . '/../'
+        else
+            exe "lcd " . l:my_cwd
+            return l:git_top_level
+        endif
+    endwhile
+endfunction
+command! FzfProjectFiles execute 'FZF ' FindTopGitRoot()
 
 """"""""""""""""""""""""""""""""""""""""""""""" EasyMotion
 let g:camelcasemotion_key = ','
