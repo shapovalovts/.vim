@@ -114,6 +114,7 @@ Bundle 'editorconfig/editorconfig-vim'
 Bundle 'itspriddle/vim-shellcheck'
 Bundle 'tpope/vim-endwise'
 Bundle 'itspriddle/vim-stripper'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on      " required by Vundle
 
@@ -203,6 +204,11 @@ call quickui#menu#install("&Git", [
             \ ["&Show history", 'GitMessenger'],
             \ ["&Forward in history\tO", 'O'],
             \ ["&Back in history\to", 'o'],
+            \ ["&Log", 'Git log', 'git log'],
+            \ ["&Diff", 'Git diff', 'git diff'],
+            \ ["Diff &Split", 'Gdiffsplit', 'git diff + split tab'],
+            \ ["&Blame", 'Git blame', 'git blame'],
+            \ ["&", ''],
             \ ])
 
 call quickui#menu#install("&Plugin", [
@@ -226,10 +232,29 @@ call quickui#menu#install('H&elp', [
             \ ['&Function List', 'help function-list', ''],
             \ ], 10000)
 
+let g:context_menu_k = [
+            \ ["&Peek Definition\tAlt+;", 'call quickui#tools#preview_tag("")'],
+            \ ["S&earch in Project\t\\cx", 'exec "silent! GrepCode! " . expand("<cword>")'],
+            \ [ "--", ],
+            \ [ "Find &Definition\t\\cg", 'call MenuHelp_Fscope("g")', 'GNU Global search g'],
+            \ [ "Find &Symbol\t\\cs", 'call MenuHelp_Fscope("s")', 'GNU Gloal search s'],
+            \ [ "Find &Called by\t\\cd", 'call MenuHelp_Fscope("d")', 'GNU Global search d'],
+            \ [ "Find C&alling\t\\cc", 'call MenuHelp_Fscope("c")', 'GNU Global search c'],
+            \ [ "Find &From Ctags\t\\cz", 'call MenuHelp_Fscope("z")', 'GNU Global search c'],
+            \ [ "--", ],
+            \ [ "Goto D&efinition\t(YCM)", 'YcmCompleter GoToDefinitionElseDeclaration'],
+            \ [ "Goto &References\t(YCM)", 'YcmCompleter GoToReferences'],
+            \ [ "Get D&oc\t(YCM)", 'YcmCompleter GetDoc'],
+            \ [ "Get &Type\t(YCM)", 'YcmCompleter GetTypeImprecise'],
+            \ [ "--", ],
+            \ ['Dash &Help', 'call asclib#utils#dash_ft(&ft, expand("<cword>"))'],
+            \ ['Cpp&man', 'exec "Cppman " . expand("<cword>")', '', 'c,cpp'],
+            \ ['P&ython Doc', 'call quickui#tools#python_help("")', 'python'],
+            \ ]
+
 let g:quickui_show_tip = 1
 let g:quickui_border_style = 2
 let g:quickui_color_scheme = 'papercol dark'
-
 
 """"""""""""""""""""""""""""""""""""""""""""""" AnyJump
 " Show line numbers in search rusults

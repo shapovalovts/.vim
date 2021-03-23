@@ -39,12 +39,12 @@ map <space> /
 
 " F2:      save current buffer (Ctrl-F5: substitute word under cursor globally)
 " F3:      switch paste mode
-" F4:      -
+" F4:      context menu
 " F5:      -
 " F6:      -
 " F7:      replace (ask for confirmation)
 " F8:      toggle  indent guides
-" F9:      menu
+" F9:      top menu
 " F10:     close current buffer
 " F11:     switch over lines numeration
 " F12:     toggle TagBar
@@ -53,6 +53,7 @@ vnoremap <F2> :w<cr>
 inoremap <F2> <esc>:w<cr>i
 map <F3> :set paste<CR>i
 imap <F3> <ESC>:set paste<CR>i<Right>
+nnoremap <silent><F4> :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
 nnoremap <C-F7> :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <F7> :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 map <F8> :IndentGuidesToggle<CR>
