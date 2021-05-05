@@ -72,3 +72,4 @@
 39. tpope/vim-endwise
 40. itspriddle/vim-stripper
 41. tpope/vim-fugitive
+42. airblade/vim-rooter

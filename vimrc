@@ -115,6 +115,7 @@ Bundle 'itspriddle/vim-shellcheck'
 Bundle 'tpope/vim-endwise'
 Bundle 'itspriddle/vim-stripper'
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-rooter'
 
 filetype plugin indent on      " required by Vundle
 
