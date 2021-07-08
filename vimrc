@@ -198,6 +198,7 @@ call quickui#menu#install("&Code", [
             \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!', 'Toggle cursor line %{&cursorline? "off" : "on"}'],
             \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!', 'Toggle paste mode %{&paste? "off" : "on"}'],
             \ ['Rebuild Project Tags', 'GutentagsUpdate', 'Rebuild tags with GutenTags plugin'],
+            \ ['Toggle Tags Update', 'GutentagsToggleEnabled', 'Toggle automatic tags update with GutenTags plugin'],
             \ ['Remove Trailing Spaces', 'Stripper', 'Remove all trailing spaces (use :3,5Striper to remove in lines 3-5)'],
             \ ])
 
