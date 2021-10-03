@@ -116,6 +116,8 @@ Bundle 'tpope/vim-endwise'
 Bundle 'itspriddle/vim-stripper'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-rooter'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 filetype plugin indent on      " required by Vundle
 
@@ -154,6 +156,10 @@ set guifont=DroidSansMono\ Nerd\ Font\ 11
 """"""""""""""""""""""""""""""""""""""""""""""" spell
 setlocal spell spelllang=en
 set spell!
+
+""""""""""""""""""""""""""""""""""""""""""""""" vim-markdown
+let g:vim_markdown_override_foldtext = 0
+set nofoldenable
 
 """"""""""""""""""""""""""""""""""""""""""""""" EditorConfig
 
