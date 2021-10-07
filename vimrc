@@ -118,6 +118,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-rooter'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'unblevable/quick-scope'
 
 filetype plugin indent on      " required by Vundle
 
@@ -139,6 +140,9 @@ function! FindTopGitRoot()
     endwhile
 endfunction
 command! FzfProjectFiles execute 'FZF ' FindTopGitRoot()
+
+""""""""""""""""""""""""""""""""""""""""""""""" Quick-Scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 """"""""""""""""""""""""""""""""""""""""""""""" EasyMotion
 let g:camelcasemotion_key = ','

@@ -75,3 +75,4 @@
 42. airblade/vim-rooter
 43. godlygeek/tabular
 44. plasticboy/vim-markdown
+45. unblevable/quick-scope
