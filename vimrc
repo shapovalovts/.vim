@@ -59,8 +59,14 @@ autocmd FileType make set noexpandtab
 
 let g:tex_flavor = "latex"
 
+" Wrap text in TeX files
+augroup WrapLineInTeXFile
+    autocmd!
+    autocmd FileType tex setlocal wrap
+augroup END
+
+" Ignore filetypes for *.module files
 augroup filetypedetect
-  " Ignore filetypes for *.module files
   autocmd! BufNewFile,BufRead *.module  setfiletype ignored
 augroup END
 
