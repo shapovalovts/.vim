@@ -76,3 +76,4 @@
 43. godlygeek/tabular
 44. plasticboy/vim-markdown
 45. unblevable/quick-scope
+46. preservim/vim-pencil

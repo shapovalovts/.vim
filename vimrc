@@ -119,8 +119,17 @@ Bundle 'airblade/vim-rooter'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'unblevable/quick-scope'
+Plugin 'preservim/vim-pencil'
 
 filetype plugin indent on      " required by Vundle
+filetype plugin on
+
+""""""""""""""""""""""""""""""""""""""""""""""" Pencil
+
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd,tex call pencil#init()
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""" FZF
 
@@ -522,7 +531,6 @@ let g:gutentags_resolve_symlinks=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
 set nocp
-"filetype plugin on
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
