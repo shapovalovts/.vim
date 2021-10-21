@@ -125,17 +125,9 @@ Bundle 'airblade/vim-rooter'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'unblevable/quick-scope'
-Plugin 'preservim/vim-pencil'
 
 filetype plugin indent on      " required by Vundle
 filetype plugin on
-
-""""""""""""""""""""""""""""""""""""""""""""""" Pencil
-
-augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd,tex call pencil#init()
-augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""" FZF
 
