@@ -85,7 +85,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vcscommand.vim'
 Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
+Bundle 'dense-analysis/ale'
 Bundle 'Shougo/neocomplcache'
 Bundle 'OmniCppComplete'
 Bundle 'majutsushi/tagbar'
@@ -208,7 +208,6 @@ call quickui#menu#install("&Navigation", [
             \ ])
 
 call quickui#menu#install("&Code", [
-            \ ['Check Syntax', 'SyntasticCheck', 'Check syntax with Syntastic plugin'],
             \ ['Check Shell Script', 'ShellCheck!', 'Check sheel script syntax with CheckShell plugin'],
             \ ['Sort Python Headers', 'SPI', 'Sort python headers in selected lines'],
             \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!', 'Toggle spell check %{&spell? "off" : "on"}'],
@@ -404,29 +403,6 @@ let g:signify_line_color_change_delete = 'DiffChange'
 let g:signify_cursorhold_normal = 1
 let g:signify_cursorhold_insert = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""" Syntastic
-let g:syntastic_auto_jump = 0
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_echo_current_error = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_enable_balloons = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_cpp_no_include_search = 0
-let g:syntastic_c_no_include_search = 0
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_c_check_header = 1
-let g:syntastic_cpp_remove_include_errors = 0
-let g:syntastic_c_remove_include_errors = 0
-let g:syntastic_cpp_auto_refresh_includes = 1
-let g:syntastic_c_auto_refresh_includes = 1
-"let g:syntastic_stl_format = '%E{ line: %fe | col: %e }'
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['py'],
-                           \ 'passive_filetypes': ['cpp', 'c'] }
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-let g:syntastic_cpp_config_file = '/home/taras/.syntastic_cpp_config'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Statusline
 let g:gitinfo = ''
 function! GitInfo()
@@ -483,9 +459,9 @@ set statusline+=\ %#error#
 set statusline+=%{&paste?'paste':''}
 set statusline+=%*
 
-set statusline+=\ %#error#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=\ %#error#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 
 set statusline+=%=                  "left/right separator ⤦

@@ -7,6 +7,7 @@
 3. Font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
 4. Finder [fzf](https://github.com/junegunn/fzf) (ensure fzf binary is in the $PATH)
 5. ag [silversearcher-ag] (for AnyJump)
+6. For C++ projects: ensure compile_commands.json is generated (for ALE).
 
 ## Installation
 
@@ -36,7 +37,7 @@
 3.  vim-easymotion
 4.  vcscommand.vim
 5.  vim-surround
-6.  syntastic
+6.  ALE (Asynchronous Lint Engine)
 7.  neocomplcache
 8.  OmniCppComplete
 9.  tagbar
