@@ -129,6 +129,14 @@ Plugin 'unblevable/quick-scope'
 filetype plugin indent on      " required by Vundle
 filetype plugin on
 
+""""""""""""""""""""""""""""""""""""""""""""""" ALE
+
+let g:ale_enabled = 0
+let g:ale_cpp_cc_options = '-std=c++17'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:cpp_clangtidy_extra_options = '-extra-arg -Xanalyzer -extra-arg -analyzer-output=text'
+
 """"""""""""""""""""""""""""""""""""""""""""""" FZF
 
 "" Allow to open search with root in git root
@@ -425,6 +433,18 @@ function! FileSize()
  endif
 endfunction
 
+function! LinterStatus() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? 'OK' : printf(
+  \   '%dW %dE',
+  \   all_non_errors,
+  \   all_errors
+  \)
+endfunction
+
+
 set statusline= " clear the statusline for when vimrc is reloaded
 set statusline+=\ \ %<%F
 
@@ -459,9 +479,9 @@ set statusline+=\ %#error#
 set statusline+=%{&paste?'paste':''}
 set statusline+=%*
 
-"set statusline+=\ %#error#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=\ %#error#
+set statusline+=%{LinterStatus()}
+set statusline+=%*
 
 
 set statusline+=%=                  "left/right separator ⤦
