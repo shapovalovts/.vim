@@ -14,6 +14,9 @@ nnoremap <silent> <expr> <CR> Highlighting()
 nnoremap <silent> <expr> * Highlighting()
 vnoremap * y :execute ":let @/=@\""<CR> :execute "set hlsearch"<CR>
 
+" Paste without yanking
+vnoremap p "_dP
+
 " Fix cursor
 nnoremap j gj
 nnoremap k gk
