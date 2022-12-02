@@ -57,7 +57,7 @@ hi VisualDelimeter guifg=Gray ctermfg=7 ctermbg=8
 hi VisualDelimeterWhite guifg=Gray ctermfg=15 ctermbg=8
 hi VisualDelimeterBlock guifg=Gray ctermfg=15 ctermbg=15
   
-hi Comment gui=italic guifg=#9999cc ctermfg=248 
+hi Comment gui=italic guifg=Gray20 ctermfg=7
 hi PreProc gui=none guifg=RoyalBlue3 ctermfg=114 cterm=bold
 "hi Error gui=none guifg=White guibg=Red ctermfg=15 ctermbg=197
 "hi Identifier gui=bold guifg=Sienna4 ctermfg=17 cterm=bold
@@ -104,7 +104,7 @@ hi pythonOperator gui=bold guifg=ForestGreen  ctermfg=55 cterm=bold
 hi pythonDecorator guifg=RoyalBlue1 ctermfg=110 cterm=bold
 hi pythonDottedName guifg=RoyalBlue1 ctermfg=110 cterm=bold
 hi pythonDot guifg=Sienna4 ctermfg=111
-hi pythonComment guifg=Gray20 ctermfg=14
+hi pythonComment guifg=Gray20 ctermfg=7
 hi pythonCoding guifg=RoyalBlue1 ctermfg=110 cterm=bold
 hi pythonString guifg=Sienna4 ctermfg=204
 hi pythonUniString guifg=Sienna4 ctermfg=13
