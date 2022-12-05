@@ -14,11 +14,12 @@
 1. `cd ~`
 2. `git clone git://github.com/shapovalovts/.vim.git`
 3. `cd ~/.vim`
-4. `echo "source ~/.vim/vimrc" > ~/.vimrc`
-5. Install [Vundle](https://github.com/gmarik/vundle) with `git clone http://github.com/gmarik/vundle.git bundle/vundle`
-6. Run Vim (ignore warnings) and type `:BundleInstall` to install the configured plugins with Vundle
-7. Restart vim
-8. Enjoy!
+4. `mkdir spool`
+5. `echo "source ~/.vim/vimrc" > ~/.vimrc`
+6. Install [Vundle](https://github.com/gmarik/vundle) with `git clone http://github.com/gmarik/vundle.git bundle/vundle`
+7. Run Vim (ignore warnings) and type `:BundleInstall` to install the configured plugins with Vundle
+8. Restart vim
+9. Enjoy!
 
 ## Screenshots
 
