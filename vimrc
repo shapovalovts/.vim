@@ -125,7 +125,6 @@ Plugin 'airblade/vim-rooter'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'unblevable/quick-scope'
-Plugin 'christoomey/vim-tmux-navigator'
 
 filetype plugin indent on      " required by Vundle
 filetype plugin on
