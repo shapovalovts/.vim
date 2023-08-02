@@ -4,7 +4,7 @@
 
 1. vim >= 8.2 (tested in CLI mode only)
 2. Linux
-3. Font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
+3. Font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono): configure it for the terminal
 4. Finder [fzf](https://github.com/junegunn/fzf) (ensure fzf binary is in the $PATH)
 5. ag [silversearcher-ag] (for AnyJump)
 6. For C++ projects: ensure compile_commands.json is generated (for ALE).
@@ -17,7 +17,7 @@
 4. `mkdir spool`
 5. `echo "source ~/.vim/vimrc" > ~/.vimrc`
 6. Install [Vundle](https://github.com/gmarik/vundle) with `git clone http://github.com/gmarik/vundle.git bundle/vundle`
-7. Run Vim (ignore warnings) and type `:BundleInstall` to install the configured plugins with Vundle
+7. Run Vim (ignore warnings) and type `:VundleInstall` to install the configured plugins with Vundle
 8. Restart vim
 9. Enjoy!
 
@@ -78,4 +78,4 @@
 43. godlygeek/tabular
 44. plasticboy/vim-markdown
 45. unblevable/quick-scope
-46. christoomey/vim-tmux-navigator
+47. bfrg/vim-cpp-modern

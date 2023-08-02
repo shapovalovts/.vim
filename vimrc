@@ -125,12 +125,12 @@ Plugin 'airblade/vim-rooter'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'unblevable/quick-scope'
+Plugin 'bfrg/vim-cpp-modern'
 
 filetype plugin indent on      " required by Vundle
 filetype plugin on
 
 """"""""""""""""""""""""""""""""""""""""""""""" ALE
-
 let g:ale_enabled = 0
 let g:ale_cpp_cc_options = '-std=c++17'
 let g:ale_set_loclist = 0
@@ -138,7 +138,6 @@ let g:ale_set_quickfix = 1
 let g:cpp_clangtidy_extra_options = '-extra-arg -Xanalyzer -extra-arg -analyzer-output=text'
 
 """"""""""""""""""""""""""""""""""""""""""""""" FZF
-
 "" Allow to open search with root in git root
 function! FindTopGitRoot()
     let l:my_cwd = getcwd()
@@ -155,6 +154,11 @@ function! FindTopGitRoot()
     endwhile
 endfunction
 command! FzfProjectFiles execute 'FZF ' FindTopGitRoot()
+
+""""""""""""""""""""""""""""""""""""""""""""""" vim-cpp-modern
+let g:cpp_attributes_highlight = 1
+let g:cpp_member_highlight = 1
+let g:cpp_simple_highlight = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""" Quick-Scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
