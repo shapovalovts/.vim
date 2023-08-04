@@ -93,7 +93,7 @@ nmap <Home> ^
 imap <Home> <Esc>I
 
 " Switch to alternative source file
-map <silent> <C-a> :A<cr>
+map <silent> <C-a> :SHSwitch<cr>
 
 " make :W to :w
 cnoreabbrev W w
