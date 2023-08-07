@@ -154,6 +154,9 @@ function! FindTopGitRoot()
 endfunction
 command! FzfProjectFiles execute 'FZF ' FindTopGitRoot()
 
+""""""""""""""""""""""""""""""""""""""""""""""" shswitch
+let g:shswitch_root_flags = ['CMakeLists.txt', 'configure.in', 'configure']
+
 """"""""""""""""""""""""""""""""""""""""""""""" vim-cpp-modern
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
