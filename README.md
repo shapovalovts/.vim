@@ -78,3 +78,4 @@
 43. plasticboy/vim-markdown
 44. unblevable/quick-scope
 45. bfrg/vim-cpp-modern
+46. lepture/vim-jinja

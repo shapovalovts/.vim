@@ -125,6 +125,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'unblevable/quick-scope'
 Plugin 'bfrg/vim-cpp-modern'
+Plugin 'lepture/vim-jinja'
 
 filetype plugin indent on      " required by Vundle
 filetype plugin on
