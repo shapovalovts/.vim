@@ -127,9 +127,136 @@ Plugin 'unblevable/quick-scope'
 Plugin 'bfrg/vim-cpp-modern'
 Plugin 'lepture/vim-jinja'
 Plugin 'carlsmedstad/vim-bicep'
+Plugin 'vimwiki/vimwiki'
 
 filetype plugin indent on      " required by Vundle
 filetype plugin on
+
+""""""""""""""""""""""""""""""""""""""""""""""" Wiki
+let wiki_1 = {}
+let wiki_1.name = 'NVIDIA'
+let wiki_1.path = '~/OneDrive/work_diary/'
+let wiki_1.syntax = 'markdown'
+let wiki_1.ext = 'md'
+let wiki_1.auto_export = 0
+let wiki_1.auto_toc = 1
+let wiki_1.index = 'index'
+let wiki_1.diary_rel_path = 'diary/'
+let wiki_1.diary_index = 'diary_index'
+let wiki_1.auto_diary_index = 1
+
+let g:vimwiki_list = [wiki_1]
+let g:vimwiki_global_ext = 0
+
+" Diary index maintenance
+augroup VimwikiDiaryIndex
+  autocmd!
+  " When opening the diary index for this wiki, refresh links
+  autocmd BufReadPost */OneDrive/work_diary/diary_index.md VimwikiDiaryGenerateLinks
+augroup END
+
+" Inline diary template
+augroup VimwikiDiaryTemplate
+  autocmd!
+  " New diary file, named like 2025-12-21.md under ~/OneDrive/work_diary/diary
+  autocmd BufNewFile ~/OneDrive/work_diary/diary/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].md
+        \ call s:VimwikiDiaryInlineTemplate()
+augroup END
+
+function! s:VimwikiDiaryInlineTemplate() abort
+  " Derive date from filename (2025-12-21.md -> 2025-12-21)
+  let l:date_str = expand('%:t:r')
+
+  " Clear buffer just in case
+  %delete _
+
+  " Insert simple template
+  call append(0, '# ' . l:date_str)
+  call append(1, '')
+  call append(2, '## Tasks')
+  call append(3, '')
+  call append(4, '## Notes')
+  call append(5, '')
+  " Put cursor on first task line
+  call cursor(4, 1)
+endfunction
+
+" Carry unchecked tasks from previous diary file
+function! s:PrevDiaryFile() abort
+  let l:dir   = expand('~/OneDrive/work_diary/diary')
+  " Use the current diary file's date (from filename) as reference
+  let l:today = expand('%:t:r')
+  let l:files = split(globpath(l:dir, '*.md'), '\n')
+  if empty(l:files)
+    return ''
+  endif
+
+  let l:prev = []
+  for f in l:files
+    let base = fnamemodify(f, ':t:r')  " e.g. 2025-12-21
+    " Only consider files strictly older than this one
+    if base < l:today
+      call add(l:prev, [base, f])
+    endif
+  endfor
+  if empty(l:prev)
+    return ''
+  endif
+
+  " Select the latest older file
+  let l:prev = sort(l:prev)[-1][1]
+  return l:prev
+endfunction
+
+function! VimwikiCarryUncheckedFromPrev() abort
+  let l:prev = s:PrevDiaryFile()
+  if empty(l:prev)
+    echo "No previous diary file found"
+    return
+  endif
+
+  " Read unchecked tasks from previous file
+  let l:lines = readfile(l:prev)
+  let l:tasks = filter(copy(l:lines), {_, v -> v =~ '^\s*-\s\[\s\]\s'})
+
+  if empty(l:tasks)
+    echo "No unchecked tasks in " . fnamemodify(l:prev, ':t')
+    return
+  endif
+
+  " Get all existing lines in current buffer
+  let l:buf_lines = getline(1, '$')
+
+  " Keep only tasks that are NOT already present in current buffer
+  let l:new_tasks = filter(l:tasks, {_, v -> index(l:buf_lines, v) < 0})
+
+  if empty(l:new_tasks)
+    echo "No new unchecked tasks to import from " . fnamemodify(l:prev, ':t')
+    return
+  endif
+
+  " Find or create '## Tasks' section
+  let l:lnum = search('^## Tasks', 'nw')
+  if l:lnum == 0
+    call append(0, ['## Tasks', ''])
+    let l:lnum = 1
+  endif
+
+  " Append only non‑duplicate tasks
+  call append(l:lnum, l:new_tasks)
+  echo "Imported " . len(l:new_tasks) . " new tasks from " . fnamemodify(l:prev, ':t')
+endfunction
+
+function! VimwikiDailyNoteFn() abort
+  silent VimwikiMakeDiaryNote
+  silent call VimwikiCarryUncheckedFromPrev()
+  silent VimwikiDiaryIndex
+  silent VimwikiDiaryGenerateLinks
+  silent VimwikiMakeDiaryNote
+endfunction
+
+command! VimwikiDailyNote call VimwikiDailyNoteFn()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""" ALE
 let g:ale_enabled = 0
@@ -212,13 +339,18 @@ call quickui#menu#install('&File', [
             \ [ "E&xit\tAlt+x", 'q', 'Exit the editor'],
             \ ])
 
+call quickui#menu#install("&Diary", [
+            \ ["&Go to Index",  'VimwikiDiaryIndex'],
+            \ ["&New diary note",  'VimwikiMakeDiaryNote'],
+            \ ])
+
 call quickui#menu#install("&Navigation", [
-            \ ["&Show changes",  ':changes'],
-            \ ["&Previous change\tg;",  'g;'],
-            \ ["&Newer change\tg,",  'g;'],
-            \ ["&Insert in newer position\tgi",  'g;'],
+            \ ["&Show changes", ':changes'],
+            \ ["&Previous change\tg;", 'g;'],
+            \ ["&Newer change\tg,", 'g;'],
+            \ ["&Insert in newer position\tgi", 'g;'],
             \ [ "--", '' ],
-            \ ["&Jump to\t<leader>+j ",  'AnyJump'],
+            \ ["&Jump to\t<leader>+j ", 'AnyJump'],
             \ ["J&ump previous\t<leader>+ab", 'AnyJumpBack'],
             \ ["Jump &last\t<leader>+al", 'AnyJumpLastResults'],
             \ ])

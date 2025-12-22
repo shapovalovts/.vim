@@ -195,3 +195,13 @@ endif
 " Buffer navigation
 map <M-Left>  :bprevious<CR>
 map <M-Right> :bnext<CR>
+
+" VimWiki
+
+" Create/open today's diary file for this wiki and update diary index
+nnoremap <C-w>n :call VimwikiDailyNoteFn()<CR>
+
+" Open diary index and refresh links
+nnoremap <C-w>i :VimwikiDiaryIndex<CR>
+      \ :VimwikiDiaryGenerateLinks<CR>
+

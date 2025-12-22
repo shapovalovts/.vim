@@ -80,3 +80,4 @@
 45. bfrg/vim-cpp-modern
 46. lepture/vim-jinja
 47. carlsmedstad/vim-bicep
+48. vimwiki/vimwiki
