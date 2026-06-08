@@ -2,8 +2,8 @@
 
 ## Requirements:
 
-1. vim >= 8.2 (tested in CLI mode only)
-2. Linux
+1. vim >= 9.0 (tested in CLI mode only)
+2. Linux or MacOS
 3. Font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono): configure it for the terminal
 4. Finder [fzf](https://github.com/junegunn/fzf) (ensure fzf binary is in the $PATH)
 5. ag [silversearcher-ag] (for AnyJump)
