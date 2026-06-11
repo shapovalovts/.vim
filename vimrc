@@ -53,8 +53,6 @@ endif
 set autochdir
 "set mouse=a   " NOTE: disabled, otherwise it is imposible to copy text using mouse
 
-syntax on
-
 autocmd FileType make set noexpandtab
 
 let g:tex_flavor = "latex"
@@ -86,7 +84,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'vcscommand.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'dense-analysis/ale'
-Plugin 'OmniCppComplete'
 Plugin 'majutsushi/tagbar'
 Plugin 'kuznetsss/shswitch'
 Plugin 'SearchComplete'
@@ -98,7 +95,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'marcinbiegun/vim-escript'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kshenoy/vim-signature'
-Plugin 'hdima/python-syntax'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'mhinz/vim-signify'
 Plugin 'mhinz/vim-startify'
 Plugin 'chrisbra/Recover.vim'
@@ -408,10 +405,10 @@ let g:context_menu_k = [
             \ [ "Find C&alling\t\\cc", 'call MenuHelp_Fscope("c")', 'GNU Global search c'],
             \ [ "Find &From Ctags\t\\cz", 'call MenuHelp_Fscope("z")', 'GNU Global search c'],
             \ [ "--", ],
-            \ [ "Goto D&efinition\t(YCM)", 'YcmCompleter GoToDefinitionElseDeclaration'],
-            \ [ "Goto &References\t(YCM)", 'YcmCompleter GoToReferences'],
-            \ [ "Get D&oc\t(YCM)", 'YcmCompleter GetDoc'],
-            \ [ "Get &Type\t(YCM)", 'YcmCompleter GetTypeImprecise'],
+            \ [ "Goto D&efinition\t(LSP)", 'ALEGoToDefinition'],
+            \ [ "Goto &References\t(LSP)", 'ALEFindReferences'],
+            \ [ "Get D&oc\t(LSP)", 'ALEHover'],
+            \ [ "Get &Type\t(LSP)", 'ALEGoToTypeDefinition'],
             \ [ "--", ],
             \ ['Dash &Help', 'call asclib#utils#dash_ft(&ft, expand("<cword>"))'],
             \ ['Cpp&man', 'exec "Cppman " . expand("<cword>")', '', 'c,cpp'],
@@ -650,7 +647,6 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" tags, swp and backup
 set tags=./.tags
-set tags+=.~/.vim/tags/
 
 set directory=~/.vim/spool/
 set directory+=.
@@ -661,43 +657,27 @@ set backup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" GutenTags
 
 let g:gutentags_cache_dir = expand($HOME . '/.cache/tags' )
+let g:gutentags_ctags_executable = '/opt/homebrew/bin/ctags'
 let g:gutentags_resolve_symlinks=1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""" OmniCppComplete
-set nocp
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1      " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1    " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1    " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" ALE LSP completion
+set completeopt=menuone,noinsert,noselect
 
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 0
+set omnifunc=ale#completion#OmniFunc
 
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+augroup ale_cpp_lsp
+  autocmd!
+  autocmd FileType c,cpp nmap <buffer> gd <Plug>(ale_go_to_definition)
+  autocmd FileType c,cpp nmap <buffer> gr <Plug>(ale_find_references)
+  autocmd FileType c,cpp nmap <buffer> gy <Plug>(ale_go_to_type_definition)
+  autocmd FileType c,cpp nmap <buffer> K  <Plug>(ale_hover)
+  autocmd FileType c,cpp nmap <buffer> <leader>rn <Plug>(ale_rename)
+augroup END
 
-"""""""""""""""""""""""""""""""""""""""""""""""NeoComplCache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 """"""""""""""""""""""""""""""""""""""""" Cursor
 function SetVisibleCursorLine()
@@ -890,50 +870,6 @@ if has("autocmd")
 
 endif
 
-""""""""""""""""""""""""""""""""""""""""" Colors
-set t_Co=256
-colo taras256
-
-" Color test: Save this file, then enter ':so %'
-" Then enter one of following commands:
-"   :VimColorTest    "(for console/terminal Vim)
-"   :GvimColorTest   "(for GUI gvim)
-function! VimColorTest(outfile, fgend, bgend)
-  let result = []
-  for fg in range(a:fgend)
-    for bg in range(a:bgend)
-      let kw = printf('%-7s', printf('c_%d_%d', fg, bg))
-      let h = printf('hi %s ctermfg=%d ctermbg=%d', kw, fg, bg)
-      let s = printf('syn keyword %s %s', kw, kw)
-      call add(result, printf('%-32s | %s', h, s))
-    endfor
-  endfor
-  call writefile(result, a:outfile)
-  execute 'edit '.a:outfile
-  source %
-endfunction
-command! VimColorTest call VimColorTest('vim-color-test.tmp', 12, 16)
-
-function! GvimColorTest(outfile)
-  let result = []
-  for red in range(0, 255, 16)
-    for green in range(0, 255, 16)
-      for blue in range(0, 255, 16)
-        let kw = printf('%-13s', printf('c_%d_%d_%d', red, green, blue))
-        let fg = printf('#%02x%02x%02x', red, green, blue)
-        let bg = '#fafafa'
-        let h = printf('hi %s guifg=%s guibg=%s', kw, fg, bg)
-        let s = printf('syn keyword %s %s', kw, kw)
-        call add(result, printf('%s | %s', h, s))
-      endfor
-    endfor
-  endfor
-  call writefile(result, a:outfile)
-  execute 'edit '.a:outfile
-  source %
-endfunction
-command! GvimColorTest call GvimColorTest('gvim-color-test.tmp')
-
 """"""""""""""""""""""""""""""""""""""""" Include keys map
 source ~/.vim/keys.vim
 
@@ -941,4 +877,8 @@ source ~/.vim/keys.vim
 if filereadable(expand("./.vim/vimrc-custom"))
   source ./.vim/vimrc-custom
 endif
+
+""""""""""""""""""""""""""""""""""""""""" Colors
+syntax on
+colorscheme taras256
 
