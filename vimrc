@@ -205,6 +205,10 @@ function! s:PrevDiaryFile() abort
   return l:prev
 endfunction
 
+function! s:CheckboxBody(line) abort
+  return substitute(a:line, '^\s*-\s\[.\]\s\+', '', '')
+endfunction
+
 function! VimwikiCarryUncheckedFromPrev() abort
   let l:prev = s:PrevDiaryFile()
   if empty(l:prev)
@@ -212,20 +216,39 @@ function! VimwikiCarryUncheckedFromPrev() abort
     return
   endif
 
-  " Read unchecked tasks from previous file
+  " Read all lines from previous file
   let l:lines = readfile(l:prev)
-  let l:tasks = filter(copy(l:lines), {_, v -> v =~ '^\s*-\s\[\s\]\s'})
+
+  " Collect bodies of tasks that are checked in the previous file
+  let l:done = {}
+  for l:line in l:lines
+    if l:line =~ '^\s*-\s\[[^ ]\]\s'
+      let l:done[s:CheckboxBody(l:line)] = 1
+    endif
+  endfor
+
+  " Keep only unchecked tasks whose body is not also present as checked
+  let l:tasks = filter(copy(l:lines), {_, v ->
+        \ v =~ '^\s*-\s\[\s\]\s' &&
+        \ !has_key(l:done, s:CheckboxBody(v))})
 
   if empty(l:tasks)
     echo "No unchecked tasks in " . fnamemodify(l:prev, ':t')
     return
   endif
 
-  " Get all existing lines in current buffer
+  " Build a set of task bodies already present in current buffer (any state)
   let l:buf_lines = getline(1, '$')
+  let l:buf_bodies = {}
+  for l:line in l:buf_lines
+    if l:line =~ '^\s*-\s\[.\]\s'
+      let l:buf_bodies[s:CheckboxBody(l:line)] = 1
+    endif
+  endfor
 
-  " Keep only tasks that are NOT already present in current buffer
-  let l:new_tasks = filter(l:tasks, {_, v -> index(l:buf_lines, v) < 0})
+  " Keep only tasks not already in buffer (match by body, ignoring check state)
+  let l:new_tasks = filter(l:tasks, {_, v ->
+        \ !has_key(l:buf_bodies, s:CheckboxBody(v))})
 
   if empty(l:new_tasks)
     echo "No new unchecked tasks to import from " . fnamemodify(l:prev, ':t')
@@ -239,7 +262,7 @@ function! VimwikiCarryUncheckedFromPrev() abort
     let l:lnum = 1
   endif
 
-  " Append only non‑duplicate tasks
+  " Append only non-duplicate tasks
   call append(l:lnum, l:new_tasks)
   echo "Imported " . len(l:new_tasks) . " new tasks from " . fnamemodify(l:prev, ':t')
 endfunction
