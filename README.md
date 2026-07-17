@@ -7,12 +7,11 @@
 3. Font [DroidSansMono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono): configure it for the terminal
 4. Finder [fzf](https://github.com/junegunn/fzf) (ensure fzf binary is in the $PATH)
 5. ag [silversearcher-ag] (for AnyJump)
-6. For C++ projects: ensure compile_commands.json is generated (for ALE).
 
 ## Installation
 
 1. `cd ~`
-2. `git clone git://github.com/shapovalovts/.vim.git`
+2. `git clone git@github.com:shapovalovts/.vim.git
 3. `cd ~/.vim`
 4. `mkdir spool`
 5. `echo "source ~/.vim/vimrc" > ~/.vimrc`

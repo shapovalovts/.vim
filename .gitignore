@@ -8,3 +8,4 @@ last-session.txt
 bundle/
 sessions
 spool/*
+.DS_Store
