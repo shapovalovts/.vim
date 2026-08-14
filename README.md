@@ -79,3 +79,4 @@
 45. lepture/vim-jinja
 46. carlsmedstad/vim-bicep
 47. vimwiki/vimwiki
+48. morhetz/gruvbox

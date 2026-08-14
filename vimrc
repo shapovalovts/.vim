@@ -125,6 +125,7 @@ Plugin 'bfrg/vim-cpp-modern'
 Plugin 'lepture/vim-jinja'
 Plugin 'carlsmedstad/vim-bicep'
 Plugin 'vimwiki/vimwiki'
+Plugin 'morhetz/gruvbox'
 
 filetype plugin indent on      " required by Vundle
 filetype plugin on
@@ -903,5 +904,7 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""" Colors
 syntax on
-colorscheme taras256
+set termguicolors
+set background=dark
+colorscheme gruvbox
 
