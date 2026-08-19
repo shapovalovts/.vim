@@ -681,7 +681,11 @@ set backup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" GutenTags
 
 let g:gutentags_cache_dir = expand($HOME . '/.cache/tags' )
-let g:gutentags_ctags_executable = '/opt/homebrew/bin/ctags'
+if has('macunix')
+  let g:gutentags_ctags_executable = '/opt/homebrew/bin/ctags'
+else
+  let g:gutentags_ctags_executable = '/usr/bin/ctags'
+endif
 let g:gutentags_resolve_symlinks=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" ALE LSP completion
