@@ -11,7 +11,7 @@
 ## Installation
 
 1. `cd ~`
-2. `git clone git@github.com:shapovalovts/.vim.git
+2. `git clone git@github.com:shapovalovts/.vim.git`
 3. `cd ~/.vim`
 4. `mkdir spool`
 5. `echo "source ~/.vim/vimrc" > ~/.vimrc`
