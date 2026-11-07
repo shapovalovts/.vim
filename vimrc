@@ -910,5 +910,5 @@ endif
 syntax on
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme desert
 
